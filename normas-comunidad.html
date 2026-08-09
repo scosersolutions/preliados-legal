@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preliados · Normas de la comunidad</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f5;
+    --surface: #ffffff;
+    --text: #201a1f;
+    --text-muted: #665f68;
+    --accent: #b3325c;
+    --accent-2: #6c4fa0;
+    --border: #e8e0e4;
+    --bad-bg: #fdeceef;
+    --bad-border: #e6a9b6;
+    --bad-text: #7a1f37;
+    --ok-bg: #eaf5ee;
+    --ok-border: #a9d8ba;
+    --ok-text: #1f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17131a;
+      --surface: #221d26;
+      --text: #f2ecef;
+      --text-muted: #b4aab2;
+      --accent: #f06292;
+      --accent-2: #b18cf0;
+      --border: #35303b;
+      --bad-bg: #351b22;
+      --bad-border: #7a3444;
+      --bad-text: #f5b6c4;
+      --ok-bg: #1a2e21;
+      --ok-border: #366b48;
+      --ok-text: #a9e0bb;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 40rem; margin: 0 auto; }
+  a.back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  a.back:hover { color: var(--accent); }
+  h1 { font-size: 1.7rem; margin: 0 0 0.35rem; letter-spacing: -0.01em; }
+  .meta { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 2rem; }
+  h2 {
+    font-size: 1.2rem;
+    margin: 2.2rem 0 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.3rem 0 0.5rem; }
+  p { margin: 0.6rem 0; }
+  ul, ol { padding-left: 1.3rem; margin: 0.6rem 0; }
+  li { margin: 0.4rem 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  @media (min-width: 34rem) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  .box {
+    border-radius: 0.85rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+  }
+  .box.bad { background: var(--bad-bg); border-color: var(--bad-border); color: var(--bad-text); }
+  .box.ok { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .box h3 { margin-top: 0; }
+  .box ul { margin: 0.4rem 0 0; }
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+  }
+  .steps li {
+    position: relative;
+    padding-left: 2.4rem;
+    margin: 0.9rem 0;
+  }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -0.05rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.02em; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  a { color: var(--accent); }
+  code { background: var(--surface); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.05rem 0.35rem; font-size: 0.85em; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./index.html">← Volver al índice</a>
+  <h1>🛡️ Normas de la comunidad de Preliados</h1>
+  <p class="meta">Versión 1.0 · Última actualización: 9 de agosto de 2026</p>
+
+  <p>La comunidad de Preliados es el espacio donde puedes publicar tus propios mazos de cartas y jugar con los que ha creado otra gente. Para que siga siendo un sitio seguro y divertido, todo el mundo que publica acepta estas normas.</p>
+
+  <p>Preliados es un juego de fiesta para adultos que quiere tener contenido subido de tono, directo y sin filtros de fondo, y eso es exactamente lo que se espera cuando alguien crea un mazo así. Estas normas no prohíben ese tono: prohíben el contenido que hace daño de verdad.</p>
+
+  <h2 id="prohibido">1. Qué contenido está prohibido</h2>
+  <p>No se puede publicar contenido que sea o contenga:</p>
+  <div class="grid">
+    <div class="box bad">
+      <h3>🚫 Siempre prohibido</h3>
+      <ul>
+        <li>Racismo o xenofobia</li>
+        <li>Discurso de odio o desprecio hacia un colectivo protegido (etnia, nacionalidad, religión, orientación sexual, identidad de género, discapacidad)</li>
+        <li>Discriminación de cualquier tipo</li>
+        <li>Acoso o ataques dirigidos a una persona real</li>
+        <li>Sexualización de menores, bajo cualquier forma</li>
+        <li>Amenazas de violencia real</li>
+        <li>Contenido ofensivo gratuito sin ningún propósito de juego</li>
+        <li>Spam o contenido publicitario encubierto</li>
+        <li>Desinformación presentada como hecho</li>
+      </ul>
+    </div>
+    <div class="box ok">
+      <h3>✅ Permitido en este contexto</h3>
+      <ul>
+        <li>Contenido sexual, explícito o subido de tono entre adultos</li>
+        <li>Humor negro o grosero</li>
+        <li>Retos incómodos o vergonzosos, dentro de lo razonable</li>
+        <li>Contenido directo sobre beber, ligar o anécdotas personales</li>
+      </ul>
+    </div>
+  </div>
+  <p>La frontera es sencilla: lo subido de tono está bien; lo que humilla, discrimina o pone en riesgo a alguien real, no. Cuando generas cartas con nuestra herramienta de IA, aplicamos un filtro automático con este mismo criterio antes de que las veas y otra vez antes de que puedan publicarse.</p>
+
+  <h3>1.1 Contenido para menores</h3>
+  <p>Preliados no es una app exclusiva para adultos: la usan también personas menores de edad, con el contenido más subido de tono bloqueado por un filtro de edad que no pueden desactivar. Al crear un mazo, clasificamos su intensidad para que ese filtro funcione correctamente. Intentar eludir deliberadamente esa clasificación (por ejemplo, etiquetando como suave un mazo que no lo es) se trata como una infracción de estas normas.</p>
+
+  <h2 id="moderacion">2. Cómo moderamos</h2>
+  <p>La moderación combina un filtro automático en el momento de crear contenido con IA y un sistema de reportes de la comunidad:</p>
+  <ol class="steps">
+    <li><strong>Publicación:</strong> antes de poder publicar tu primer mazo, tienes que haber aceptado la versión vigente de estas normas, la política de privacidad y las condiciones de uso.</li>
+    <li><strong>Reportes:</strong> cualquier persona puede reportar un mazo que incumpla estas normas, indicando un motivo.</li>
+    <li><strong>Revisión automática por volumen:</strong> cuando un mazo acumula reportes de <strong>varios dispositivos distintos</strong> (no cuenta que la misma persona lo reporte más de una vez), pasa a estado <em>en revisión</em>. Sigue siendo visible durante la revisión: un puñado de reportes no es, por sí solo, un veredicto, y ocultar demasiado pronto abriría la puerta a usarlo como arma entre grupos.</li>
+    <li><strong>Ocultación automática:</strong> si los reportes de dispositivos distintos siguen subiendo hasta un umbral más alto, el mazo se oculta automáticamente para el resto de la comunidad. Su autor lo sigue viendo, para saber que se ha retirado.</li>
+    <li><strong>Revisión humana:</strong> el equipo de moderación revisa la cola de mazos denunciados y decide si el contenido se reactiva, se mantiene oculto o se retira definitivamente.</li>
+  </ol>
+  <p>Para evitar abusos del propio sistema de reportes: no puedes reportar tu propio mazo, cada dispositivo solo puede reportar el mismo mazo una vez, hay un tiempo mínimo de espera entre dos reportes seguidos, y un tope diario de reportes por dispositivo.</p>
+
+  <h3>2.1 Motivos de reporte disponibles</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Motivo</th><th>Cuándo usarlo</th></tr></thead>
+    <tbody>
+      <tr><td>Ofensivo</td><td>Contenido gratuitamente hiriente sin encajar en un motivo más concreto</td></tr>
+      <tr><td>Discurso de odio</td><td>Desprecio u odio hacia un colectivo</td></tr>
+      <tr><td>Racismo</td><td>Contenido racista</td></tr>
+      <tr><td>Xenofobia</td><td>Rechazo o ataque por origen o nacionalidad</td></tr>
+      <tr><td>Discriminación</td><td>Trato discriminatorio por cualquier motivo protegido</td></tr>
+      <tr><td>Acoso</td><td>Ataque dirigido a una persona real</td></tr>
+      <tr><td>Contenido sexual (fuera de lugar)</td><td>Sexualización de menores o contenido sexual no apropiado para el contexto del juego</td></tr>
+      <tr><td>Spam</td><td>Publicidad encubierta o contenido repetitivo sin valor de juego</td></tr>
+      <tr><td>Desinformación</td><td>Afirmaciones falsas presentadas como hechos</td></tr>
+      <tr><td>Otro</td><td>Cualquier otro motivo, con un campo de texto libre para explicarlo</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="reportar">3. Cómo reportar un mazo</h2>
+  <p>Desde la ficha del mazo, selecciona la opción de reportar, elige el motivo que mejor describa el problema y, si el motivo es "otro", añade una breve explicación (hasta 500 caracteres). No hace falta que expliques nada más: la revisión humana se encarga del resto.</p>
+
+  <h2 id="recurrir">4. Qué pasa con un mazo retirado y cómo recurrir</h2>
+  <ul>
+    <li>Si tu mazo pasa a <em>en revisión</em>, sigue siendo visible mientras se estudia el caso; no tienes que hacer nada todavía.</li>
+    <li>Si tu mazo se oculta u se retira, tú sigues viéndolo (y sus cartas), pero deja de ser visible para el resto de la comunidad y no puede jugarse desde ahí.</li>
+    <li>Un mazo retirado <strong>no vuelve a activarse solo</strong>: siempre es una decisión humana del equipo de moderación, nunca automática.</li>
+    <li>Si crees que la retirada fue un error, escríbenos a <a href="mailto:moderacion@preliados.app">moderacion@preliados.app</a> indicando el nombre del mazo y por qué crees que el contenido no incumple estas normas. Revisaremos el caso manualmente y te responderemos con la decisión.</li>
+  </ul>
+
+  <h2 id="bloqueo">5. Bloquear a otros autores</h2>
+  <p>Puedes bloquear a un autor cuyos mazos no quieras volver a ver. El bloqueo se guarda en tu dispositivo y afecta solo a lo que tú ves; no es una medida de moderación pública ni retira el contenido para el resto de la comunidad.</p>
+
+  <h2 id="consecuencias">6. Consecuencias de incumplir estas normas</h2>
+  <p>Dependiendo de la gravedad y de si es reincidente, podemos: retirar el mazo concreto, ocultar todo el contenido publicado por ese identificador, o restringir su capacidad de publicar en la comunidad. Las infracciones muy graves (por ejemplo, contenido que sexualice a menores) se retiran de inmediato sin pasar por el proceso gradual de reportes, y cuando la ley lo exige, se ponen en conocimiento de las autoridades competentes.</p>
+
+  <h2 id="relacion">7. Relación con el resto de documentos</h2>
+  <p>Estas normas se leen junto con la <a href="./privacidad.html">política de privacidad</a> (qué hacemos con los datos del mazo y del reporte) y las <a href="./condiciones.html">condiciones de uso</a> (uso general de la app). Aceptar estas normas es obligatorio antes de publicar cualquier mazo; consultarlas y jugar mazos de otros no lo requiere.</p>
+
+  <footer>
+    Preliados · Normas de la comunidad · Versión 1.0 · Última actualización: 9 de agosto de 2026
+  </footer>
+</div>
+</body>
+</html>
