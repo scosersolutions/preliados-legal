@@ -123,25 +123,22 @@
 <div class="wrap">
   <a class="back" href="./index.html">← Volver al índice</a>
   <h1>🔒 Política de privacidad de Preliados</h1>
-  <p class="meta">Versión 1.0 · Última actualización: 9 de agosto de 2026</p>
+  <p class="meta">Versión 1.0 · Última actualización: 11 de agosto de 2026</p>
 
   <p>Preliados es un juego de cartas para previas entre amigos. Esta política explica qué datos tratamos cuando usas la app, para qué los usamos, cuánto tiempo los guardamos y qué derechos tienes sobre ellos, conforme al Reglamento (UE) 2016/679 (RGPD) y la LOPDGDD.</p>
 
-  <div class="callout">
-    <strong>Dato importante que falta:</strong> este documento necesita los datos identificativos reales del responsable del tratamiento. Están marcados como <span class="placeholder">[COMPLETAR]</span> en la sección 1. La app no debería publicarse en las tiendas con estos campos sin rellenar.
-  </div>
-
   <h2 id="responsable">1. Quién es el responsable del tratamiento</h2>
   <p>
-    Responsable: <span class="placeholder">[COMPLETAR: razón social de la empresa o persona física titular de Preliados]</span><br>
-    NIF/CIF: <span class="placeholder">[COMPLETAR: NIF o CIF]</span><br>
-    Domicilio: <span class="placeholder">[COMPLETAR: domicilio social o dirección de contacto postal]</span><br>
-    Contacto para privacidad: <a href="mailto:scosersolutions@gmail.com">scosersolutions@gmail.com</a> <span class="placeholder">[COMPLETAR: si se quiere usar una dirección específica de privacidad, por ejemplo privacidad@preliados.app, distinta de la de moderación]</span>
+    Responsable: <strong>Fernando Scott Humanes Carchenilla</strong> (persona física), que opera bajo el nombre comercial <strong>Scoser Solutions</strong><br>
+    NIF: 54003881L<br>
+    Domicilio: Jardín de los Limoneros 5, El Boalo, Madrid (España)<br>
+    Contacto para privacidad: <a href="mailto:scosersolutions@gmail.com">scosersolutions@gmail.com</a>
   </p>
   <p>No hay un Delegado de Protección de Datos (DPO) designado porque la actividad de tratamiento, tal y como está hoy, no lo exige por ley. Si eso cambia, actualizaremos esta sección.</p>
 
   <h2 id="principio">2. Principio general: la app funciona sin cuenta personal</h2>
-  <p>Preliados no te pide registrarte con email ni contraseña. No recogemos tu nombre real, tu correo ni tu teléfono. Buena parte de los datos de la app (nombres de jugadores, fecha de nacimiento, preferencias) se guardan <strong>solo en tu dispositivo</strong> y nunca se envían a nuestros servidores.</p>
+  <p>Preliados no te pide registrarte con email ni contraseña. No recogemos tu nombre real ni tu teléfono. Buena parte de los datos de la app (nombres de jugadores, fecha de nacimiento, preferencias) se guardan <strong>solo en tu dispositivo</strong> y nunca se envían a nuestros servidores.</p>
+  <p>La única excepción es el <strong>correo de recuperación</strong>: si publicas mazos en la comunidad, puedes vincular voluntariamente una dirección de correo para poder recuperar tu identidad si cambias de móvil. Es opcional, no hace falta para jugar ni para publicar, y lo tratamos únicamente para eso (ver la tabla del apartado 3.2).</p>
 
   <h2 id="que-datos">3. Qué datos tratamos, para qué y con qué base legal</h2>
 
@@ -166,13 +163,14 @@
     <thead><tr><th>Dato</th><th>Para qué</th><th>Base legal</th><th>Conservación</th></tr></thead>
     <tbody>
       <tr><td>Identificador anónimo de sesión (UUID de Supabase Auth, sin email ni contraseña)</td><td>Distinguir tu dispositivo de otros para que la comunidad funcione (saber qué mazo es tuyo, evitar votos y reportes duplicados)</td><td>Ejecución del servicio de comunidad que has activado (art. 6.1.b)</td><td>Mientras la sesión anónima siga activa en tu dispositivo; se elimina al solicitar el borrado de tus datos</td></tr>
+      <tr><td>Correo electrónico de recuperación, <strong>solo si decides vincularlo</strong> (es opcional)</td><td>Poder devolverte el control de tus mazos publicados si cambias de dispositivo o reinstalas la app, mediante un código de un solo uso enviado a esa dirección. No se usa para enviarte comunicaciones comerciales</td><td>Consentimiento, prestado en el momento de vincularlo (art. 6.1.a)</td><td>Hasta que lo desvincules o solicites el borrado de tus datos</td></tr>
       <tr><td>Mazos que publicas en la comunidad (nombre, descripción, categoría, cartas, idioma)</td><td>Mostrar tu mazo a otros usuarios de la comunidad</td><td>Consentimiento, prestado al aceptar las <a href="./normas-comunidad.html">normas de la comunidad</a> antes de publicar</td><td>Mientras el mazo esté publicado; si lo retiras o se retira por moderación, se elimina o se ancla a un estado no visible (ver normas de comunidad)</td></tr>
       <tr><td>Valoraciones (de 1 a 5) que das a mazos de otros</td><td>Calcular la puntuación media y el ranking de mazos</td><td>Consentimiento / ejecución del servicio</td><td>Mientras exista el mazo valorado o hasta que pidas su borrado</td></tr>
       <tr><td>Reportes de moderación que envías (motivo, detalle opcional)</td><td>Revisar contenido denunciado y aplicar las normas de la comunidad</td><td>Interés legítimo en mantener la comunidad segura (art. 6.1.f) y cumplimiento de las políticas de las tiendas de apps</td><td>Mientras dure el proceso de moderación y un periodo razonable después para poder justificar la decisión ante una reclamación</td></tr>
       <tr><td>Aceptación de las políticas (documento, versión, fecha)</td><td>Poder demostrar que aceptaste las condiciones vigentes antes de publicar contenido</td><td>Obligación legal de poder acreditar el consentimiento (art. 7.1 RGPD)</td><td>Mientras tengas actividad en la comunidad; es la prueba del consentimiento, así que se conserva aunque cambie de versión</td></tr>
       <tr><td>Uso de la cuota de generación de cartas con IA (número de generaciones y de cartas usadas)</td><td>Aplicar el límite gratuito y el de la suscripción Plus, evitar abuso</td><td>Ejecución del servicio contratado (art. 6.1.b) e interés legítimo antifraude</td><td>Se reinicia periódicamente según el ciclo de cuota; los contadores no se conservan más allá de lo necesario para aplicar el límite</td></tr>
       <tr><td>El texto que escribes como ejemplo para generar cartas con IA</td><td>Generar las cartas nuevas que pides</td><td>Ejecución del servicio que has solicitado (art. 6.1.b)</td><td>El tiempo necesario para procesar la petición; no se usa para entrenar modelos por nuestra parte</td></tr>
-      <tr><td>Datos de fallos y errores de la app (previsto, aún no activo)</td><td>Detectar y solucionar cierres inesperados y errores técnicos</td><td>Interés legítimo en la estabilidad y calidad del servicio (art. 6.1.f)</td><td><span class="placeholder">[COMPLETAR: periodo de retención una vez se active Sentry, según la configuración elegida]</span></td></tr>
+      <tr><td>Datos de fallos y errores de la app (informe de error, versión de la app, modelo de dispositivo y sistema operativo)</td><td>Detectar y solucionar cierres inesperados y errores técnicos</td><td>Interés legítimo en la estabilidad y calidad del servicio (art. 6.1.f)</td><td>30 días desde su recepción, conforme a la política de retención del plan contratado en Sentry, tras los cuales se eliminan automáticamente</td></tr>
       <tr><td>Datos de compra dentro de la app (identificador de transacción, producto adquirido, estado de la suscripción)</td><td>Gestionar la compra y activar las funciones Plus</td><td>Ejecución de un contrato de compra (art. 6.1.b)</td><td>Mientras la suscripción esté activa y el periodo legal de conservación de justificantes de compra</td></tr>
     </tbody>
   </table>
@@ -190,7 +188,7 @@
   <ul>
     <li><strong>Supabase</strong> (base de datos, autenticación anónima y funciones de servidor): aloja el identificador anónimo, los mazos, valoraciones, reportes y aceptaciones de políticas.</li>
     <li><strong>Groq</strong> (proveedor de inferencia de IA): procesa el texto de ejemplo que escribes para generar cartas nuevas y clasificar su contenido. No recibe tu identificador de usuario, solo el texto de la petición.</li>
-    <li><strong>Sentry</strong> (informes de fallos): <em>previsto, aún no integrado</em>. Cuando se active, recibirá datos técnicos del dispositivo y del error (no datos como nombres de jugadores o fecha de nacimiento, que nunca salen del dispositivo).</li>
+    <li><strong>Sentry</strong> (informes de fallos): recibe datos técnicos del dispositivo y del error — no datos como nombres de jugadores o fecha de nacimiento, que nunca salen del dispositivo. El proyecto está alojado en la región europea de Sentry.</li>
     <li><strong>RevenueCat</strong> (gestión de compras y suscripciones): procesa los datos de la transacción de compra que gestionan Apple App Store o Google Play.</li>
   </ul>
   <p>No vendemos tus datos a terceros ni los usamos con fines publicitarios.</p>
@@ -201,10 +199,10 @@
   <table>
     <thead><tr><th>Proveedor</th><th>Ubicación</th><th>Garantía aplicada</th></tr></thead>
     <tbody>
-      <tr><td>Supabase</td><td><span class="placeholder">[COMPLETAR: región del proyecto Supabase configurado — UE o EE.UU.]</span></td><td><span class="placeholder">[COMPLETAR: cláusulas contractuales tipo (SCC) u otra garantía si el alojamiento no es UE]</span></td></tr>
-      <tr><td>Groq, Inc.</td><td>Estados Unidos</td><td><span class="placeholder">[COMPLETAR: base de la transferencia — cláusulas contractuales tipo firmadas con Groq]</span></td></tr>
-      <tr><td>Sentry (Functional Software, Inc.)</td><td><span class="placeholder">[COMPLETAR: región de alojamiento elegida al configurar Sentry — tiene opción UE]</span></td><td><span class="placeholder">[COMPLETAR: cláusulas contractuales tipo si el alojamiento es EE.UU.]</span></td></tr>
-      <tr><td>RevenueCat, Inc.</td><td>Estados Unidos</td><td><span class="placeholder">[COMPLETAR: base de la transferencia — cláusulas contractuales tipo firmadas con RevenueCat]</span></td></tr>
+      <tr><td>Supabase</td><td>Unión Europea</td><td>No hay transferencia internacional: los datos permanecen alojados en la UE</td></tr>
+      <tr><td>Groq, Inc.</td><td>Estados Unidos</td><td>Cláusulas contractuales tipo (SCC) aprobadas por la Comisión Europea, incorporadas al acuerdo de tratamiento de datos del proveedor</td></tr>
+      <tr><td>Sentry (Functional Software, Inc.)</td><td>Unión Europea (Alemania)</td><td>No hay transferencia internacional: el proyecto está configurado en la región europea de Sentry</td></tr>
+      <tr><td>RevenueCat, Inc.</td><td>Estados Unidos</td><td>Cláusulas contractuales tipo (SCC) aprobadas por la Comisión Europea, incorporadas al acuerdo de tratamiento de datos del proveedor</td></tr>
       <tr><td>Apple App Store / Google Play</td><td>Gestionan el pago directamente; sus propias políticas de privacidad aplican a esa parte del proceso</td><td>No aplica: no actúan como encargados nuestros para ese dato</td></tr>
     </tbody>
   </table>
@@ -224,7 +222,7 @@
     <li><strong>Retirar el consentimiento</strong> en cualquier momento, sin que afecte a lo ya tratado.</li>
   </ul>
   <p>Como no tenemos tu email ni tu nombre, para localizar tus datos necesitamos que nos escribas a <a href="mailto:scosersolutions@gmail.com">scosersolutions@gmail.com</a> indicando, si puedes, el nombre exacto del mazo publicado, la fecha aproximada y el dispositivo desde el que juegas; así podemos identificar tu identificador anónimo sin pedirte datos adicionales que no tratamos. Responderemos en el plazo de un mes desde la solicitud, ampliable dos meses más en casos complejos, como marca el RGPD.</p>
-  <p>Si consideras que no hemos atendido tu solicitud correctamente, puedes reclamar ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong>, C/ Jorge Juan, 6, 28001 Madrid — <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>. <span class="placeholder">[COMPLETAR: si el responsable del tratamiento no está domiciliado en España, indicar aquí la autoridad de control que corresponda]</span></p>
+  <p>Si consideras que no hemos atendido tu solicitud correctamente, puedes reclamar ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong>, C/ Jorge Juan, 6, 28001 Madrid — <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>. La AEPD es la autoridad de control competente, al estar el responsable del tratamiento domiciliado en España.</p>
 
   <h2 id="decisiones-automatizadas">9. Decisiones automatizadas</h2>
   <p>Usamos un clasificador automático (basado en IA) para revisar el contenido generado con la herramienta de IA y para detectar lenguaje de odio en las cartas antes de publicarlas o compartirlas. Es un filtro de seguridad, no un perfilado sobre ti como persona: no toma decisiones que produzcan efectos jurídicos ni te afecten significativamente más allá de aceptar o rechazar el contenido concreto. Si consideras que una carta tuya fue bloqueada por error, puedes escribirnos para revisarlo manualmente.</p>
@@ -233,7 +231,7 @@
   <p>Si cambiamos esta política de forma relevante, se actualizará la versión y la fecha de esta página, y si el cambio afecta a cómo tratamos tus datos de forma sustancial, te pediremos que la vuelvas a aceptar antes de seguir publicando en la comunidad — el mismo mecanismo que usamos para las otras políticas.</p>
 
   <footer>
-    Preliados · Política de privacidad · Versión 1.0 · Última actualización: 9 de agosto de 2026
+    Preliados · Política de privacidad · Versión 1.0 · Última actualización: 11 de agosto de 2026
   </footer>
 </div>
 </body>

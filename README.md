@@ -12,6 +12,5 @@ Las URLs y las versiones vigentes están declaradas en `src/legal/policies.ts`
 del repositorio de la app, y deben coincidir con la clave `policy_versions` de
 `moderation_config` en Supabase.
 
-> ⚠️ Los documentos contienen marcadores `[COMPLETAR: …]` con los datos
-> identificativos del responsable del tratamiento. **No se puede enviar la app
-> a revisión hasta que estén rellenados.**
+> ✅ Los marcadores `[COMPLETAR: …]` se rellenaron el 11 de agosto de 2026 con
+> los datos identificativos reales del responsable. Ya no queda ninguno.
