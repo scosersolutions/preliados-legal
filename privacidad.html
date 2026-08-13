@@ -123,7 +123,7 @@
 <div class="wrap">
   <a class="back" href="./index.html">← Volver al índice</a>
   <h1>🔒 Política de privacidad de Preliados</h1>
-  <p class="meta">Versión 1.0 · Última actualización: 11 de agosto de 2026</p>
+  <p class="meta">Versión 1.1 · Última actualización: 13 de agosto de 2026</p>
 
   <p>Preliados es un juego de cartas para previas entre amigos. Esta política explica qué datos tratamos cuando usas la app, para qué los usamos, cuánto tiempo los guardamos y qué derechos tienes sobre ellos, conforme al Reglamento (UE) 2016/679 (RGPD) y la LOPDGDD.</p>
 
@@ -132,13 +132,20 @@
     Responsable: <strong>Fernando Scott Humanes Carchenilla</strong> (persona física), que opera bajo el nombre comercial <strong>Scoser Solutions</strong><br>
     NIF: 54003881L<br>
     Domicilio: Jardín de los Limoneros 5, El Boalo, Madrid (España)<br>
-    Contacto para privacidad: <a href="mailto:scosersolutions@gmail.com">scosersolutions@gmail.com</a>
+    Contacto para privacidad: <a href="mailto:hola@preliados.com">hola@preliados.com</a>
   </p>
   <p>No hay un Delegado de Protección de Datos (DPO) designado porque la actividad de tratamiento, tal y como está hoy, no lo exige por ley. Si eso cambia, actualizaremos esta sección.</p>
 
-  <h2 id="principio">2. Principio general: la app funciona sin cuenta personal</h2>
-  <p>Preliados no te pide registrarte con email ni contraseña. No recogemos tu nombre real ni tu teléfono. Buena parte de los datos de la app (nombres de jugadores, fecha de nacimiento, preferencias) se guardan <strong>solo en tu dispositivo</strong> y nunca se envían a nuestros servidores.</p>
-  <p>La única excepción es el <strong>correo de recuperación</strong>: si publicas mazos en la comunidad, puedes vincular voluntariamente una dirección de correo para poder recuperar tu identidad si cambias de móvil. Es opcional, no hace falta para jugar ni para publicar, y lo tratamos únicamente para eso (ver la tabla del apartado 3.2).</p>
+  <h2 id="principio">2. Principio general: jugar no exige cuenta</h2>
+  <p><strong>Para jugar no necesitas cuenta.</strong> Al abrir la app se crea una sesión anónima: un identificador aleatorio, sin correo, sin nombre y sin teléfono. Buena parte de los datos de la app (nombres de jugadores, fecha de nacimiento, preferencias) se guardan <strong>solo en tu dispositivo</strong> y nunca se envían a nuestros servidores.</p>
+  <p>Solo necesitas una cuenta si quieres <strong>participar en la comunidad</strong>: publicar mazos, valorarlos o reportarlos. Puedes crearla de tres maneras, y tú eliges cuál:</p>
+  <ul>
+    <li><strong>Correo y contraseña.</strong> Tratamos tu dirección de correo; la contraseña no se guarda nunca en claro (ver el apartado 7).</li>
+    <li><strong>Continuar con Google</strong> o <strong>Continuar con Apple</strong>. En ese caso el proveedor nos comunica un identificador de tu cuenta y, si lo autorizas, tu correo. No recibimos tu contraseña de Google o de Apple, ni tu lista de contactos, ni ningún otro dato de tu perfil.</li>
+  </ul>
+  <p>Si creas la cuenta con correo, puedes activar además la <strong>verificación en dos pasos</strong> (2FA) con una app de autenticación. Es opcional y puedes desactivarla cuando quieras.</p>
+  <p>Crear una cuenta <strong>no borra ni sustituye</strong> tu sesión anónima: se vincula a ella, de modo que conservas tus mazos, tus compras y tu progreso.</p>
+  <p>Puedes <strong>eliminar tu cuenta desde la propia app</strong> en cualquier momento, sin escribirnos. Cómo hacerlo y qué se borra está detallado en la página <a href="./borrar-cuenta.html">Borrar tu cuenta y tus datos</a>.</p>
 
   <h2 id="que-datos">3. Qué datos tratamos, para qué y con qué base legal</h2>
 
@@ -163,7 +170,10 @@
     <thead><tr><th>Dato</th><th>Para qué</th><th>Base legal</th><th>Conservación</th></tr></thead>
     <tbody>
       <tr><td>Identificador anónimo de sesión (UUID de Supabase Auth, sin email ni contraseña)</td><td>Distinguir tu dispositivo de otros para que la comunidad funcione (saber qué mazo es tuyo, evitar votos y reportes duplicados)</td><td>Ejecución del servicio de comunidad que has activado (art. 6.1.b)</td><td>Mientras la sesión anónima siga activa en tu dispositivo; se elimina al solicitar el borrado de tus datos</td></tr>
-      <tr><td>Correo electrónico de recuperación, <strong>solo si decides vincularlo</strong> (es opcional)</td><td>Poder devolverte el control de tus mazos publicados si cambias de dispositivo o reinstalas la app, mediante un código de un solo uso enviado a esa dirección. No se usa para enviarte comunicaciones comerciales</td><td>Consentimiento, prestado en el momento de vincularlo (art. 6.1.a)</td><td>Hasta que lo desvincules o solicites el borrado de tus datos</td></tr>
+      <tr><td>Dirección de correo electrónico, <strong>solo si creas una cuenta con correo y contraseña</strong></td><td>Identificarte al entrar, confirmar que la dirección es tuya y permitirte restablecer la contraseña si la olvidas. No se usa para enviarte comunicaciones comerciales</td><td>Ejecución del servicio de comunidad que has solicitado (art. 6.1.b)</td><td>Mientras la cuenta exista; se elimina al borrar la cuenta</td></tr>
+      <tr><td>Contraseña, guardada siempre como <strong>huella criptográfica (hash)</strong>, nunca en claro</td><td>Comprobar que eres tú al entrar</td><td>Ejecución del servicio (art. 6.1.b) y obligación de seguridad (art. 32 RGPD)</td><td>Mientras la cuenta exista; se elimina al borrar la cuenta</td></tr>
+      <tr><td>Identidad vinculada de <strong>Google o Apple</strong>, <strong>solo si eliges ese método</strong>: identificador del proveedor y, si lo autorizas, correo</td><td>Permitirte entrar sin crear otra contraseña</td><td>Ejecución del servicio de comunidad que has solicitado (art. 6.1.b)</td><td>Mientras la identidad siga vinculada; se elimina al desvincularla o al borrar la cuenta</td></tr>
+      <tr><td>Segundo factor de autenticación (2FA), <strong>solo si lo activas</strong>: la clave secreta que genera los códigos temporales</td><td>Proteger tu cuenta con un segundo paso al entrar y ante operaciones sensibles</td><td>Consentimiento, prestado al activarlo (art. 6.1.a), e interés legítimo en la seguridad de la cuenta (art. 6.1.f)</td><td>Hasta que lo desactives o borres la cuenta</td></tr>
       <tr><td>Mazos que publicas en la comunidad (nombre, descripción, categoría, cartas, idioma)</td><td>Mostrar tu mazo a otros usuarios de la comunidad</td><td>Consentimiento, prestado al aceptar las <a href="./normas-comunidad.html">normas de la comunidad</a> antes de publicar</td><td>Mientras el mazo esté publicado; si lo retiras o se retira por moderación, se elimina o se ancla a un estado no visible (ver normas de comunidad)</td></tr>
       <tr><td>Valoraciones (de 1 a 5) que das a mazos de otros</td><td>Calcular la puntuación media y el ranking de mazos</td><td>Consentimiento / ejecución del servicio</td><td>Mientras exista el mazo valorado o hasta que pidas su borrado</td></tr>
       <tr><td>Reportes de moderación que envías (motivo, detalle opcional)</td><td>Revisar contenido denunciado y aplicar las normas de la comunidad</td><td>Interés legítimo en mantener la comunidad segura (art. 6.1.f) y cumplimiento de las políticas de las tiendas de apps</td><td>Mientras dure el proceso de moderación y un periodo razonable después para poder justificar la decisión ante una reclamación</td></tr>
@@ -181,16 +191,17 @@
 
   <h2 id="menores">4. Menores de edad</h2>
   <p>Preliados es una app de uso general, no exclusiva para adultos. Al abrir la app por primera vez te pedimos tu fecha de nacimiento para adaptar el contenido: si declaras ser menor, se bloquea automáticamente el contenido más subido de tono, y esa persona no puede desactivar ese filtro desde la app. La fecha de nacimiento se queda en tu dispositivo, como se explica en el punto 3.1.</p>
-  <p>No verificamos de forma independiente la edad declarada (no pedimos documento de identidad), como es habitual en apps de esta naturaleza. Si un progenitor o tutor detecta que un menor ha declarado una edad incorrecta o ha publicado contenido en la comunidad, puede escribirnos a <a href="mailto:scosersolutions@gmail.com">scosersolutions@gmail.com</a> para que revisemos y, si procede, eliminemos ese contenido.</p>
+  <p>No verificamos de forma independiente la edad declarada (no pedimos documento de identidad), como es habitual en apps de esta naturaleza. Si un progenitor o tutor detecta que un menor ha declarado una edad incorrecta o ha publicado contenido en la comunidad, puede escribirnos a <a href="mailto:hola@preliados.com">hola@preliados.com</a> para que revisemos y, si procede, eliminemos ese contenido.</p>
 
   <h2 id="destinatarios">5. A quién comunicamos tus datos: encargados del tratamiento</h2>
   <p>Usamos proveedores externos que tratan datos en nuestro nombre, bajo contrato de encargo del tratamiento (art. 28 RGPD):</p>
   <ul>
-    <li><strong>Supabase</strong> (base de datos, autenticación anónima y funciones de servidor): aloja el identificador anónimo, los mazos, valoraciones, reportes y aceptaciones de políticas.</li>
+    <li><strong>Supabase</strong> (base de datos, autenticación y funciones de servidor): aloja el identificador de sesión, los datos de la cuenta (correo, hash de contraseña, identidades vinculadas y segundo factor), los mazos, valoraciones, reportes y aceptaciones de políticas. También envía los correos de confirmación y de restablecimiento de contraseña.</li>
     <li><strong>Groq</strong> (proveedor de inferencia de IA): procesa el texto de ejemplo que escribes para generar cartas nuevas y clasificar su contenido. No recibe tu identificador de usuario, solo el texto de la petición.</li>
     <li><strong>Sentry</strong> (informes de fallos): recibe datos técnicos del dispositivo y del error — no datos como nombres de jugadores o fecha de nacimiento, que nunca salen del dispositivo. El proyecto está alojado en la región europea de Sentry.</li>
     <li><strong>RevenueCat</strong> (gestión de compras y suscripciones): procesa los datos de la transacción de compra que gestionan Apple App Store o Google Play.</li>
   </ul>
+  <p>Si eliges entrar con <strong>Google</strong> (Google Ireland Limited) o con <strong>Apple</strong> (Apple Distribution International Ltd.), esos proveedores actúan como <strong>responsables independientes</strong>, no como encargados nuestros: sabrán que has iniciado sesión en Preliados y aplicarán sus propias políticas de privacidad a ese hecho. Si prefieres evitarlo, crea la cuenta con correo y contraseña. Apple ofrece además la opción de ocultar tu correo real, y la app funciona con normalidad si la usas.</p>
   <p>No vendemos tus datos a terceros ni los usamos con fines publicitarios.</p>
 
   <h2 id="transferencias">6. Transferencias internacionales</h2>
@@ -209,19 +220,20 @@
   </div>
 
   <h2 id="seguridad">7. Seguridad</h2>
-  <p>El acceso a tus datos de comunidad está protegido por reglas de seguridad a nivel de fila (RLS) en la base de datos: solo tú puedes modificar tu mazo, y las operaciones sensibles (reportar, moderar) pasan por funciones de servidor que validan quién puede hacer qué. Las claves privadas (por ejemplo, la de acceso a Groq) nunca viajan en la app: se quedan en el servidor.</p>
+  <p>El acceso a tus datos de comunidad está protegido por reglas de seguridad a nivel de fila (RLS) en la base de datos: solo tú puedes modificar tu mazo, y las operaciones sensibles (reportar, moderar, borrar la cuenta) pasan por funciones de servidor que validan quién puede hacer qué. Las claves privadas (por ejemplo, la de acceso a Groq) nunca viajan en la app: se quedan en el servidor.</p>
+  <p>En cuanto a la cuenta: las <strong>contraseñas se guardan como hash</strong> y no son recuperables ni por nosotros; toda la comunicación con el servidor va cifrada con TLS; el inicio de sesión con Google y Apple usa flujos con prueba de posesión (PKCE y <em>nonce</em>) para que un tercero no pueda reutilizar la respuesta de autenticación; y las credenciales de sesión se guardan en tu dispositivo en el <strong>almacén seguro del sistema</strong> (Llavero de iOS o Keystore de Android), no en almacenamiento en claro. Si activas la verificación en dos pasos, se exige también para eliminar la cuenta.</p>
 
   <h2 id="derechos">8. Tus derechos</h2>
   <p>Puedes ejercer en cualquier momento:</p>
   <ul>
     <li><strong>Acceso:</strong> saber qué datos tenemos sobre tu identificador anónimo.</li>
     <li><strong>Rectificación:</strong> corregir un mazo o dato inexacto.</li>
-    <li><strong>Supresión:</strong> pedir que borremos tus mazos, valoraciones, reportes e identificador.</li>
+    <li><strong>Supresión:</strong> borrar tu cuenta y con ella tus mazos, valoraciones, reportes e identificador. Puedes hacerlo tú desde <strong>Ajustes → TU CUENTA → Eliminar mi cuenta</strong>, sin pedírnoslo; ver <a href="./borrar-cuenta.html">Borrar tu cuenta y tus datos</a>.</li>
     <li><strong>Oposición y limitación:</strong> oponerte a un tratamiento concreto o pedir que lo pausemos.</li>
     <li><strong>Portabilidad:</strong> recibir tus mazos publicados en un formato estructurado.</li>
     <li><strong>Retirar el consentimiento</strong> en cualquier momento, sin que afecte a lo ya tratado.</li>
   </ul>
-  <p>Como no tenemos tu email ni tu nombre, para localizar tus datos necesitamos que nos escribas a <a href="mailto:scosersolutions@gmail.com">scosersolutions@gmail.com</a> indicando, si puedes, el nombre exacto del mazo publicado, la fecha aproximada y el dispositivo desde el que juegas; así podemos identificar tu identificador anónimo sin pedirte datos adicionales que no tratamos. Responderemos en el plazo de un mes desde la solicitud, ampliable dos meses más en casos complejos, como marca el RGPD.</p>
+  <p>Si tienes cuenta, escríbenos desde la dirección con la que la creaste y podremos identificarte sin más. Si juegas sin cuenta, no tenemos ni tu correo ni tu nombre, así que para localizar tus datos necesitamos que nos escribas a <a href="mailto:hola@preliados.com">hola@preliados.com</a> indicando, si puedes, el nombre exacto del mazo publicado, la fecha aproximada y el dispositivo desde el que juegas; así podemos identificar tu identificador anónimo sin pedirte datos adicionales que no tratamos. Responderemos en el plazo de un mes desde la solicitud, ampliable dos meses más en casos complejos, como marca el RGPD.</p>
   <p>Si consideras que no hemos atendido tu solicitud correctamente, puedes reclamar ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong>, C/ Jorge Juan, 6, 28001 Madrid — <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>. La AEPD es la autoridad de control competente, al estar el responsable del tratamiento domiciliado en España.</p>
 
   <h2 id="decisiones-automatizadas">9. Decisiones automatizadas</h2>
@@ -231,7 +243,7 @@
   <p>Si cambiamos esta política de forma relevante, se actualizará la versión y la fecha de esta página, y si el cambio afecta a cómo tratamos tus datos de forma sustancial, te pediremos que la vuelvas a aceptar antes de seguir publicando en la comunidad — el mismo mecanismo que usamos para las otras políticas.</p>
 
   <footer>
-    Preliados · Política de privacidad · Versión 1.0 · Última actualización: 11 de agosto de 2026
+    Preliados · Política de privacidad · Versión 1.1 · Última actualización: 13 de agosto de 2026
   </footer>
 </div>
 </body>
