@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Preliados &middot; Verificaci&oacute;n completada</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0B0714;
+    --surface: #1A1128;
+    --border: #2E2340;
+    --text: #F2ECEF;
+    --muted: #B4AAB2;
+    --primary: #8B5CF6;
+    --accent: #F472B6;
+    --ok: #34D399;
+    --danger: #F87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .card {
+    width: 100%;
+    max-width: 26rem;
+    background: var(--surface);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  }
+  .bar { height: 6px; background: linear-gradient(90deg, var(--primary), #EC4899); }
+  .body { padding: 2.25rem 1.75rem; text-align: center; }
+  .brand {
+    font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: .35rem;
+  }
+  h1 { margin: .4rem 0 0; font-size: 1.5rem; line-height: 1.25; }
+  p { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
+  .mark { font-size: 3rem; line-height: 1; }
+  label { display: block; margin: 1.4rem 0 .35rem; text-align: left; font-size: .85rem; color: var(--muted); }
+  input {
+    width: 100%; padding: .8rem .9rem; border-radius: .7rem; font-size: 1rem;
+    background: #150E22; border: 1px solid var(--border); color: var(--text);
+  }
+  input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+  button {
+    width: 100%; margin-top: 1.2rem; padding: .9rem 1rem; border: 0; cursor: pointer;
+    border-radius: 999px; font-size: 1rem; font-weight: 700; color: #fff;
+    background: linear-gradient(90deg, var(--primary), #EC4899);
+  }
+  button[disabled] { opacity: .55; cursor: default; }
+  .msg { margin-top: 1rem; font-size: .9rem; min-height: 1.2rem; }
+  .msg.err { color: var(--danger); }
+  .msg.ok { color: var(--ok); }
+  .link { display: inline-block; margin-top: 1.2rem; color: var(--muted); font-size: .8rem; }
+  footer { padding: 0 1.75rem 1.75rem; text-align: center; font-size: .72rem; color: #6B6180; }
+  footer a { color: #8B819C; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="bar"></div>
+  <div class="body">
+    <div class="brand">Preliados</div>
+    <div class="mark">&#9989;</div>
+    <h1>Verificaci&oacute;n completada</h1>
+    <p>Tu correo ya est&aacute; confirmado. Vuelve a Preliados para seguir donde lo dejaste.</p>
+    <button id="open" type="button">Abrir Preliados</button>
+    <p id="hint" style="font-size:.8rem">Si no se abre solo, pulsa el bot&oacute;n.</p>
+  </div>
+  <footer>
+    <a href="./privacidad.html">Privacidad</a> &middot; <a href="./condiciones.html">Condiciones</a><br>
+    Solo para mayores de 18 a&ntilde;os.
+  </footer>
+</div>
+<script>
+  // El codigo llega como ?code=... y se le pasa TAL CUAL a la app: el
+  // verificador PKCE vive en el movil, asi que el canje solo puede hacerlo la
+  // app, nunca esta pagina.
+  var code = new URLSearchParams(location.search).get("code");
+  var deepLink = "preliados://auth-callback" + (code ? "?code=" + encodeURIComponent(code) : "");
+  document.getElementById("open").addEventListener("click", function () {
+    location.href = deepLink;
+  });
+  // Intento automatico, una sola vez y con un respiro para que la pagina se
+  // llegue a ver: si saltara al instante, el usuario no leeria el "verificado"
+  // que es justo lo que venia a comprobar.
+  setTimeout(function () { location.href = deepLink; }, 1200);
+</script>
+</body>
+</html>

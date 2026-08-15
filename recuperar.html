@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Preliados &middot; Recuperar contrase&ntilde;a</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0B0714;
+    --surface: #1A1128;
+    --border: #2E2340;
+    --text: #F2ECEF;
+    --muted: #B4AAB2;
+    --primary: #8B5CF6;
+    --accent: #F472B6;
+    --ok: #34D399;
+    --danger: #F87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .card {
+    width: 100%;
+    max-width: 26rem;
+    background: var(--surface);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  }
+  .bar { height: 6px; background: linear-gradient(90deg, var(--primary), #EC4899); }
+  .body { padding: 2.25rem 1.75rem; text-align: center; }
+  .brand {
+    font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: .35rem;
+  }
+  h1 { margin: .4rem 0 0; font-size: 1.5rem; line-height: 1.25; }
+  p { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
+  .mark { font-size: 3rem; line-height: 1; }
+  label { display: block; margin: 1.4rem 0 .35rem; text-align: left; font-size: .85rem; color: var(--muted); }
+  input {
+    width: 100%; padding: .8rem .9rem; border-radius: .7rem; font-size: 1rem;
+    background: #150E22; border: 1px solid var(--border); color: var(--text);
+  }
+  input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+  button {
+    width: 100%; margin-top: 1.2rem; padding: .9rem 1rem; border: 0; cursor: pointer;
+    border-radius: 999px; font-size: 1rem; font-weight: 700; color: #fff;
+    background: linear-gradient(90deg, var(--primary), #EC4899);
+  }
+  button[disabled] { opacity: .55; cursor: default; }
+  .msg { margin-top: 1rem; font-size: .9rem; min-height: 1.2rem; }
+  .msg.err { color: var(--danger); }
+  .msg.ok { color: var(--ok); }
+  .link { display: inline-block; margin-top: 1.2rem; color: var(--muted); font-size: .8rem; }
+  footer { padding: 0 1.75rem 1.75rem; text-align: center; font-size: .72rem; color: #6B6180; }
+  footer a { color: #8B819C; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="bar"></div>
+  <div class="body">
+    <div class="brand">Preliados</div>
+    <div class="mark" id="mark">&#128273;</div>
+    <h1 id="title">Recuperar contrase&ntilde;a</h1>
+    <p id="lead">Escribe tu correo y te enviamos un enlace para elegir una nueva.</p>
+
+    <form id="requestForm">
+      <label for="email">Correo</label>
+      <input id="email" type="email" autocomplete="email" required placeholder="tu@correo.com">
+      <button id="requestBtn" type="submit">Enviar enlace</button>
+    </form>
+
+    <form id="resetForm" class="hidden">
+      <label for="pw1">Contrase&ntilde;a nueva</label>
+      <input id="pw1" type="password" autocomplete="new-password" minlength="8" required placeholder="M&iacute;nimo 8 caracteres">
+      <label for="pw2">Repite la contrase&ntilde;a</label>
+      <input id="pw2" type="password" autocomplete="new-password" minlength="8" required placeholder="Escr&iacute;bela otra vez">
+      <button id="resetBtn" type="submit">Guardar contrase&ntilde;a</button>
+    </form>
+
+    <div id="done" class="hidden">
+      <button id="open" type="button">Abrir Preliados</button>
+    </div>
+
+    <div class="msg" id="msg" role="status" aria-live="polite"></div>
+  </div>
+  <footer>
+    <a href="./privacidad.html">Privacidad</a> &middot; <a href="./condiciones.html">Condiciones</a><br>
+    Solo para mayores de 18 a&ntilde;os.
+  </footer>
+</div>
+<script type="module">
+  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+  // Clave anonima: es publica por diseno y ya viaja dentro de la app. Lo que
+  // protege los datos son las politicas RLS del servidor, no ocultar esto.
+  const supabase = createClient("https://lnrvbmwsfffylnjogftc.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxucnZibXdzZmZmeWxuam9nZnRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2NTM1NzEsImV4cCI6MjEwMTIyOTU3MX0.iHrz2HfjADjlQXo4zC0O0_2iEgPnPOmERKLGQZYwMQQ", {
+    auth: { flowType: "pkce", detectSessionInUrl: false, persistSession: true },
+  });
+
+  const $ = (id) => document.getElementById(id);
+  const msg = $("msg");
+  const say = (text, kind) => { msg.textContent = text; msg.className = "msg " + (kind || ""); };
+
+  // POR QUE LA RECUPERACION EMPIEZA Y ACABA AQUI, Y NO EN LA APP
+  //
+  // El flujo PKCE guarda un verificador en quien PIDE el enlace, y solo ese
+  // puede canjear el codigo. Si lo pide la app y el enlace se abre en el
+  // navegador, el canje es imposible: son almacenes distintos. Por eso el
+  // correo se pide desde esta misma pagina — el verificador queda en este
+  // navegador — y el enlace vuelve aqui, donde si se puede completar.
+  const code = new URLSearchParams(location.search).get("code");
+
+  if (code) {
+    $("requestForm").classList.add("hidden");
+    $("title").textContent = "Elige una contrasena nueva";
+    $("lead").textContent = "Escribela dos veces para evitar erratas.";
+    try {
+      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      if (error) throw error;
+      $("resetForm").classList.remove("hidden");
+    } catch {
+      $("mark").innerHTML = "&#9888;&#65039;";
+      $("title").textContent = "Enlace caducado";
+      $("lead").textContent = "Los enlaces valen una hora y un solo uso. Pide otro desde la app o desde esta pagina.";
+      $("requestForm").classList.remove("hidden");
+    }
+  }
+
+  $("requestForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    $("requestBtn").disabled = true;
+    say("Enviando...");
+    const { error } = await supabase.auth.resetPasswordForEmail($("email").value.trim(), {
+      redirectTo: location.origin + location.pathname,
+    });
+    $("requestBtn").disabled = false;
+    // Se responde igual exista o no la cuenta: decir "ese correo no esta
+    // registrado" convierte esta pagina en un oraculo de quien tiene cuenta.
+    say(error ? "No hemos podido enviarlo. Intentalo en unos minutos." : "Si ese correo tiene cuenta, ya te hemos escrito.", error ? "err" : "ok");
+  });
+
+  $("resetForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if ($("pw1").value !== $("pw2").value) return say("Las dos contrasenas no coinciden.", "err");
+    $("resetBtn").disabled = true;
+    say("Guardando...");
+    const { error } = await supabase.auth.updateUser({ password: $("pw1").value });
+    if (error) { $("resetBtn").disabled = false; return say("No se ha podido guardar. Pide un enlace nuevo.", "err"); }
+    $("resetForm").classList.add("hidden");
+    $("mark").innerHTML = "&#9989;";
+    $("title").textContent = "Contrasena actualizada";
+    $("lead").textContent = "Ya puedes entrar en Preliados con la nueva.";
+    $("done").classList.remove("hidden");
+    say("");
+    await supabase.auth.signOut();
+  });
+
+  $("open").addEventListener("click", () => { location.href = "preliados://auth-callback"; });
+</script>
+</body>
+</html>
