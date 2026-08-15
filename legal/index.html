@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preliados · Documentos legales</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f5;
+    --surface: #ffffff;
+    --text: #201a1f;
+    --text-muted: #665f68;
+    --accent: #b3325c;
+    --accent-2: #6c4fa0;
+    --border: #e8e0e4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17131a;
+      --surface: #221d26;
+      --text: #f2ecef;
+      --text-muted: #b4aab2;
+      --accent: #f06292;
+      --accent-2: #b18cf0;
+      --border: #35303b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+  .logo {
+    font-size: 2.75rem;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  h1 {
+    font-size: 1.9rem;
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.01em;
+  }
+  .tagline {
+    color: var(--text-muted);
+    margin: 0 0 2.25rem;
+    font-size: 1.02rem;
+  }
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  a.card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.1rem 1.25rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  a.card:hover, a.card:focus-visible {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .card .icon {
+    font-size: 1.4rem;
+    margin-right: 0.6rem;
+  }
+  .card .title {
+    font-weight: 600;
+    font-size: 1.08rem;
+  }
+  .card .desc {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-top: 0.3rem;
+  }
+  .contact {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .contact a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .contact a:hover { text-decoration: underline; }
+  footer {
+    margin-top: 3rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo">🃏</div>
+    <h1>Preliados · Documentos legales</h1>
+    <p class="tagline">Aquí tienes toda la información legal sobre cómo tratamos tus datos, qué se puede y qué no se puede publicar en la comunidad, y las condiciones de uso de la app.</p>
+
+    <div class="cards">
+      <a class="card" href="/legal/privacidad">
+        <span class="title"><span class="icon">🔒</span>Política de privacidad</span>
+        <div class="desc">Qué datos tratamos, para qué, cuánto tiempo los guardamos y cómo ejercer tus derechos.</div>
+      </a>
+      <a class="card" href="/legal/normas-comunidad">
+        <span class="title"><span class="icon">🛡️</span>Normas de la comunidad</span>
+        <div class="desc">Qué contenido está prohibido, cómo moderamos los mazos y cómo reportar o recurrir.</div>
+      </a>
+      <a class="card" href="/legal/condiciones">
+        <span class="title"><span class="icon">📄</span>Condiciones de uso</span>
+        <div class="desc">Uso aceptable de la app, cuentas, compras, contenido publicado y responsabilidad.</div>
+      </a>
+      <a class="card" href="/legal/borrar-cuenta">
+        <span class="title"><span class="icon">🗑️</span>Borrar tu cuenta y tus datos</span>
+        <div class="desc">Cómo eliminar tu cuenta desde la app o por correo, qué se borra y qué se conserva.</div>
+      </a>
+    </div>
+
+    <div class="contact">
+      ¿Dudas, una solicitud sobre tus datos o quieres reportar algo?<br>
+      Escríbenos a <a href="mailto:soporte@preliados.com">soporte@preliados.com</a>
+    </div>
+
+    <footer>
+      Preliados · Versión de este índice 1.1 · Última actualización: 13 de agosto de 2026
+    </footer>
+  </div>
+</body>
+</html>
