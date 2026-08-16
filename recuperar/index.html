@@ -170,6 +170,30 @@
     if (data.session) showResetForm();
   }
 
+  // Espera obligatoria tras enviar. Sin ella, quien no ve llegar el correo al
+  // instante pulsa cinco veces, se come el limite de envios de Supabase y
+  // acaba sin poder pedirlo en un buen rato — justo lo contrario de lo que
+  // buscaba.
+  const RESEND_WAIT_SECONDS = 30;
+
+  function startCooldown() {
+    let left = RESEND_WAIT_SECONDS;
+    const button = $("requestBtn");
+    button.disabled = true;
+    const label = () => { button.textContent = "Espera " + left + " s"; };
+    label();
+    const timer = setInterval(() => {
+      left -= 1;
+      if (left <= 0) {
+        clearInterval(timer);
+        button.disabled = false;
+        button.textContent = "Enviar enlace";
+        return;
+      }
+      label();
+    }, 1000);
+  }
+
   $("requestForm").addEventListener("submit", async (event) => {
     event.preventDefault();
     $("requestBtn").disabled = true;
@@ -177,22 +201,45 @@
     const { error } = await supabase.auth.resetPasswordForEmail($("email").value.trim(), {
       redirectTo: location.origin + location.pathname,
     });
-    $("requestBtn").disabled = false;
     // Se responde igual exista o no la cuenta: decir "ese correo no esta
     // registrado" convierte esta pagina en un oraculo de quien tiene cuenta.
-    say(
-      error ? "No hemos podido enviarlo. Intentalo en unos minutos." : "Si ese correo tiene cuenta, ya te hemos escrito. Revisa tambien el spam.",
-      error ? "err" : "ok",
-    );
+    if (error) {
+      $("requestBtn").disabled = false;
+      say("No hemos podido enviarlo. Intentalo en unos minutos.", "err");
+      return;
+    }
+    say("Si ese correo tiene cuenta, ya te hemos escrito. Revisa tambien el spam.", "ok");
+    startCooldown();
   });
 
   $("resetForm").addEventListener("submit", async (event) => {
     event.preventDefault();
-    if ($("pw1").value !== $("pw2").value) return say("Las dos contrasenas no coinciden.", "err");
+    if ($("pw1").value !== $("pw2").value) {
+      return say("Las dos contrasenas no son iguales. Revisalas y vuelve a intentarlo.", "err");
+    }
+    if ($("pw1").value.length < 8) {
+      return say("La contrasena necesita al menos 8 caracteres.", "err");
+    }
     $("resetBtn").disabled = true;
     say("Guardando...");
     const { error } = await supabase.auth.updateUser({ password: $("pw1").value });
-    if (error) { $("resetBtn").disabled = false; return say("No se ha podido guardar. Pide un enlace nuevo.", "err"); }
+    if (error) {
+      $("resetBtn").disabled = false;
+      const detail = (error.message || "").toLowerCase();
+      // "Debe ser distinta de la anterior" se cuenta SIN decir que la escrita
+      // es la que ya tenia: eso confirmaria una contrasena a cualquiera que
+      // tuviera el enlace en la mano. Se pide otra, y punto.
+      if (detail.includes("different from the old")) {
+        return say("Elige una contrasena que no hayas usado antes en esta cuenta.", "err");
+      }
+      if (detail.includes("weak") || detail.includes("pwned") || detail.includes("compromis")) {
+        return say("Esa contrasena es demasiado facil de adivinar. Prueba con otra mas larga.", "err");
+      }
+      if (detail.includes("expired") || detail.includes("session") || detail.includes("jwt")) {
+        return say("El enlace ha caducado. Pide otro y vuelve a intentarlo.", "err");
+      }
+      return say("No se ha podido guardar. Pide un enlace nuevo e intentalo otra vez.", "err");
+    }
     $("resetForm").classList.add("hidden");
     $("mark").innerHTML = "&#9989;";
     $("title").textContent = "Contrasena actualizada";

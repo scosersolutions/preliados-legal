@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Preliados &middot; Borrar tu cuenta</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0B0714;
+    --surface: #1A1128;
+    --border: #2E2340;
+    --text: #F2ECEF;
+    --muted: #B4AAB2;
+    --primary: #8B5CF6;
+    --accent: #F472B6;
+    --ok: #34D399;
+    --danger: #F87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .card {
+    width: 100%;
+    max-width: 26rem;
+    background: var(--surface);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  }
+  .bar { height: 6px; background: linear-gradient(90deg, var(--primary), #EC4899); }
+  .body { padding: 2.25rem 1.75rem; text-align: center; }
+  .brand {
+    font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: .35rem;
+  }
+  h1 { margin: .4rem 0 0; font-size: 1.5rem; line-height: 1.25; }
+  p { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
+  .mark { font-size: 3rem; line-height: 1; }
+  label { display: block; margin: 1.4rem 0 .35rem; text-align: left; font-size: .85rem; color: var(--muted); }
+  input {
+    width: 100%; padding: .8rem .9rem; border-radius: .7rem; font-size: 1rem;
+    background: #150E22; border: 1px solid var(--border); color: var(--text);
+  }
+  input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+  button {
+    width: 100%; margin-top: 1.2rem; padding: .9rem 1rem; border: 0; cursor: pointer;
+    border-radius: 999px; font-size: 1rem; font-weight: 700; color: #fff;
+    background: linear-gradient(90deg, var(--primary), #EC4899);
+  }
+  button[disabled] { opacity: .55; cursor: default; }
+  .pw { position: relative; }
+  .pw input { padding-right: 3rem; }
+  .eye {
+    position: absolute; right: .35rem; bottom: .35rem;
+    width: 2.6rem; height: 2.6rem; padding: 0; margin: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: 0; border-radius: .6rem; cursor: pointer;
+    color: var(--muted);
+  }
+  .eye:hover { color: var(--text); }
+  .eye svg { width: 1.35rem; height: 1.35rem; }
+  .callout {
+    margin-top: 1.2rem; padding: .85rem 1rem; border-radius: .75rem; text-align: left;
+    background: #2E2210; border: 1px solid #7A5220; color: #F0C78E; font-size: .88rem;
+  }
+  button.danger { background: linear-gradient(90deg, #B4232F, #F87171); }
+  .msg { margin-top: 1rem; font-size: .9rem; min-height: 1.2rem; }
+  .msg.err { color: var(--danger); }
+  .msg.ok { color: var(--ok); }
+  .link { display: inline-block; margin-top: 1.2rem; color: var(--muted); font-size: .8rem; }
+  footer { padding: 0 1.75rem 1.75rem; text-align: center; font-size: .72rem; color: #6B6180; }
+  footer a { color: #8B819C; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="bar"></div>
+  <div class="body">
+    <div class="brand">Preliados</div>
+    <div class="mark" id="mark">&#128465;&#65039;</div>
+    <h1 id="title">Borrar tu cuenta</h1>
+    <p id="lead">Escribe el correo de tu cuenta y te enviamos un c&oacute;digo para confirmar que eres t&uacute;.</p>
+
+    <div class="callout" id="warning">
+      Al borrar la cuenta desaparecen <strong>todos los mazos que hayas publicado</strong>, tus valoraciones y tus reportes.
+      No hay vuelta atr&aacute;s y no conservamos copia.
+    </div>
+
+    <form id="requestForm">
+      <label for="email">Correo de la cuenta</label>
+      <input id="email" type="email" autocomplete="email" required placeholder="tu@correo.com">
+      <button id="requestBtn" type="submit">Enviar c&oacute;digo</button>
+    </form>
+
+    <form id="codeForm" class="hidden">
+      <label for="code">C&oacute;digo de 6 cifras</label>
+      <input id="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required placeholder="000000">
+      <label for="word">Escribe <strong>BORRAR</strong> para confirmar</label>
+      <input id="word" type="text" autocapitalize="characters" autocomplete="off" required placeholder="BORRAR">
+      <button id="deleteBtn" type="submit" class="danger">Eliminar definitivamente</button>
+    </form>
+
+    <div id="done" class="hidden">
+      <p>Tambi&eacute;n te hemos enviado un correo confirm&aacute;ndolo.</p>
+    </div>
+
+    <div class="msg" id="msg" role="status" aria-live="polite"></div>
+    <a class="link" href="/legal/borrar-cuenta">&iquest;Qu&eacute; se borra exactamente?</a>
+  </div>
+  <footer>
+    <a href="/legal/privacidad">Privacidad</a> &middot; <a href="/legal/condiciones">Condiciones</a><br>
+    Solo para mayores de 18 a&ntilde;os.
+  </footer>
+</div>
+<script type="module">
+  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+  // Clave anonima: publica por diseno, ya viaja en la app. Quien protege los
+  // datos son las politicas RLS, no ocultar esto.
+  const supabase = createClient("https://lnrvbmwsfffylnjogftc.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxucnZibXdzZmZmeWxuam9nZnRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2NTM1NzEsImV4cCI6MjEwMTIyOTU3MX0.iHrz2HfjADjlQXo4zC0O0_2iEgPnPOmERKLGQZYwMQQ", {
+    auth: { flowType: "implicit", detectSessionInUrl: false, persistSession: false },
+  });
+
+  const $ = (id) => document.getElementById(id);
+  const msg = $("msg");
+  const say = (text, kind) => { msg.textContent = text; msg.className = "msg " + (kind || ""); };
+
+  // POR QUE UN CODIGO AL CORREO Y NO UNA CONTRASENA
+  //
+  // Esta pagina tiene que servir a las tres formas de cuenta: correo, Google y
+  // Apple. Pedir contrasena dejaria fuera a las dos ultimas, que no tienen.
+  // El codigo de un solo uso va a la direccion de la cuenta sea cual sea el
+  // proveedor que la creo, y demuestra exactamente lo que hay que demostrar:
+  // que quien pide el borrado controla ese buzon.
+  //
+  // `shouldCreateUser: false` no es opcional: sin el, este formulario daria de
+  // alta usuarios nuevos con solo escribir un correo cualquiera.
+  const RESEND_WAIT_SECONDS = 30;
+  let email = "";
+
+  function startCooldown() {
+    let left = RESEND_WAIT_SECONDS;
+    const button = $("requestBtn");
+    button.disabled = true;
+    const paint = () => { button.textContent = "Espera " + left + " s"; };
+    paint();
+    const timer = setInterval(() => {
+      left -= 1;
+      if (left <= 0) {
+        clearInterval(timer);
+        button.disabled = false;
+        button.textContent = "Enviar codigo";
+        return;
+      }
+      paint();
+    }, 1000);
+  }
+
+  $("requestForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    email = $("email").value.trim();
+    $("requestBtn").disabled = true;
+    say("Enviando...");
+    const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
+    if (error) {
+      $("requestBtn").disabled = false;
+      say("No hemos podido enviarlo. Intentalo en unos minutos.", "err");
+      return;
+    }
+    // Misma respuesta exista o no la cuenta: lo contrario convierte esta
+    // pagina en un oraculo de quien esta registrado.
+    say("Si ese correo tiene cuenta, ya te hemos enviado el codigo. Revisa tambien el spam.", "ok");
+    $("codeForm").classList.remove("hidden");
+    startCooldown();
+  });
+
+  $("codeForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if ($("word").value.trim().toUpperCase() !== "BORRAR") {
+      return say("Escribe BORRAR para confirmar.", "err");
+    }
+    $("deleteBtn").disabled = true;
+    say("Comprobando el codigo...");
+
+    const verified = await supabase.auth.verifyOtp({ email, token: $("code").value.trim(), type: "email" });
+    if (verified.error || !verified.data.session) {
+      $("deleteBtn").disabled = false;
+      return say("Ese codigo no vale o ha caducado. Pide otro.", "err");
+    }
+
+    say("Borrando la cuenta...");
+    // El borrado lo hace la Edge Function, no esta pagina: el userId sale del
+    // token verificado, nunca del formulario. Aqui solo se presenta el token.
+    const response = await fetch("https://lnrvbmwsfffylnjogftc.supabase.co/functions/v1/delete-account", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + verified.data.session.access_token,
+        "Content-Type": "application/json",
+      },
+    });
+    await supabase.auth.signOut();
+
+    if (!response.ok) {
+      $("deleteBtn").disabled = false;
+      const body = await response.json().catch(() => ({}));
+      if (body.error === "mfa_required") {
+        return say("Esta cuenta tiene verificacion en dos pasos. Borrala desde la app.", "err");
+      }
+      return say("No se ha podido borrar. Escribenos a soporte@preliados.com.", "err");
+    }
+
+    $("codeForm").classList.add("hidden");
+    $("warning").classList.add("hidden");
+    $("mark").innerHTML = "&#9989;";
+    $("title").textContent = "Cuenta eliminada";
+    $("lead").textContent = "Tu cuenta y los mazos que hubieras publicado ya no existen. Puedes seguir jugando sin cuenta.";
+    $("done").classList.remove("hidden");
+    say("");
+  });
+</script>
+</body>
+</html>
