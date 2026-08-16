@@ -108,37 +108,55 @@
 
   // Clave anonima: es publica por diseno y ya viaja dentro de la app. Lo que
   // protege los datos son las politicas RLS del servidor, no ocultar esto.
+  //
+  // FLUJO IMPLICITO, NO PKCE, Y ES LA CLAVE DE QUE ESTO FUNCIONE
+  //
+  // PKCE guarda un verificador en el navegador que PIDE el enlace y exige que
+  // sea ese mismo el que lo canjee. Suena razonable hasta que lo pruebas: pides
+  // el enlace en Chrome, abres el correo en Gmail, y Gmail lo abre en SU visor
+  // interno — otro almacen, sin verificador. Resultado: "enlace caducado" en un
+  // enlace recien nacido. Es lo que pasaba.
+  //
+  // El flujo implicito devuelve el token en el fragmento de la URL, asi que el
+  // enlace vale en cualquier navegador. A cambio el token viaja en la URL, pero
+  // no sale del dispositivo (los fragmentos no se envian al servidor), caduca
+  // en una hora y sirve para una sola cosa: elegir contrasena nueva.
   const supabase = createClient("https://lnrvbmwsfffylnjogftc.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxucnZibXdzZmZmeWxuam9nZnRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2NTM1NzEsImV4cCI6MjEwMTIyOTU3MX0.iHrz2HfjADjlQXo4zC0O0_2iEgPnPOmERKLGQZYwMQQ", {
-    auth: { flowType: "pkce", detectSessionInUrl: false, persistSession: true },
+    auth: { flowType: "implicit", detectSessionInUrl: true, persistSession: false },
   });
 
   const $ = (id) => document.getElementById(id);
   const msg = $("msg");
   const say = (text, kind) => { msg.textContent = text; msg.className = "msg " + (kind || ""); };
 
-  // POR QUE LA RECUPERACION EMPIEZA Y ACABA AQUI, Y NO EN LA APP
-  //
-  // El flujo PKCE guarda un verificador en quien PIDE el enlace, y solo ese
-  // puede canjear el codigo. Si lo pide la app y el enlace se abre en el
-  // navegador, el canje es imposible: son almacenes distintos. Por eso el
-  // correo se pide desde esta misma pagina — el verificador queda en este
-  // navegador — y el enlace vuelve aqui, donde si se puede completar.
-  const code = new URLSearchParams(location.search).get("code");
-
-  if (code) {
+  function showResetForm() {
     $("requestForm").classList.add("hidden");
+    $("resetForm").classList.remove("hidden");
     $("title").textContent = "Elige una contrasena nueva";
     $("lead").textContent = "Escribela dos veces para evitar erratas.";
-    try {
-      const { error } = await supabase.auth.exchangeCodeForSession(code);
-      if (error) throw error;
-      $("resetForm").classList.remove("hidden");
-    } catch {
-      $("mark").innerHTML = "&#9888;&#65039;";
-      $("title").textContent = "Enlace caducado";
-      $("lead").textContent = "Los enlaces valen una hora y un solo uso. Pide otro desde la app o desde esta pagina.";
-      $("requestForm").classList.remove("hidden");
-    }
+    say("");
+  }
+
+  function showExpired() {
+    $("mark").innerHTML = "&#9888;&#65039;";
+    $("title").textContent = "Enlace caducado";
+    $("lead").textContent = "Los enlaces valen una hora y un solo uso. Pide otro aqui mismo.";
+    $("requestForm").classList.remove("hidden");
+  }
+
+  // Si venimos del correo, el token llega en el fragmento y supabase-js lo
+  // convierte en sesion antes de emitir este evento.
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === "PASSWORD_RECOVERY" || (event === "SIGNED_IN" && session)) showResetForm();
+  });
+
+  const hash = new URLSearchParams(location.hash.slice(1));
+  if (hash.get("error_description")) {
+    showExpired();
+  } else if (hash.get("access_token")) {
+    // Respaldo por si el evento ya se emitio antes de registrar el listener.
+    const { data } = await supabase.auth.getSession();
+    if (data.session) showResetForm();
   }
 
   $("requestForm").addEventListener("submit", async (event) => {
@@ -151,7 +169,10 @@
     $("requestBtn").disabled = false;
     // Se responde igual exista o no la cuenta: decir "ese correo no esta
     // registrado" convierte esta pagina en un oraculo de quien tiene cuenta.
-    say(error ? "No hemos podido enviarlo. Intentalo en unos minutos." : "Si ese correo tiene cuenta, ya te hemos escrito.", error ? "err" : "ok");
+    say(
+      error ? "No hemos podido enviarlo. Intentalo en unos minutos." : "Si ese correo tiene cuenta, ya te hemos escrito. Revisa tambien el spam.",
+      error ? "err" : "ok",
+    );
   });
 
   $("resetForm").addEventListener("submit", async (event) => {
