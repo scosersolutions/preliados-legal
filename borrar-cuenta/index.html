@@ -199,21 +199,29 @@
   $("word").addEventListener("input", refreshDeleteButton);
 
   /**
-   * Comprueba el codigo probando los DOS tipos de token.
+   * Comprueba el codigo.
    *
-   * `signInWithOtp` sobre una cuenta que ya existe manda la plantilla de magic
-   * link, y su token se verifica como `magiclink`; la documentacion habla de
-   * `email` como tipo generico y cual acepta el servidor depende de la version
-   * de GoTrue. Con uno solo, el codigo recien llegado se rechazaba con "no vale
-   * o ha caducado" — un mensaje que culpa al usuario de un error nuestro.
+   * EL ORDEN IMPORTA, Y MUCHO. `signInWithOtp` sobre una cuenta que ya existe
+   * manda la plantilla de *magic link*, asi que el token queda registrado con
+   * ese tipo: `magiclink` es el intento bueno y va primero. `email` queda como
+   * respaldo por si la version de GoTrue del proyecto usa el alias generico.
+   *
+   * Probar primero el equivocado no es gratis: GoTrue invalida el codigo tras
+   * un intento fallido, asi que el respaldo llegaba a un token ya quemado y el
+   * usuario veia "no vale o ha caducado" con un codigo de tres segundos.
    */
   async function verifyCode(token) {
-    const first = await supabase.auth.verifyOtp({ email, token, type: "email" });
-    if (!first.error && first.data.session) return first.data.session;
-    const second = await supabase.auth.verifyOtp({ email, token, type: "magiclink" });
-    if (!second.error && second.data.session) return second.data.session;
-    return null;
+    for (const type of ["magiclink", "email"]) {
+      const attempt = await supabase.auth.verifyOtp({ email, token, type });
+      if (!attempt.error && attempt.data.session) return { session: attempt.data.session };
+      // Se guarda el motivo real: si los dos tipos fallan, el usuario ve algo
+      // accionable en vez de un "no vale" que no dice nada.
+      lastVerifyError = attempt.error ? attempt.error.message : "sin sesion";
+    }
+    return { session: null };
   }
+
+  let lastVerifyError = "";
 
   $("codeForm").addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -223,10 +231,11 @@
     $("deleteBtn").disabled = true;
     say("Comprobando el codigo...");
 
-    const session = await verifyCode($("code").value.trim());
+    const result = await verifyCode($("code").value.trim());
+    const session = result.session;
     if (!session) {
       refreshDeleteButton();
-      return say("Ese codigo no vale o ha caducado. Pide otro.", "err");
+      return say("No hemos podido validar el codigo: " + lastVerifyError, "err");
     }
 
     say("Borrando la cuenta...");
