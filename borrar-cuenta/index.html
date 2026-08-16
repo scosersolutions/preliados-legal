@@ -110,7 +110,7 @@
       <input id="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required placeholder="000000">
       <label for="word">Escribe <strong>BORRAR</strong> para confirmar</label>
       <input id="word" type="text" autocapitalize="characters" autocomplete="off" required placeholder="BORRAR">
-      <button id="deleteBtn" type="submit" class="danger">Eliminar definitivamente</button>
+      <button id="deleteBtn" type="submit" class="danger" disabled>Eliminar definitivamente</button>
     </form>
 
     <div id="done" class="hidden">
@@ -187,6 +187,34 @@
     startCooldown();
   });
 
+  // El boton solo se activa con las dos cosas puestas: las 6 cifras y la
+  // palabra exacta. Un boton irreversible que se puede pulsar antes de tiempo
+  // es una invitacion a pulsarlo sin querer.
+  function refreshDeleteButton() {
+    const codeReady = $("code").value.trim().length === 6;
+    const wordReady = $("word").value.trim().toUpperCase() === "BORRAR";
+    $("deleteBtn").disabled = !(codeReady && wordReady);
+  }
+  $("code").addEventListener("input", refreshDeleteButton);
+  $("word").addEventListener("input", refreshDeleteButton);
+
+  /**
+   * Comprueba el codigo probando los DOS tipos de token.
+   *
+   * `signInWithOtp` sobre una cuenta que ya existe manda la plantilla de magic
+   * link, y su token se verifica como `magiclink`; la documentacion habla de
+   * `email` como tipo generico y cual acepta el servidor depende de la version
+   * de GoTrue. Con uno solo, el codigo recien llegado se rechazaba con "no vale
+   * o ha caducado" — un mensaje que culpa al usuario de un error nuestro.
+   */
+  async function verifyCode(token) {
+    const first = await supabase.auth.verifyOtp({ email, token, type: "email" });
+    if (!first.error && first.data.session) return first.data.session;
+    const second = await supabase.auth.verifyOtp({ email, token, type: "magiclink" });
+    if (!second.error && second.data.session) return second.data.session;
+    return null;
+  }
+
   $("codeForm").addEventListener("submit", async (event) => {
     event.preventDefault();
     if ($("word").value.trim().toUpperCase() !== "BORRAR") {
@@ -195,9 +223,9 @@
     $("deleteBtn").disabled = true;
     say("Comprobando el codigo...");
 
-    const verified = await supabase.auth.verifyOtp({ email, token: $("code").value.trim(), type: "email" });
-    if (verified.error || !verified.data.session) {
-      $("deleteBtn").disabled = false;
+    const session = await verifyCode($("code").value.trim());
+    if (!session) {
+      refreshDeleteButton();
       return say("Ese codigo no vale o ha caducado. Pide otro.", "err");
     }
 
@@ -207,14 +235,14 @@
     const response = await fetch("https://lnrvbmwsfffylnjogftc.supabase.co/functions/v1/delete-account", {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + verified.data.session.access_token,
+        Authorization: "Bearer " + session.access_token,
         "Content-Type": "application/json",
       },
     });
     await supabase.auth.signOut();
 
     if (!response.ok) {
-      $("deleteBtn").disabled = false;
+      refreshDeleteButton();
       const body = await response.json().catch(() => ({}));
       if (body.error === "mfa_required") {
         return say("Esta cuenta tiene verificacion en dos pasos. Borrala desde la app.", "err");
