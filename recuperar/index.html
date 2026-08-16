@@ -60,6 +60,17 @@
     background: linear-gradient(90deg, var(--primary), #EC4899);
   }
   button[disabled] { opacity: .55; cursor: default; }
+  .pw { position: relative; }
+  .pw input { padding-right: 3rem; }
+  .eye {
+    position: absolute; right: .35rem; bottom: .35rem;
+    width: 2.6rem; height: 2.6rem; padding: 0; margin: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: 0; border-radius: .6rem; cursor: pointer;
+    color: var(--muted);
+  }
+  .eye:hover { color: var(--text); }
+  .eye svg { width: 1.35rem; height: 1.35rem; }
   .msg { margin-top: 1rem; font-size: .9rem; min-height: 1.2rem; }
   .msg.err { color: var(--danger); }
   .msg.ok { color: var(--ok); }
@@ -86,9 +97,9 @@
 
     <form id="resetForm" class="hidden">
       <label for="pw1">Contrase&ntilde;a nueva</label>
-      <input id="pw1" type="password" autocomplete="new-password" minlength="8" required placeholder="M&iacute;nimo 8 caracteres">
+      <div class="pw"><input id="pw1" type="password" autocomplete="new-password" minlength="8" required placeholder="M&iacute;nimo 8 caracteres"><button type="button" class="eye" id="eye-pw1" aria-label="Mostrar contrase&ntilde;a" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></button></div>
       <label for="pw2">Repite la contrase&ntilde;a</label>
-      <input id="pw2" type="password" autocomplete="new-password" minlength="8" required placeholder="Escr&iacute;bela otra vez">
+      <div class="pw"><input id="pw2" type="password" autocomplete="new-password" minlength="8" required placeholder="Escr&iacute;bela otra vez"><button type="button" class="eye" id="eye-pw2" aria-label="Mostrar contrase&ntilde;a" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></button></div>
       <button id="resetBtn" type="submit">Guardar contrase&ntilde;a</button>
     </form>
 
@@ -190,6 +201,24 @@
     say("");
     await supabase.auth.signOut();
   });
+
+  // Un ojo por campo, no uno compartido: si ensenar la contrasena ensenara
+  // tambien la repetida, compararlas a ojo —que es para lo que esta el segundo
+  // campo— dejaria de servir de nada.
+  const EYE_OPEN = `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg>`;
+  const EYE_OFF = `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-6 10-6c1.6 0 3 .36 4.24.93M22 12s-3.5 6-10 6c-1.6 0-3-.36-4.24-.93" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+  for (const field of ["pw1", "pw2"]) {
+    const button = $("eye-" + field);
+    button.addEventListener("click", () => {
+      const input = $(field);
+      const shown = input.type === "text";
+      input.type = shown ? "password" : "text";
+      button.innerHTML = shown ? EYE_OPEN : EYE_OFF;
+      button.setAttribute("aria-label", shown ? "Mostrar contrase\u00f1a" : "Ocultar contrase\u00f1a");
+      button.setAttribute("aria-pressed", String(!shown));
+      input.focus();
+    });
+  }
 
   $("open").addEventListener("click", () => { location.href = "preliados://auth-callback"; });
 </script>
