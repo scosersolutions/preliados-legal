@@ -6,7 +6,7 @@
 <title>Soporte &middot; Preliados</title>
 <meta name="description" content="Ayuda y contacto de Preliados: c&oacute;mo escribirnos, denunciar contenido, recuperar compras o borrar tu cuenta.">
 <style>
-  :root { color-scheme: dark; --bg:#0B0714; --surface:#1A1128; --text:#F2ECEF; --muted:#B4AAB2; --primary:#8B5CF6; --accent:#F472B6; --line:#2E2340; }
+  :root { color-scheme: dark; --bg:#0B0714; --surface:#1A1128; --surface2:#150E22; --text:#F2ECEF; --muted:#B4AAB2; --primary:#8B5CF6; --accent:#F472B6; --line:#2E2340; }
   * { box-sizing: border-box; }
   body {
     margin:0; padding:2rem 1.25rem 4rem; background:var(--bg); color:var(--text); line-height:1.65;
@@ -16,20 +16,46 @@
   .bar { height:6px; border-radius:99px; background:linear-gradient(90deg,var(--primary),#EC4899); margin-bottom:2rem; }
   .brand { font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:700; }
   h1 { margin:.4rem 0 .25rem; font-size:2rem; line-height:1.2; }
-  h2 { margin:2.5rem 0 .5rem; font-size:1.2rem; border-top:1px solid var(--line); padding-top:1.5rem; }
-  h3 { margin:1.5rem 0 .25rem; font-size:1rem; color:var(--text); }
+  h2 { margin:2.75rem 0 1rem; font-size:1.2rem; border-top:1px solid var(--line); padding-top:1.5rem; }
   p, li { color:var(--muted); font-size:.98rem; }
   strong { color:var(--text); }
   a { color:var(--primary); }
   .meta { font-size:.8rem; color:#6B6180; }
+
   .destacado {
     margin:1.5rem 0; padding:1.25rem 1.4rem; background:var(--surface);
     border:1px solid var(--line); border-radius:1rem;
   }
   .destacado p:first-child { margin-top:0; }
   .correo { font-size:1.15rem; font-weight:700; color:var(--text); word-break:break-all; }
-  ul { padding-left:1.2rem; }
-  li { margin:.35rem 0; }
+
+  /* Acorde&oacute;n con <details>: sin una l&iacute;nea de JavaScript, y por tanto
+     funciona con el teclado y con lector de pantalla sin que hagamos nada. */
+  details {
+    background:var(--surface2); border:1px solid var(--line); border-radius:.9rem;
+    margin:.6rem 0; overflow:hidden;
+  }
+  details[open] { border-color:var(--primary); background:var(--surface); }
+  summary {
+    list-style:none; cursor:pointer; padding:1rem 3rem 1rem 1.2rem; position:relative;
+    font-weight:600; font-size:.98rem; color:var(--text);
+  }
+  summary::-webkit-details-marker { display:none; }
+  summary:hover { color:var(--accent); }
+  summary:focus-visible { outline:2px solid var(--primary); outline-offset:-2px; }
+  /* La flecha gira al abrir. Es la &uacute;nica se&ntilde;al de estado, as&iacute; que se
+     desactiva sola si el usuario pide menos movimiento. */
+  summary::after {
+    content:""; position:absolute; right:1.2rem; top:50%; width:.55rem; height:.55rem;
+    border-right:2px solid var(--accent); border-bottom:2px solid var(--accent);
+    transform:translateY(-70%) rotate(45deg); transition:transform .2s ease;
+  }
+  details[open] > summary::after { transform:translateY(-25%) rotate(225deg); }
+  @media (prefers-reduced-motion: reduce) { summary::after { transition:none; } }
+  .contenido { padding:0 1.2rem 1.1rem; }
+  .contenido p { margin:0 0 .7rem; }
+  .contenido p:last-child { margin-bottom:0; }
+
   footer { margin-top:3.5rem; border-top:1px solid var(--line); padding-top:1.25rem; font-size:.78rem; color:#6B6180; }
   footer a { color:#8478A0; }
 </style>
@@ -44,35 +70,86 @@
   <div class="destacado">
     <p>Para cualquier cosa &mdash; un fallo, una carta que no deber&iacute;a estar ah&iacute;, una compra que no aparece, una denuncia de contenido o una petici&oacute;n sobre tus datos:</p>
     <p class="correo"><a href="mailto:soporte@preliados.com">soporte@preliados.com</a></p>
-    <p>Escribimos en espa&ntilde;ol y en ingl&eacute;s. Respondemos en un plazo m&aacute;ximo de <strong>72 horas</strong>; las denuncias de contenido, en <strong>menos de 24 horas</strong>.</p>
+    <p>Escribimos en espa&ntilde;ol y en ingl&eacute;s. Somos un equipo peque&ntilde;o: solemos contestar en torno a una semana, y damos prioridad a las denuncias de contenido y a los problemas con compras. Las solicitudes sobre tus datos personales tienen su propio plazo legal, explicado abajo.</p>
   </div>
 
-  <h2>Problemas frecuentes</h2>
+  <h2>Preguntas frecuentes</h2>
 
-  <h3>He pagado y no se ha desbloqueado nada</h3>
-  <p>Abre <strong>Ajustes &rarr; Preliados PLUS &rarr; Restaurar compras</strong>. Las compras van ligadas a tu cuenta de Apple o de Google, no al tel&eacute;fono, as&iacute; que se recuperan tambi&eacute;n en un dispositivo nuevo. Si sigue sin aparecer, escr&iacute;benos indicando con qu&eacute; tienda compraste y la fecha; no necesitamos ning&uacute;n dato de tu tarjeta y nunca te lo vamos a pedir.</p>
+  <details>
+    <summary>He pagado y no se ha desbloqueado nada</summary>
+    <div class="contenido">
+      <p>Abre <strong>Ajustes &rarr; Preliados PLUS &rarr; Restaurar compras</strong>. Las compras van ligadas a tu cuenta de Apple o de Google, no al tel&eacute;fono, as&iacute; que se recuperan tambi&eacute;n en un dispositivo nuevo.</p>
+      <p>Si sigue sin aparecer, escr&iacute;benos indicando con qu&eacute; tienda compraste y la fecha. <strong>No necesitamos ning&uacute;n dato de tu tarjeta y nunca te lo vamos a pedir</strong>; si alguien lo hace en nuestro nombre, no somos nosotros.</p>
+    </div>
+  </details>
 
-  <h3>He cambiado de tel&eacute;fono y he perdido mis barajas</h3>
-  <p>Si jugabas sin cuenta, tus barajas propias viven solo en ese tel&eacute;fono. Crear una cuenta antes de cambiar de dispositivo es lo que permite conservarlas. Las compras s&iacute; se recuperan siempre desde la tienda.</p>
+  <details>
+    <summary>He cambiado de tel&eacute;fono y he perdido mis barajas</summary>
+    <div class="contenido">
+      <p>Si jugabas sin cuenta, tus barajas propias viven solo en ese tel&eacute;fono. Crear una cuenta antes de cambiar de dispositivo es lo que permite conservarlas.</p>
+      <p>Las compras s&iacute; se recuperan siempre desde la tienda, con cuenta o sin ella.</p>
+    </div>
+  </details>
 
-  <h3>Quiero denunciar una baraja de la comunidad</h3>
-  <p>Dentro de la app, en la baraja, pulsa el men&uacute; y elige <strong>Denunciar</strong>. No hace falta cuenta. Revisamos toda denuncia y retiramos el contenido que incumpla las <a href="/legal/normas-comunidad">normas de la comunidad</a> en menos de 24 horas. Tambi&eacute;n puedes escribirnos al correo de arriba.</p>
+  <details>
+    <summary>Quiero denunciar una baraja de la comunidad</summary>
+    <div class="contenido">
+      <p>Dentro de la app, en la baraja, pulsa el men&uacute; y elige <strong>Denunciar</strong>. No hace falta cuenta.</p>
+      <p>Revisamos todas las denuncias y retiramos lo que incumpla las <a href="/legal/normas-comunidad">normas de la comunidad</a>. Es lo primero que miramos cada d&iacute;a. Tambi&eacute;n puedes escribirnos al correo de arriba.</p>
+    </div>
+  </details>
 
-  <h3>Han retirado mi baraja y creo que es un error</h3>
-  <p>Escr&iacute;benos con el nombre de la baraja. Toda retirada se puede recurrir y te contestamos con el motivo concreto. El procedimiento est&aacute; en las <a href="/legal/normas-comunidad">normas de la comunidad</a>.</p>
+  <details>
+    <summary>Han retirado mi baraja y creo que es un error</summary>
+    <div class="contenido">
+      <p>Escr&iacute;benos con el nombre de la baraja. <strong>Toda retirada se puede recurrir</strong> y te contestamos con el motivo concreto, no con una respuesta gen&eacute;rica.</p>
+      <p>El procedimiento completo est&aacute; en las <a href="/legal/normas-comunidad">normas de la comunidad</a>.</p>
+    </div>
+  </details>
 
-  <h3>Quiero cancelar la suscripci&oacute;n</h3>
-  <p>Se cancela desde los ajustes de suscripciones de tu cuenta de Apple o de Google, no desde la app: la tienda es quien gestiona el cobro. Seguir&aacute;s teniendo acceso hasta el final del periodo que ya has pagado.</p>
+  <details>
+    <summary>Quiero cancelar la suscripci&oacute;n</summary>
+    <div class="contenido">
+      <p>Se cancela desde los ajustes de suscripciones de tu cuenta de <strong>Apple</strong> o de <strong>Google</strong>, no desde la app: la tienda es quien gestiona el cobro.</p>
+      <p>Seguir&aacute;s teniendo acceso hasta el final del periodo que ya has pagado.</p>
+    </div>
+  </details>
 
-  <h3>Quiero borrar mi cuenta y mis datos</h3>
-  <p>Desde la app: <strong>Ajustes &rarr; Tu cuenta &rarr; Eliminar mi cuenta</strong>. Tambi&eacute;n puedes hacerlo desde la web, sin entrar en la app, en <a href="/borrar-cuenta">preliados.com/borrar-cuenta</a>.</p>
+  <details>
+    <summary>&iquest;Puedo pedir que me devuelvan el dinero?</summary>
+    <div class="contenido">
+      <p>Los reembolsos los deciden <strong>Apple y Google</strong>, cada uno con su propia pol&iacute;tica: nosotros no cobramos ni devolvemos directamente, y no tenemos acceso a tus datos bancarios.</p>
+      <p>Ten en cuenta que el contenido se entrega al instante, y al confirmar la compra pides que la entrega empiece ya, lo que hace decaer el derecho de desistimiento de catorce d&iacute;as. Eso <strong>no afecta a la garant&iacute;a legal</strong>: si lo que recibes no es lo que se te ofreci&oacute; o no funciona, escr&iacute;benos y lo resolvemos. El detalle est&aacute; en las <a href="/legal/condiciones#desistimiento">condiciones de uso</a>.</p>
+    </div>
+  </details>
 
-  <h3>No me llega el correo de verificaci&oacute;n</h3>
-  <p>Mira en la carpeta de spam. El c&oacute;digo caduca a los 10 minutos; si ha pasado m&aacute;s tiempo, pide uno nuevo desde la app. Si sigue sin llegar, escr&iacute;benos con la direcci&oacute;n que usaste.</p>
+  <details>
+    <summary>Quiero borrar mi cuenta y mis datos</summary>
+    <div class="contenido">
+      <p>Desde la app: <strong>Ajustes &rarr; Tu cuenta &rarr; Eliminar mi cuenta</strong>. Tambi&eacute;n puedes hacerlo desde la web, sin entrar en la app, en <a href="/borrar-cuenta">preliados.com/borrar-cuenta</a>.</p>
+      <p>Para el resto de derechos sobre tus datos &mdash; acceso, rectificaci&oacute;n, oposici&oacute;n, portabilidad &mdash; escr&iacute;benos. La ley nos da <strong>un mes</strong> para responder, ampliable a dos si la solicitud es compleja, y en ese caso te avisamos antes. C&oacute;mo ejercerlos, en la <a href="/legal/privacidad#derechos">pol&iacute;tica de privacidad</a>.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>No me llega el correo de verificaci&oacute;n</summary>
+    <div class="contenido">
+      <p>Mira en la carpeta de spam. El c&oacute;digo caduca a los <strong>10 minutos</strong>; si ha pasado m&aacute;s tiempo, pide uno nuevo desde la app.</p>
+      <p>Si sigue sin llegar, escr&iacute;benos con la direcci&oacute;n que usaste.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>&iquest;Hace falta cuenta para jugar?</summary>
+    <div class="contenido">
+      <p>No. Al abrir la app se crea una sesi&oacute;n an&oacute;nima y se juega sin registro, sin correo y sin contrase&ntilde;a.</p>
+      <p>La cuenta solo hace falta para <strong>participar en la comunidad</strong>: publicar barajas, valorarlas o denunciarlas. El motivo es que el contenido publicado tiene que poder atribuirse a alguien que responda de &eacute;l.</p>
+    </div>
+  </details>
 
   <h2>Sobre el alcohol</h2>
-  <p>Preliados es un juego para mayores de edad que, en sus modos con alcohol, propone brindis y tragos como parte de la din&aacute;mica. <strong>Ninguna carta obliga a beber.</strong> En cualquier momento se puede pasar de una carta, sustituir la bebida por agua o un refresco, o activar el <strong>modo familiar</strong>, que elimina por completo el alcohol y el contenido para adultos.</p>
-  <p>Si te preocupa tu consumo o el de alguien cercano, en Espa&ntilde;a puedes acudir al servicio de informaci&oacute;n del Plan Nacional sobre Drogas o a tu centro de salud.</p>
+  <p>Preliados es un juego para mayores de edad que, en sus modos con alcohol, propone brindis y tragos como parte de la din&aacute;mica. <strong>Ninguna carta obliga a beber.</strong> En cualquier momento se puede pasar de una carta, sustituir la bebida por agua o un refresco, o activar el <strong>modo familiar</strong>, que elimina por completo el alcohol y el contenido para adultos de la partida.</p>
+  <p>Si te preocupa tu consumo o el de alguien cercano, en Espa&ntilde;a puedes acudir a tu centro de salud o al servicio de informaci&oacute;n del Plan Nacional sobre Drogas.</p>
 
   <h2>Titular</h2>
   <p>Preliados est&aacute; desarrollada por <strong>Fernando Scott Humanes Carchenilla</strong> (Scoser Solutions). Los datos identificativos completos est&aacute;n en las <a href="/legal/condiciones">condiciones de uso</a>.</p>
