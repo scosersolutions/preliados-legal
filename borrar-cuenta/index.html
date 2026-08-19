@@ -84,12 +84,22 @@
   footer a { color: #8B819C; }
   .hidden { display: none; }
 </style>
+<style>
+  a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
+  a.marca-inicio:hover { opacity: .75; }
+  .marca-legal { margin: 0 0 1.25rem; }
+  .marca-legal a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+  }
+  .marca-legal a:hover { opacity: .75; }
+</style>
 </head>
 <body>
 <div class="card">
   <div class="bar"></div>
   <div class="body">
-    <div class="brand">Preliados</div>
+    <a class="marca-inicio" href="/"><div class="brand">Preliados</div></a>
     <div class="mark" id="mark">&#128465;&#65039;</div>
     <h1 id="title">Borrar tu cuenta</h1>
     <p id="lead">Escribe el correo de tu cuenta y te enviamos un enlace de confirmaci&oacute;n. Al abrirlo, vuelves aqu&iacute; para terminar.</p>

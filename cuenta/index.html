@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redes &middot; Preliados</title>
-<meta name="description" content="D&oacute;nde encontrar a Preliados en redes sociales.">
+<title>Gesti&oacute;n de cuenta &middot; Preliados</title>
+<meta name="description" content="Recupera tu contrase&ntilde;a o borra tu cuenta de Preliados desde la web, sin entrar en la app.">
 <style>
   :root { color-scheme: dark; --bg:#0B0714; --surface:#1A1128; --surface2:#150E22; --text:#F2ECEF; --muted:#B4AAB2; --primary:#8B5CF6; --accent:#F472B6; --line:#2E2340; }
   * { box-sizing: border-box; }
@@ -22,40 +22,39 @@
   p { margin:.9rem 0 0; color:var(--muted); font-size:.95rem; }
   .links { margin-top:1.6rem; display:flex; flex-direction:column; gap:.6rem; }
   .links a {
-    display:block; padding:.85rem 1rem; border-radius:.8rem; text-decoration:none;
+    display:block; padding:.9rem 1rem; border-radius:.8rem; text-decoration:none;
     background:var(--surface2); border:1px solid var(--line); color:var(--text); font-weight:600; font-size:.95rem;
   }
   .links a:hover { border-color:var(--primary); }
+  /* Lo destructivo, separado y con su color: nadie debe pulsarlo por inercia. */
+  .links a.peligro { border-color:#4A2036; color:#F9A8C8; }
+  .links a.peligro:hover { border-color:#EC4899; }
+  .nota { margin-top:1.4rem; font-size:.82rem; color:#8478A0; }
   footer { padding:0 1.75rem 1.75rem; text-align:center; font-size:.72rem; color:#6B6180; }
   footer a { color:#8478A0; }
-</style>
-<style>
   a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
   a.marca-inicio:hover { opacity: .75; }
-  .marca-legal { margin: 0 0 1.25rem; }
-  .marca-legal a {
-    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
-    text-transform: uppercase; font-weight: 700; color: var(--accent);
-  }
-  .marca-legal a:hover { opacity: .75; }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="bar"></div>
   <div class="body">
-    <div class="mark">&#128241;</div>
+    <div class="mark">&#128100;</div>
     <a class="marca-inicio" href="/"><div class="brand">Preliados</div></a>
-    <h1>Todav&iacute;a no estamos en redes</h1>
-    <p>Cuando abramos cuenta en TikTok, Instagram y las dem&aacute;s, aparecer&aacute;n aqu&iacute;. Esta p&aacute;gina es la direcci&oacute;n definitiva: gu&aacute;rdala y no cambiar&aacute;.</p>
-    <p>Mientras tanto, si quieres contarnos algo, escr&iacute;benos directamente.</p>
+    <h1>Gesti&oacute;n de cuenta</h1>
+    <p>Para jugar no hace falta cuenta. Esto es solo para quien cre&oacute; una con correo y contrase&ntilde;a.</p>
     <div class="links">
-      <a href="/soporte">Ayuda y contacto</a>
-      <a href="mailto:soporte@preliados.com">soporte@preliados.com</a>
-      <a href="/">Inicio</a>
+      <a href="/recuperar">Recuperar contrase&ntilde;a</a>
+      <a class="peligro" href="/borrar-cuenta">Borrar tu cuenta y tus datos</a>
     </div>
+    <p class="nota">Tambi&eacute;n puedes hacer ambas cosas desde la app, en <strong>Ajustes &rarr; Tu cuenta</strong>. Para cualquier otra petici&oacute;n sobre tus datos, escr&iacute;benos desde <a href="/soporte">soporte</a>.</p>
   </div>
   <footer>
+    <a href="/">Inicio</a> &middot;
+    <a href="/soporte">Soporte</a> &middot;
+    <a href="/legal/privacidad">Privacidad</a>
+    <br><br>
     Preliados &middot; Solo para mayores de 18 a&ntilde;os. Bebe con moderaci&oacute;n.
   </footer>
 </div>

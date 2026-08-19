@@ -106,9 +106,20 @@
     color: var(--text-muted);
   }
 </style>
+<style>
+  a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
+  a.marca-inicio:hover { opacity: .75; }
+  .marca-legal { margin: 0 0 1.25rem; }
+  .marca-legal a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+  }
+  .marca-legal a:hover { opacity: .75; }
+</style>
 </head>
 <body>
   <div class="wrap">
+  <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
     <div class="logo">🃏</div>
     <h1>Preliados · Documentos legales</h1>
     <p class="tagline">Aquí tienes toda la información legal sobre cómo tratamos tus datos, qué se puede y qué no se puede publicar en la comunidad, y las condiciones de uso de la app.</p>
