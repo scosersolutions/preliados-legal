@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preliados · Community Guidelines</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f5;
+    --surface: #ffffff;
+    --text: #201a1f;
+    --text-muted: #665f68;
+    --accent: #b3325c;
+    --accent-2: #6c4fa0;
+    --border: #e8e0e4;
+    --bad-bg: #fdeceef;
+    --bad-border: #e6a9b6;
+    --bad-text: #7a1f37;
+    --ok-bg: #eaf5ee;
+    --ok-border: #a9d8ba;
+    --ok-text: #1f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17131a;
+      --surface: #221d26;
+      --text: #f2ecef;
+      --text-muted: #b4aab2;
+      --accent: #f06292;
+      --accent-2: #b18cf0;
+      --border: #35303b;
+      --bad-bg: #351b22;
+      --bad-border: #7a3444;
+      --bad-text: #f5b6c4;
+      --ok-bg: #1a2e21;
+      --ok-border: #366b48;
+      --ok-text: #a9e0bb;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 40rem; margin: 0 auto; }
+  a.back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  a.back:hover { color: var(--accent); }
+  h1 { font-size: 1.7rem; margin: 0 0 0.35rem; letter-spacing: -0.01em; }
+  .meta { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 2rem; }
+  .callout { border:1px solid var(--border); border-radius:.75rem; padding:.85rem 1rem; font-size:.92rem; margin:1rem 0; }
+  h2 {
+    font-size: 1.2rem;
+    margin: 2.2rem 0 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.3rem 0 0.5rem; }
+  p { margin: 0.6rem 0; }
+  ul, ol { padding-left: 1.3rem; margin: 0.6rem 0; }
+  li { margin: 0.4rem 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  @media (min-width: 34rem) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  .box {
+    border-radius: 0.85rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+  }
+  .box.bad { background: var(--bad-bg); border-color: var(--bad-border); color: var(--bad-text); }
+  .box.ok { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .box h3 { margin-top: 0; }
+  .box ul { margin: 0.4rem 0 0; }
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+  }
+  .steps li {
+    position: relative;
+    padding-left: 2.4rem;
+    margin: 0.9rem 0;
+  }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -0.05rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.02em; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  a { color: var(--accent); }
+  code { background: var(--surface); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.05rem 0.35rem; font-size: 0.85em; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); }
+</style>
+<style>
+  a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
+  a.marca-inicio:hover { opacity: .75; }
+  .marca-legal { margin: 0 0 1.25rem; }
+  .marca-legal a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+  }
+  .marca-legal a:hover { opacity: .75; }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0714">
+</head>
+<body>
+<div class="wrap">
+  <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
+  <a class="back" href="/legal/index">← Back to index</a>
+  <h1>🛡️ Preliados Community Guidelines</h1>
+  <p class="meta">Version 1.2 · Last updated: 30 August 2026 · <a href="/legal/normas-comunidad" hreflang="es" lang="es">Leer en español</a></p>
+  <p class="callout">This is an English translation provided for convenience. If there is any discrepancy, the Spanish version prevails.</p>
+
+  <p>The Preliados community is the space where you can publish your own card decks and play with the ones other people have created. To keep it a safe and fun place, everyone who publishes agrees to these guidelines.</p>
+
+  <p>Preliados is a party game for adults that wants to have edgy, direct and essentially unfiltered content, and that is exactly what is expected when someone creates a deck like that. These guidelines do not prohibit that tone: they prohibit content that does real harm.</p>
+
+  <h2 id="prohibido">1. What content is prohibited</h2>
+  <p>You may not publish content that is or contains:</p>
+  <div class="grid">
+    <div class="box bad">
+      <h3>🚫 Always prohibited</h3>
+      <ul>
+        <li>Racism or xenophobia</li>
+        <li>Hate speech or contempt towards a protected group (ethnicity, nationality, religion, sexual orientation, gender identity, disability)</li>
+        <li>Discrimination of any kind</li>
+        <li>Harassment or attacks targeting a real person</li>
+        <li>Sexualization of minors, in any form</li>
+        <li>Threats of real violence</li>
+        <li>Gratuitously offensive content with no gameplay purpose</li>
+        <li>Spam or disguised advertising content</li>
+        <li>Misinformation presented as fact</li>
+        <li>Cards that push people to consume alcohol or other substances, or that penalize those who do not consume. Publishing that is grounds for removal of the deck.</li>
+      </ul>
+    </div>
+    <div class="box ok">
+      <h3>✅ Allowed in this context</h3>
+      <ul>
+        <li>Sexual, explicit or risqué content between adults</li>
+        <li>Dark or crude humor</li>
+        <li>Uncomfortable or embarrassing challenges, within reason</li>
+        <li>Direct content about flirting or personal anecdotes</li>
+      </ul>
+    </div>
+  </div>
+  <p>The line is simple: risqué content is fine; content that humiliates, discriminates against or puts a real person at risk is not. When you generate cards with our AI tool, we apply an automatic filter using this same standard before you see them and again before they can be published.</p>
+
+  <h3>1.1 Intensity rating</h3>
+  <p><strong>Preliados is an app for users aged 18 or over.</strong> The first time you open it you must enter your date of birth and, if the resulting age is under 18, access is not permitted. What does exist is a <strong>family mode</strong>: a voluntary option for groups of adults that hides risqué content and physical-contact content, and that does not enable use by anyone under 18. When you create a deck, we rate its intensity so that this filter works correctly. Deliberately trying to circumvent that rating (for example, labeling a deck as mild when it is not) is treated as a violation of these guidelines.</p>
+
+  <h2 id="moderacion">2. How we moderate</h2>
+  <p>Moderation combines an automatic filter at the moment content is created with AI and a community reporting system:</p>
+  <ol class="steps">
+    <li><strong>Publishing:</strong> before you can publish your first deck, you must have accepted the current version of these guidelines, the privacy policy and the terms of use.</li>
+    <li><strong>Reports:</strong> anyone can report a deck that breaches these guidelines, stating a reason.</li>
+    <li><strong>Automatic review by volume:</strong> when a deck accumulates reports from <strong>several different devices</strong> (the same person reporting it more than once does not count), it moves to <em>under review</em> status. It remains visible during the review: a handful of reports is not, by itself, a verdict, and hiding it too early would open the door to using the system as a weapon between groups.</li>
+    <li><strong>Automatic hiding:</strong> if reports from different devices keep rising up to a higher threshold, the deck is automatically hidden from the rest of the community. Its author can still see it, so they know it has been taken down.</li>
+    <li><strong>Human review:</strong> the moderation team reviews the queue of reported decks and decides whether the content is reinstated, kept hidden or permanently removed.</li>
+  </ol>
+  <p>To prevent abuse of the reporting system itself: you cannot report your own deck, each device can only report the same deck once, there is a minimum waiting time between two consecutive reports, and there is a daily cap on reports per device.</p>
+
+  <h3>2.1 Available report reasons</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Reason</th><th>When to use it</th></tr></thead>
+    <tbody>
+      <tr><td>Offensive</td><td>Gratuitously hurtful content that does not fit a more specific reason</td></tr>
+      <tr><td>Hate speech</td><td>Contempt or hatred towards a group</td></tr>
+      <tr><td>Racism</td><td>Racist content</td></tr>
+      <tr><td>Xenophobia</td><td>Rejection of or attack on someone because of origin or nationality</td></tr>
+      <tr><td>Discrimination</td><td>Discriminatory treatment on any protected ground</td></tr>
+      <tr><td>Harassment</td><td>Attack targeting a real person</td></tr>
+      <tr><td>Sexual content (out of place)</td><td>Sexualization of minors or sexual content not appropriate for the context of the game</td></tr>
+      <tr><td>Spam</td><td>Disguised advertising or repetitive content with no gameplay value</td></tr>
+      <tr><td>Misinformation</td><td>False statements presented as facts</td></tr>
+      <tr><td>Other</td><td>Any other reason, with a free-text field to explain it</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="reportar">3. How to report a deck</h2>
+  <p>From the deck's page, select the report option, choose the reason that best describes the problem and, if the reason is "other", add a brief explanation (up to 500 characters). You do not need to explain anything else: human review takes care of the rest.</p>
+
+  <h2 id="recurrir">4. What happens to a removed deck and how to appeal</h2>
+  <ul>
+    <li>If your deck moves to <em>under review</em>, it remains visible while the case is examined; you do not need to do anything yet.</li>
+    <li>If your deck is hidden or removed, you can still see it (and its cards), but it stops being visible to the rest of the community and cannot be played from there.</li>
+    <li>A removed deck <strong>does not reactivate on its own</strong>: it is always a human decision by the moderation team, never an automatic one.</li>
+    <li>If you believe the removal was a mistake, write to us at <a href="mailto:soporte@preliados.com">soporte@preliados.com</a> stating the name of the deck and why you believe the content does not breach these guidelines. We will review the case manually and reply with our decision.</li>
+  </ul>
+
+  <h2 id="bloqueo">5. Blocking other authors</h2>
+  <p>You can block an author whose decks you do not want to see again. The block is stored on your device and affects only what you see; it is not a public moderation measure and does not remove the content for the rest of the community.</p>
+
+  <h2 id="consecuencias">6. Consequences of breaching these guidelines</h2>
+  <p>Depending on the severity and on whether it is a repeat offense, we may: remove the specific deck, hide all content published by that identifier, or restrict its ability to publish in the community. Very serious violations (for example, content that sexualizes minors) are removed immediately without going through the gradual reporting process, and, where the law requires it, are brought to the attention of the competent authorities.</p>
+
+  <h2 id="relacion">7. Relationship with the other documents</h2>
+  <p>These guidelines are to be read together with the <a href="/en/legal/privacy">privacy policy</a> (what we do with deck and report data) and the <a href="/en/legal/terms">terms of use</a> (general use of the app). Accepting these guidelines is mandatory before publishing any deck; reading them and playing other people's decks does not require it.</p>
+
+  <footer>
+    Preliados · Community Guidelines · Version 1.2 · Last updated: 30 August 2026
+  </footer>
+</div>
+</body>
+</html>
