@@ -89,6 +89,23 @@
   }
   .marca-legal a:hover { opacity: .75; }
 </style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0714">
+<style>
+  body { position: relative; isolation: isolate; }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(42rem 32rem at 8% -6%, rgba(139,92,246,.55), transparent 62%),
+      radial-gradient(38rem 30rem at 102% 108%, rgba(236,72,153,.45), transparent 62%),
+      radial-gradient(26rem 20rem at 92% 12%, rgba(244,114,182,.20), transparent 70%),
+      radial-gradient(rgba(255,255,255,.09) 1px, transparent 1.2px) 0 0 / 22px 22px,
+      #0B0714;
+  }
+  .card { box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(139,92,246,.18), 0 0 80px rgba(139,92,246,.18); }
+</style>
 </head>
 <body>
 <div class="card">
