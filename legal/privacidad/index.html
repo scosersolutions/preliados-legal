@@ -138,7 +138,7 @@
   <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
   <a class="back" href="/legal/index">← Volver al índice</a>
   <h1>🔒 Política de privacidad de Preliados</h1>
-  <p class="meta">Versión 1.6 · Última actualización: 20 de octubre de 2026 · <a href="/en/legal/privacy" hreflang="en" lang="en">Read in English</a></p>
+  <p class="meta">Versión 1.6 · Última actualización: 22 de octubre de 2026 · <a href="/en/legal/privacy" hreflang="en" lang="en">Read in English</a></p>
 
   <p>Preliados es un juego de cartas para previas entre amigos. Esta política explica qué datos tratamos cuando usas la app, para qué los usamos, cuánto tiempo los guardamos y qué derechos tienes sobre ellos, conforme al Reglamento (UE) 2016/679 (RGPD) y la LOPDGDD.</p>
 
@@ -236,7 +236,7 @@
   <p>Usamos proveedores externos que tratan datos en nuestro nombre, bajo contrato de encargo del tratamiento (art. 28 RGPD):</p>
   <ul>
     <li><strong>Supabase</strong> (base de datos, autenticación y funciones de servidor): aloja el identificador de sesión, los datos de la cuenta (correo, hash de contraseña e identidades vinculadas), los mazos, valoraciones, reportes, aceptaciones de políticas, los eventos de uso de la sección 3.3 y los comentarios y valoraciones de cartas del apartado 3.4. También envía los correos de confirmación y de restablecimiento de contraseña.</li>
-    <li><strong>Groq</strong> (proveedor de inferencia de IA): procesa el texto de ejemplo que escribes para generar cartas nuevas y clasificar su contenido. No recibe tu identificador de usuario, solo el texto de la petición.</li>
+    <li><strong>Proveedores de inteligencia artificial</strong>, solo si usas la generación de cartas con IA: reciben el texto de ejemplo que escribes, junto con las instrucciones de la app, para generar cartas nuevas y clasificar su contenido. No reciben tu identificador de usuario, tu correo ni ningún otro dato tuyo, solo el texto de la petición. La petición va a <strong>Groq</strong>; si Groq no está disponible, pasa a <strong>Google</strong> (Gemini API) y, como último recurso, a <strong>OpenRouter</strong>, que la reenvía al proveedor del modelo correspondiente. Con Google y con los modelos gratuitos de OpenRouter usamos planes gratuitos, y en ellos <strong>Google y los proveedores de esos modelos pueden conservar las peticiones y usarlas para mejorar sus productos, incluida su revisión por personas</strong>, según sus propias condiciones; para ese uso actúan como responsables independientes. Por eso te pedimos que no escribas en el texto de ejemplo datos personales tuyos ni de otras personas.</li>
     <li><strong>Sentry</strong> (informes de fallos): recibe datos técnicos del dispositivo y del error — no datos como nombres de jugadores o fecha de nacimiento, que nunca salen del dispositivo. El proyecto está alojado en la región europea de Sentry. Si nos envías un comentario de tipo Error, guardamos en nuestro servidor la referencia del informe de Sentry para relacionarlos, pero el texto del comentario no se envía a Sentry.</li>
     <li><strong>RevenueCat</strong> (gestión de compras y suscripciones): procesa los datos de la transacción de compra que gestionan Apple App Store o Google Play.</li>
     <li><strong>Resend</strong> (envío de correo transaccional): recibe tu dirección de correo únicamente para enviarte la confirmación de que tu cuenta ha sido eliminada. No recibe ningún otro dato ni se usa para nada más.</li>
@@ -252,6 +252,8 @@
     <tbody>
       <tr><td>Supabase</td><td>Unión Europea</td><td>No hay transferencia internacional: los datos permanecen alojados en la UE</td></tr>
       <tr><td>Groq, Inc.</td><td>Estados Unidos</td><td>Cláusulas contractuales tipo (SCC) aprobadas por la Comisión Europea, incorporadas al acuerdo de tratamiento de datos del proveedor</td></tr>
+      <tr><td>Google LLC (Gemini API)</td><td>Estados Unidos</td><td>Marco de Privacidad de Datos UE-EE. UU., al que Google LLC está adherida (decisión de adecuación de la Comisión Europea de 10 de julio de 2023)</td></tr>
+      <tr><td>OpenRouter, Inc.</td><td>Estados Unidos, y el país del proveedor del modelo al que reenvía la petición</td><td>Cláusulas contractuales tipo (SCC) aprobadas por la Comisión Europea y decisiones de adecuación, según la política de privacidad del proveedor</td></tr>
       <tr><td>Sentry (Functional Software, Inc.)</td><td>Unión Europea (Alemania)</td><td>No hay transferencia internacional: el proyecto está configurado en la región europea de Sentry</td></tr>
       <tr><td>RevenueCat, Inc.</td><td>Estados Unidos</td><td>Cláusulas contractuales tipo (SCC) aprobadas por la Comisión Europea, incorporadas al acuerdo de tratamiento de datos del proveedor</td></tr>
       <tr><td>Resend (Plus Five Five, Inc.)</td><td>Estados Unidos</td><td>Cláusulas contractuales tipo (SCC) aprobadas por la Comisión Europea, incorporadas al acuerdo de tratamiento de datos del proveedor</td></tr>
@@ -261,7 +263,7 @@
   </div>
 
   <h2 id="seguridad">7. Seguridad</h2>
-  <p>El acceso a tus datos de comunidad está protegido por reglas de seguridad a nivel de fila (RLS) en la base de datos: solo tú puedes modificar tu mazo, y las operaciones sensibles (reportar, moderar, borrar la cuenta) pasan por funciones de servidor que validan quién puede hacer qué. Las claves privadas (por ejemplo, la de acceso a Groq) nunca viajan en la app: se quedan en el servidor.</p>
+  <p>El acceso a tus datos de comunidad está protegido por reglas de seguridad a nivel de fila (RLS) en la base de datos: solo tú puedes modificar tu mazo, y las operaciones sensibles (reportar, moderar, borrar la cuenta) pasan por funciones de servidor que validan quién puede hacer qué. Las claves privadas (por ejemplo, las de acceso a los proveedores de IA) nunca viajan en la app: se quedan en el servidor.</p>
   <p>En cuanto a la cuenta: las <strong>contraseñas se guardan como hash</strong> y no son recuperables ni por nosotros; toda la comunicación con el servidor va cifrada con TLS; el inicio de sesión con Google y Apple usa flujos con prueba de posesión (PKCE y <em>nonce</em>) para que un tercero no pueda reutilizar la respuesta de autenticación; y las credenciales de sesión se guardan en tu dispositivo en el <strong>almacén seguro del sistema</strong> (Llavero de iOS o Keystore de Android), no en almacenamiento en claro.</p>
 
   <h2 id="derechos">8. Tus derechos</h2>
@@ -292,10 +294,10 @@
 
   <h2 id="cambios">11. Cambios en esta política</h2>
   <p>Si cambiamos esta política de forma relevante, se actualizará la versión y la fecha de esta página, y si el cambio afecta a cómo tratamos tus datos de forma sustancial, te pediremos que la vuelvas a aceptar antes de seguir publicando en la comunidad — el mismo mecanismo que usamos para las otras políticas.</p>
-  <p><strong>Versión 1.6 (20 de octubre de 2026):</strong> se añaden el buzón de comentarios y las valoraciones de cartas (apartados 3.2 y 3.4), el identificador de instalación que los acompaña y cómo borrarlos sin cuenta (apartado 3.4 y sección 8), y se aclara que no forman parte de la analítica de uso (apartado 3.3).</p>
+  <p><strong>Versión 1.6 (20 de octubre de 2026):</strong> se añaden el buzón de comentarios y las valoraciones de cartas (apartados 3.2 y 3.4), el identificador de instalación que los acompaña y cómo borrarlos sin cuenta (apartado 3.4 y sección 8), y se aclara que no forman parte de la analítica de uso (apartado 3.3). Actualizada el 22 de octubre de 2026 para nombrar a todos los proveedores de IA que pueden procesar el texto de ejemplo de la generación de cartas (Groq, Google y OpenRouter) y las condiciones de sus planes gratuitos (secciones 5 y 6).</p>
 
   <footer>
-    Preliados · Política de privacidad · Versión 1.6 · Última actualización: 20 de octubre de 2026
+    Preliados · Política de privacidad · Versión 1.6 · Última actualización: 22 de octubre de 2026
   </footer>
 </div>
 </body>

@@ -138,7 +138,7 @@
   <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
   <a class="back" href="/legal/index">← Back to index</a>
   <h1>🔒 Preliados Privacy Policy</h1>
-  <p class="meta">Version 1.6 · Last updated: 20 October 2026 · <a href="/legal/privacidad" hreflang="es" lang="es">Leer en español</a></p>
+  <p class="meta">Version 1.6 · Last updated: 22 October 2026 · <a href="/legal/privacidad" hreflang="es" lang="es">Leer en español</a></p>
   <p class="callout">This is an English translation provided for convenience. If there is any discrepancy, the Spanish version prevails.</p>
 
   <p>Preliados is a card game for pre-parties among friends. This policy explains what data we process when you use the app, what we use it for, how long we keep it and what rights you have over it, in accordance with Regulation (EU) 2016/679 (GDPR) and Spanish Organic Law 3/2018 on Data Protection and Guarantee of Digital Rights (LOPDGDD).</p>
@@ -237,7 +237,7 @@
   <p>We use external providers that process data on our behalf, under a data processing agreement (Art. 28 GDPR):</p>
   <ul>
     <li><strong>Supabase</strong> (database, authentication and server functions): hosts the session identifier, the account data (email, password hash and linked identities), the decks, ratings, reports, policy acceptances, the usage events described in section 3.3 and the feedback and card ratings described in section 3.4. It also sends the confirmation and password reset emails.</li>
-    <li><strong>Groq</strong> (AI inference provider): processes the example text you write to generate new cards and to classify their content. It does not receive your user identifier, only the text of the request.</li>
+    <li><strong>Artificial intelligence providers</strong>, only if you use AI card generation: they receive the example text you write, together with the app's instructions, to generate new cards and to classify their content. They do not receive your user identifier, your email or any other data about you, only the text of the request. The request goes to <strong>Groq</strong>; if Groq is unavailable, it goes to <strong>Google</strong> (Gemini API) and, as a last resort, to <strong>OpenRouter</strong>, which forwards it to the provider of the relevant model. With Google and with OpenRouter's free models we use free plans, and on those plans <strong>Google and the providers of those models may retain requests and use them to improve their products, including review by humans</strong>, under their own terms; for that use they act as independent controllers. That is why we ask you not to include personal data about yourself or other people in the example text.</li>
     <li><strong>Sentry</strong> (crash reporting): receives technical data about the device and the error — not data such as player names or date of birth, which never leave the device. The project is hosted in Sentry's European region. If you send us a Bug report through the feedback box, we keep the reference of the Sentry report on our server to link them, but the text of your feedback is not sent to Sentry.</li>
     <li><strong>RevenueCat</strong> (purchase and subscription management): processes the data of the purchase transaction handled by the Apple App Store or Google Play.</li>
     <li><strong>Resend</strong> (transactional email delivery): receives your email address solely to send you the confirmation that your account has been deleted. It receives no other data and is not used for anything else.</li>
@@ -253,6 +253,8 @@
     <tbody>
       <tr><td>Supabase</td><td>European Union</td><td>There is no international transfer: the data remains hosted in the EU</td></tr>
       <tr><td>Groq, Inc.</td><td>United States</td><td>Standard Contractual Clauses (SCCs) approved by the European Commission, incorporated into the provider's data processing agreement</td></tr>
+      <tr><td>Google LLC (Gemini API)</td><td>United States</td><td>EU-U.S. Data Privacy Framework, to which Google LLC adheres (European Commission adequacy decision of 10 July 2023)</td></tr>
+      <tr><td>OpenRouter, Inc.</td><td>United States, and the country of the model provider to which it forwards the request</td><td>Standard Contractual Clauses (SCCs) approved by the European Commission and adequacy decisions, according to the provider's privacy policy</td></tr>
       <tr><td>Sentry (Functional Software, Inc.)</td><td>European Union (Germany)</td><td>There is no international transfer: the project is configured in Sentry's European region</td></tr>
       <tr><td>RevenueCat, Inc.</td><td>United States</td><td>Standard Contractual Clauses (SCCs) approved by the European Commission, incorporated into the provider's data processing agreement</td></tr>
       <tr><td>Resend (Plus Five Five, Inc.)</td><td>United States</td><td>Standard Contractual Clauses (SCCs) approved by the European Commission, incorporated into the provider's data processing agreement</td></tr>
@@ -262,7 +264,7 @@
   </div>
 
   <h2 id="seguridad">7. Security</h2>
-  <p>Access to your community data is protected by row-level security (RLS) rules in the database: only you can modify your deck, and sensitive operations (reporting, moderating, deleting the account) go through server functions that validate who can do what. Private keys (for example, the Groq access key) never travel in the app: they stay on the server.</p>
+  <p>Access to your community data is protected by row-level security (RLS) rules in the database: only you can modify your deck, and sensitive operations (reporting, moderating, deleting the account) go through server functions that validate who can do what. Private keys (for example, the access keys for the AI providers) never travel in the app: they stay on the server.</p>
   <p>As regards the account: <strong>passwords are stored as a hash</strong> and cannot be recovered, not even by us; all communication with the server is encrypted with TLS; sign-in with Google and Apple uses proof-of-possession flows (PKCE and <em>nonce</em>) so that a third party cannot reuse the authentication response; and session credentials are stored on your device in the <strong>system's secure store</strong> (iOS Keychain or Android Keystore), not in plain-text storage.</p>
 
   <h2 id="derechos">8. Your rights</h2>
@@ -293,10 +295,10 @@
 
   <h2 id="cambios">11. Changes to this policy</h2>
   <p>If we change this policy in a relevant way, the version and the date of this page will be updated, and if the change substantially affects how we process your data, we will ask you to accept it again before you continue publishing in the community — the same mechanism we use for the other policies.</p>
-  <p><strong>Version 1.6 (20 October 2026):</strong> adds the feedback box and card ratings (sections 3.2 and 3.4), the installation identifier that accompanies them and how to delete them without an account (section 3.4 and section 8), and clarifies that they are not part of usage analytics (section 3.3).</p>
+  <p><strong>Version 1.6 (20 October 2026):</strong> adds the feedback box and card ratings (sections 3.2 and 3.4), the installation identifier that accompanies them and how to delete them without an account (section 3.4 and section 8), and clarifies that they are not part of usage analytics (section 3.3). Updated on 22 October 2026 to name every AI provider that may process the example text used for card generation (Groq, Google and OpenRouter) and the terms of their free plans (sections 5 and 6).</p>
 
   <footer>
-    Preliados · Privacy Policy · Version 1.6 · Last updated: 20 October 2026
+    Preliados · Privacy Policy · Version 1.6 · Last updated: 22 October 2026
   </footer>
 </div>
 </body>
