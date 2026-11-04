@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preliados · Ihr Konto und Ihre Daten löschen</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f5;
+    --surface: #ffffff;
+    --text: #201a1f;
+    --text-muted: #665f68;
+    --accent: #b3325c;
+    --accent-2: #6c4fa0;
+    --border: #e8e0e4;
+    --warn-bg: #fff1e6;
+    --warn-border: #e8b087;
+    --warn-text: #7a4413;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17131a;
+      --surface: #221d26;
+      --text: #f2ecef;
+      --text-muted: #b4aab2;
+      --accent: #f06292;
+      --accent-2: #b18cf0;
+      --border: #35303b;
+      --warn-bg: #2e2210;
+      --warn-border: #7a5220;
+      --warn-text: #f0c78e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 40rem; margin: 0 auto; }
+  a.back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+  a.back:hover { color: var(--accent); }
+  h1 { font-size: 1.7rem; margin: 0 0 0.35rem; letter-spacing: -0.01em; }
+  .meta { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 2rem; }
+  h2 { font-size: 1.2rem; margin: 2.2rem 0 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.3rem 0 0.5rem; }
+  p { margin: 0.6rem 0; }
+  ul, ol { padding-left: 1.3rem; margin: 0.6rem 0; }
+  li { margin: 0.4rem 0; }
+  .callout {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-text);
+    border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+    font-size: 0.92rem;
+    margin: 1rem 0;
+  }
+  .placeholder { font-weight: 700; color: var(--accent); }
+  a { color: var(--accent); }
+  code { background: var(--surface); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.05rem 0.35rem; font-size: 0.85em; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); }
+</style>
+<style>
+  a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
+  a.marca-inicio:hover { opacity: .75; }
+  .marca-legal { margin: 0 0 1.25rem; }
+  .marca-legal a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+  }
+  .marca-legal a:hover { opacity: .75; }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0714">
+</head>
+<body>
+<div class="wrap">
+  <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
+  <a class="back" href="/legal/index">← Zurück zum Index</a>
+  <h1>🗑️ Ihr Konto und Ihre Daten löschen</h1>
+  <p class="meta">Version 1.1 · Letzte Aktualisierung: 20. Oktober 2026 · <a href="/legal/borrar-cuenta" hreflang="es" lang="es">Leer en español</a> · <a href="/fr/legal/supprimer-compte" hreflang="fr" lang="fr">Lire en français</a> · <a href="/pt/legal/eliminar-conta" hreflang="pt" lang="pt">Ler em português</a></p>
+  <p class="callout">Dies ist eine zu Informationszwecken bereitgestellte deutsche Übersetzung. Bei Abweichungen gilt die spanische Fassung.</p>
+
+  <p>Diese Seite erklärt, wie Sie Ihr <strong>Preliados</strong>-Konto (App <code>com.scoser.preliados</code>, veröffentlicht von Scoser Solutions) löschen können und was dabei mit Ihren Daten geschieht. Sie können dies selbst in der App erledigen, ohne uns zu schreiben und ohne Begründung.</p>
+
+  <div class="callout">
+    <strong>Möchten Sie es ohne die App erledigen?</strong> Sie können das Konto unter
+    <a href="/borrar-cuenta">preliados.com/borrar-cuenta</a> löschen: Wir fragen nach der E-Mail-Adresse des Kontos und
+    senden Ihnen dorthin einen Bestätigungslink. Das funktioniert für E-Mail-Konten und für Google-Konten.
+    <br><br>
+    <strong>Wenn Sie sich mit Apple angemeldet und „Meine E-Mail-Adresse verbergen“ gewählt haben</strong>, ist dieser Weg für Sie nicht geeignet:
+    Ihre Adresse ist eine Weiterleitung von Apple (<code>@privaterelay.appleid.com</code>), die nur E-Mails
+    von bei Apple registrierten Absendern annimmt, und unser Link kommt nicht an. Löschen Sie das Konto <strong>in der App</strong>
+    (Abschnitt 1), wo die Bestätigung über das Apple-Fenster selbst erfolgt und von keiner E-Mail abhängt.
+    Wenn Sie die App nicht mehr installiert haben, schreiben Sie uns (Abschnitt 2).
+  </div>
+
+  <h2 id="desde-la-app">1. In der App (am schnellsten)</h2>
+  <ol>
+    <li>Öffnen Sie Preliados und gehen Sie zu <strong>Einstellungen</strong> (das Zahnradsymbol auf dem Startbildschirm).</li>
+    <li>Der erste Block heißt <strong>IHR KONTO</strong>.</li>
+    <li>Tippen Sie am Ende des Blocks auf <strong>Mein Konto löschen</strong>.</li>
+    <li>Wir bitten Sie, das Wort <code>BORRAR</code> („löschen“ auf Spanisch) einzugeben, um versehentliches Löschen zu vermeiden. Wenn die Bestätigung in zwei Schritten aktiviert ist, werden Sie zusätzlich nach dem Code Ihrer Authentifizierungs-App gefragt.</li>
+    <li>Zuletzt bestätigen Sie, dass Sie es sind:
+      <ul>
+        <li><strong>Apple-Konto:</strong> Sie tippen auf <strong>Mit Apple bestätigen</strong> und identifizieren sich erneut im Apple-Fenster. Es ist keine E-Mail nötig, daher funktioniert es auch, wenn Sie Ihre Adresse verborgen haben.</li>
+        <li><strong>Google- oder E-Mail-Konto:</strong> Wir senden einen Code an Ihre Adresse, den Sie in der App eingeben.</li>
+      </ul>
+    </li>
+  </ol>
+  <p>Die Löschung erfolgt <strong>sofort und endgültig</strong>. Es gibt keinen Papierkorb und keine Schonfrist, und wir können sie nicht rückgängig machen.</p>
+
+  <div class="callout">
+    <strong>Achtung bei veröffentlichten Decks.</strong> Mit der Löschung Ihres Kontos werden auch <strong>alle Decks gelöscht, die Sie in der Community veröffentlicht haben</strong>: Sie verschwinden aus dem Katalog, und wer sie gerade verwendet hat, verliert sie. Wenn Sie eines behalten möchten, ziehen Sie es vor dem Löschen des Kontos aus der Community zurück: Es bleibt dann auf Ihrem Gerät gespeichert.
+  </div>
+
+  <h2 id="por-correo">2. Per E-Mail, wenn Sie nicht auf die App zugreifen können</h2>
+  <p>Wenn Sie den Zugang zu Ihrem Konto verloren haben, die App deinstalliert haben oder es vorziehen, dass wir die Löschung vornehmen, schreiben Sie uns an <a href="mailto:soporte@preliados.com">soporte@preliados.com</a> mit dem Betreff <strong>„Borrar cuenta“</strong> (Konto löschen) und teilen Sie uns Folgendes mit:</p>
+  <ul>
+    <li>die E-Mail-Adresse, mit der Sie das Konto erstellt haben, oder den verwendeten Anbieter (Google oder Apple). Wenn Sie sich mit Apple unter Verbergen Ihrer E-Mail-Adresse angemeldet haben, genügt die Adresse <code>@privaterelay.appleid.com</code>, die Apple Ihnen zugewiesen hat: Sie finden sie unter Einstellungen → Ihr Name → Anmeldung &amp; Sicherheit → Mit Apple anmelden → Preliados;</li>
+    <li>wenn Sie ohne Konto gespielt haben, den genauen Namen eines von Ihnen veröffentlichten Decks und dessen ungefähres Datum, damit wir Ihre Kennung ermitteln können.</li>
+  </ul>
+  <p>Wir antworten <strong>innerhalb eines Monats</strong> nach dem Antrag; in komplexen Fällen kann die Frist gemäß Artikel 12 Absatz 3 DSGVO um bis zu zwei weitere Monate verlängert werden. Wir bestätigen Ihnen schriftlich, wenn die Löschung abgeschlossen ist.</p>
+
+  <h2 id="que-se-borra">3. Welche Daten gelöscht werden</h2>
+  <p>Von unseren Servern werden dauerhaft gelöscht:</p>
+  <ul>
+    <li>Das Konto selbst und alle seine Zugangsdaten: E-Mail-Adresse, Passwort, verknüpfte Google- oder Apple-Identitäten und der zweite Authentifizierungsfaktor.</li>
+    <li>Alle <strong>Decks, die Sie veröffentlicht haben</strong>, in der Community, mit ihren Karten.</li>
+    <li>Die <strong>Bewertungen</strong>, die Sie für Decks anderer Personen abgegeben haben.</li>
+    <li>Die <strong>Moderationsmeldungen</strong>, die Sie gesendet haben.</li>
+    <li>Das Protokoll der <strong>Annahme der Richtlinien</strong>.</li>
+    <li>Die Zähler zur <strong>Nutzung des KI-Kontingents</strong>.</li>
+    <li>Die <strong>Kaufmetadaten</strong>, die Ihrer Kennung zugeordnet sind.</li>
+    <li>Ihr <strong>Speicher für gesehene Karten</strong> (welche Karten bei Ihnen vorgekommen sind und an welchem Tag), der dazu dient, dass sich Karten zwischen Partien nicht wiederholen. Die Kopie, die die App auf dem Telefon speichert, wird mit der Deinstallation gelöscht. Ohne Konto können Sie ihn selbst in der App löschen (siehe unten); andernfalls wird er nach 90 Tagen automatisch gelöscht.</li>
+    <li>Die <strong>Kommentare</strong> (Feedback), die Sie uns über das Feedback-Postfach gesendet haben, und Ihre <strong>Kartenbewertungen</strong> (Daumen hoch oder runter), die mit Ihrem Konto verknüpft sind und, wenn Sie es in der App löschen, auch diejenigen, die der Installationskennung dieses Telefons zugeordnet sind.</li>
+  </ul>
+  <h3 id="comentarios-sin-cuenta">Ohne Konto? Ihre Kommentare, Kartenbewertungen und den Speicher für gesehene Karten löschen</h3>
+  <p>Dafür benötigen Sie kein Konto. Gehen Sie in der App zu <strong>Einstellungen → Mein Feedback, meine Stimmen und meine gesehenen Karten löschen</strong>: Auf unserem Server wird alles gelöscht, was der Installationskennung Ihres Telefons und Ihrer Sitzung zugeordnet ist, einschließlich Ihres Speichers für gesehene Karten; auf dem Telefon werden alle noch nicht gesendeten Einträge und die lokale Kopie dieses Speichers geleert, und es wird eine neue Kennung erzeugt. Dafür ist eine Verbindung nötig. Wenn Sie die App neu installiert haben und die Kennung, mit der Sie sie gesendet haben, nicht mehr besitzen, schreiben Sie uns (Abschnitt 2) und geben Sie das ungefähre Datum, die Art des Kommentars und, falls Sie sich erinnern, einen Teil des Textes an. In jedem Fall werden sie nach 365 Tagen automatisch gelöscht; Einzelheiten finden Sie in der <a href="/de/legal/datenschutz#comentarios">Datenschutzerklärung</a>.</p>
+  <p>Die Daten, die nur auf Ihrem Telefon vorhanden sind – Spielernamen, angegebenes Geburtsdatum, Einstellungen und nicht veröffentlichte Decks –, befinden sich nicht auf unseren Servern, und wir greifen nicht darauf zu: Sie verschwinden, wenn Sie die App deinstallieren oder ihre Daten in den Systemeinstellungen löschen.</p>
+
+  <h2 id="que-se-conserva">4. Was aufbewahrt wird und warum</h2>
+  <p>Es gibt zwei Ausnahmen, beide aufgrund einer gesetzlichen Verpflichtung oder eines berechtigten Interesses:</p>
+  <ul>
+    <li><strong>Kaufbelege.</strong> Wenn Sie in der App ein Abonnement oder ein Produkt gekauft haben, werden die Rechnung und der Transaktionsbeleg so lange aufbewahrt, wie es das spanische Steuer- und Handelsrecht verlangt (bis zu sechs Jahre). Diese Daten werden von Apple App Store oder Google Play als Verantwortliche für ihren Teil des Vorgangs verwaltet; informieren Sie sich in deren Richtlinien über die Löschung dieser Einträge.</li>
+    <li><strong>Absturzberichte.</strong> Die technischen Fehlerberichte sind nicht mit Ihrem Konto verknüpft und werden 30 Tage nach ihrem Eingang automatisch gelöscht.</li>
+  </ul>
+  <p>Keine der beiden Ausnahmen ermöglicht es, Ihr Konto oder Ihre Aktivität in der Community wiederherzustellen.</p>
+
+  <h2 id="cancelar-suscripcion">5. Das Löschen des Kontos kündigt Ihr Abonnement nicht</h2>
+  <div class="callout">
+    Wenn Sie ein aktives <strong>Plus</strong>-Abonnement haben, <strong>kündigen Sie es vor</strong> dem Löschen des Kontos. Die Abonnements werden von Apple und Google verwaltet, nicht von uns, und sie verlängern sich und werden weiter abgerechnet, auch wenn Ihr Preliados-Konto nicht mehr existiert.
+  </div>
+  <ul>
+    <li><strong>iPhone oder iPad:</strong> Einstellungen → Ihr Name → Abonnements → Preliados → Abonnement kündigen.</li>
+    <li><strong>Android:</strong> Google Play → Ihr Profilbild → Zahlungen &amp; Abos → Abos → Preliados → Abo kündigen.</li>
+  </ul>
+
+  <h2 id="derechos">6. Weitere Rechte an Ihren Daten</h2>
+  <p>Neben dem Recht auf Löschung können Sie das Auskunftsrecht, das Recht auf Berichtigung, das Widerspruchsrecht, das Recht auf Einschränkung der Verarbeitung und das Recht auf Datenübertragbarkeit ausüben sowie Ihre Einwilligung jederzeit widerrufen. Wie Sie dabei vorgehen, ist in der <a href="/de/legal/datenschutz#derechos">Datenschutzerklärung</a> beschrieben.</p>
+  <p>Wenn Sie der Ansicht sind, dass wir Ihren Antrag nicht ordnungsgemäß bearbeitet haben, können Sie sich bei der <strong>Spanischen Datenschutzbehörde (Agencia Española de Protección de Datos, AEPD)</strong>, C/ Jorge Juan, 6, 28001 Madrid, beschweren — <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>.</p>
+
+  <footer>
+    Preliados · Löschung von Konto und Daten · Version 1.1 · Letzte Aktualisierung: 20. Oktober 2026<br>
+    Verantwortlicher: Fernando Scott Humanes Carchenilla (Scoser Solutions) · <a href="mailto:soporte@preliados.com">soporte@preliados.com</a>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preliados · Règles de la communauté</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f5;
+    --surface: #ffffff;
+    --text: #201a1f;
+    --text-muted: #665f68;
+    --accent: #b3325c;
+    --accent-2: #6c4fa0;
+    --border: #e8e0e4;
+    --bad-bg: #fdeceef;
+    --bad-border: #e6a9b6;
+    --bad-text: #7a1f37;
+    --ok-bg: #eaf5ee;
+    --ok-border: #a9d8ba;
+    --ok-text: #1f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17131a;
+      --surface: #221d26;
+      --text: #f2ecef;
+      --text-muted: #b4aab2;
+      --accent: #f06292;
+      --accent-2: #b18cf0;
+      --border: #35303b;
+      --bad-bg: #351b22;
+      --bad-border: #7a3444;
+      --bad-text: #f5b6c4;
+      --ok-bg: #1a2e21;
+      --ok-border: #366b48;
+      --ok-text: #a9e0bb;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 40rem; margin: 0 auto; }
+  a.back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  a.back:hover { color: var(--accent); }
+  h1 { font-size: 1.7rem; margin: 0 0 0.35rem; letter-spacing: -0.01em; }
+  .meta { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 2rem; }
+  .callout { border:1px solid var(--border); border-radius:.75rem; padding:.85rem 1rem; font-size:.92rem; margin:1rem 0; }
+  h2 {
+    font-size: 1.2rem;
+    margin: 2.2rem 0 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.3rem 0 0.5rem; }
+  p { margin: 0.6rem 0; }
+  ul, ol { padding-left: 1.3rem; margin: 0.6rem 0; }
+  li { margin: 0.4rem 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  @media (min-width: 34rem) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  .box {
+    border-radius: 0.85rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+  }
+  .box.bad { background: var(--bad-bg); border-color: var(--bad-border); color: var(--bad-text); }
+  .box.ok { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .box h3 { margin-top: 0; }
+  .box ul { margin: 0.4rem 0 0; }
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+  }
+  .steps li {
+    position: relative;
+    padding-left: 2.4rem;
+    margin: 0.9rem 0;
+  }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -0.05rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.02em; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  a { color: var(--accent); }
+  code { background: var(--surface); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.05rem 0.35rem; font-size: 0.85em; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); }
+</style>
+<style>
+  a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
+  a.marca-inicio:hover { opacity: .75; }
+  .marca-legal { margin: 0 0 1.25rem; }
+  .marca-legal a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+  }
+  .marca-legal a:hover { opacity: .75; }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0714">
+</head>
+<body>
+<div class="wrap">
+  <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
+  <a class="back" href="/legal/index">← Retour à l'index</a>
+  <h1>🛡️ Règles de la communauté de Preliados</h1>
+  <p class="meta">Version 1.2 · Dernière mise à jour&nbsp;: 30 août 2026 · <a href="/legal/normas-comunidad" hreflang="es" lang="es">Leer en español</a> · <a href="/en/legal/community-guidelines" hreflang="en" lang="en">Read in English</a> · <a href="/pt/legal/normas-comunidade" hreflang="pt" lang="pt">Ler em português</a> · <a href="/de/legal/community-richtlinien" hreflang="de" lang="de">Auf Deutsch lesen</a></p>
+  <p class="callout">Ceci est une traduction de courtoisie. En cas de divergence, la version espagnole prévaut.</p>
+
+  <p>La communauté de Preliados est l'espace où vous pouvez publier vos propres paquets de cartes et jouer avec ceux qu'ont créés d'autres personnes. Pour qu'elle reste un lieu sûr et amusant, toute personne qui publie accepte les présentes règles.</p>
+
+  <p>Preliados est un jeu de soirée pour adultes qui veut proposer un contenu osé, direct et sans filtres de fond, et c'est exactement ce que l'on attend lorsque quelqu'un crée un paquet de ce type. Ces règles n'interdisent pas ce ton&nbsp;: elles interdisent le contenu qui fait réellement du mal.</p>
+
+  <h2 id="prohibido">1. Quel contenu est interdit</h2>
+  <p>Il est interdit de publier un contenu qui est ou qui contient&nbsp;:</p>
+  <div class="grid">
+    <div class="box bad">
+      <h3>🚫 Toujours interdit</h3>
+      <ul>
+        <li>Racisme ou xénophobie</li>
+        <li>Discours de haine ou mépris envers un groupe protégé (origine ethnique, nationalité, religion, orientation sexuelle, identité de genre, handicap)</li>
+        <li>Discrimination de toute nature</li>
+        <li>Harcèlement ou attaques visant une personne réelle</li>
+        <li>Sexualisation de mineurs, sous quelque forme que ce soit</li>
+        <li>Menaces de violence réelle</li>
+        <li>Contenu offensant gratuit sans aucune finalité ludique</li>
+        <li>Spam ou contenu publicitaire déguisé</li>
+        <li>Désinformation présentée comme un fait</li>
+        <li>Cartes qui poussent à consommer de l'alcool ou d'autres substances, ou qui pénalisent celui qui n'en consomme pas. Publier cela est un motif de retrait du paquet.</li>
+      </ul>
+    </div>
+    <div class="box ok">
+      <h3>✅ Autorisé dans ce contexte</h3>
+      <ul>
+        <li>Contenu sexuel, explicite ou osé entre adultes</li>
+        <li>Humour noir ou grossier</li>
+        <li>Défis gênants ou embarrassants, dans la limite du raisonnable</li>
+        <li>Contenu direct sur la drague ou anecdotes personnelles</li>
+      </ul>
+    </div>
+  </div>
+  <p>La frontière est simple&nbsp;: ce qui est osé est acceptable&nbsp;; ce qui humilie, discrimine ou met en danger une personne réelle ne l'est pas. Lorsque vous générez des cartes avec notre outil d'IA, nous appliquons un filtre automatique selon ce même critère avant que vous ne les voyiez, puis de nouveau avant qu'elles puissent être publiées.</p>
+
+  <h3>1.1 Classification de l'intensité</h3>
+  <p><strong>Preliados est une application réservée aux personnes de plus de 18 ans.</strong> Lors de la première ouverture, il faut déclarer sa date de naissance et, si l'âge qui en résulte est inférieur à 18 ans, l'accès n'est pas autorisé. Il existe en revanche un <strong>mode famille</strong>&nbsp;: une option facultative pour les groupes d'adultes qui masque le contenu osé et celui impliquant un contact physique, et qui n'autorise pas l'utilisation par des personnes de moins de 18 ans. Lorsque vous créez un paquet, nous classons son intensité afin que ce filtre fonctionne correctement. Tenter d'éluder délibérément cette classification (par exemple, en étiquetant comme doux un paquet qui ne l'est pas) est traité comme une infraction aux présentes règles.</p>
+
+  <h2 id="moderacion">2. Comment nous modérons</h2>
+  <p>La modération combine un filtre automatique au moment de créer du contenu avec l'IA et un système de signalements par la communauté&nbsp;:</p>
+  <ol class="steps">
+    <li><strong>Publication&nbsp;:</strong> avant de pouvoir publier votre premier paquet, vous devez avoir accepté la version en vigueur des présentes règles, de la politique de confidentialité et des conditions d'utilisation.</li>
+    <li><strong>Signalements&nbsp;:</strong> toute personne peut signaler un paquet qui enfreint les présentes règles, en indiquant un motif.</li>
+    <li><strong>Examen automatique par volume&nbsp;:</strong> lorsqu'un paquet cumule des signalements provenant de <strong>plusieurs appareils différents</strong> (le fait que la même personne le signale plusieurs fois ne compte pas), il passe à l'état <em>en cours d'examen</em>. Il reste visible pendant l'examen&nbsp;: une poignée de signalements ne constitue pas, à elle seule, un verdict, et masquer trop tôt ouvrirait la porte à son utilisation comme arme entre groupes.</li>
+    <li><strong>Masquage automatique&nbsp;:</strong> si les signalements provenant d'appareils différents continuent d'augmenter jusqu'à un seuil plus élevé, le paquet est automatiquement masqué pour le reste de la communauté. Son auteur continue de le voir, afin de savoir qu'il a été retiré.</li>
+    <li><strong>Examen humain&nbsp;:</strong> l'équipe de modération examine la file des paquets signalés et décide si le contenu est réactivé, reste masqué ou est définitivement retiré.</li>
+  </ol>
+  <p>Pour éviter les abus du système de signalement lui-même&nbsp;: vous ne pouvez pas signaler votre propre paquet, chaque appareil ne peut signaler un même paquet qu'une seule fois, un délai minimum d'attente s'applique entre deux signalements consécutifs, et un plafond quotidien de signalements par appareil est en vigueur.</p>
+
+  <h3>2.1 Motifs de signalement disponibles</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Motif</th><th>Quand l'utiliser</th></tr></thead>
+    <tbody>
+      <tr><td>Offensant</td><td>Contenu blessant gratuitement, ne correspondant pas à un motif plus précis</td></tr>
+      <tr><td>Discours de haine</td><td>Mépris ou haine envers un groupe</td></tr>
+      <tr><td>Racisme</td><td>Contenu raciste</td></tr>
+      <tr><td>Xénophobie</td><td>Rejet ou attaque en raison de l'origine ou de la nationalité</td></tr>
+      <tr><td>Discrimination</td><td>Traitement discriminatoire pour tout motif protégé</td></tr>
+      <tr><td>Harcèlement</td><td>Attaque visant une personne réelle</td></tr>
+      <tr><td>Contenu sexuel (déplacé)</td><td>Sexualisation de mineurs ou contenu sexuel inapproprié au contexte du jeu</td></tr>
+      <tr><td>Spam</td><td>Publicité déguisée ou contenu répétitif sans valeur ludique</td></tr>
+      <tr><td>Désinformation</td><td>Affirmations fausses présentées comme des faits</td></tr>
+      <tr><td>Autre</td><td>Tout autre motif, avec un champ de texte libre pour l'expliquer</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="reportar">3. Comment signaler un paquet</h2>
+  <p>Depuis la fiche du paquet, sélectionnez l'option de signalement, choisissez le motif qui décrit le mieux le problème et, si le motif est «&nbsp;autre&nbsp;», ajoutez une brève explication (jusqu'à 500 caractères). Il n'est pas nécessaire d'expliquer quoi que ce soit de plus&nbsp;: l'examen humain se charge du reste.</p>
+
+  <h2 id="recurrir">4. Que se passe-t-il avec un paquet retiré et comment contester</h2>
+  <ul>
+    <li>Si votre paquet passe <em>en cours d'examen</em>, il reste visible pendant l'étude du cas&nbsp;; vous n'avez encore rien à faire.</li>
+    <li>Si votre paquet est masqué ou retiré, vous continuez à le voir (ainsi que ses cartes), mais il cesse d'être visible pour le reste de la communauté et ne peut plus y être joué.</li>
+    <li>Un paquet retiré <strong>ne se réactive pas tout seul</strong>&nbsp;: c'est toujours une décision humaine de l'équipe de modération, jamais automatique.</li>
+    <li>Si vous pensez que le retrait était une erreur, écrivez-nous à <a href="mailto:soporte@preliados.com">soporte@preliados.com</a> en indiquant le nom du paquet et les raisons pour lesquelles vous pensez que le contenu n'enfreint pas les présentes règles. Nous examinerons le cas manuellement et vous répondrons avec la décision.</li>
+  </ul>
+
+  <h2 id="bloqueo">5. Bloquer d'autres auteurs</h2>
+  <p>Vous pouvez bloquer un auteur dont vous ne souhaitez plus voir les paquets. Le blocage est enregistré sur votre appareil et n'affecte que ce que vous voyez&nbsp;; ce n'est pas une mesure de modération publique et il ne retire pas le contenu pour le reste de la communauté.</p>
+
+  <h2 id="consecuencias">6. Conséquences du non-respect des présentes règles</h2>
+  <p>Selon la gravité et selon qu'il y a récidive ou non, nous pouvons&nbsp;: retirer le paquet concerné, masquer tout le contenu publié par cet identifiant, ou restreindre sa capacité à publier dans la communauté. Les infractions très graves (par exemple, un contenu qui sexualise des mineurs) sont retirées immédiatement sans passer par le processus progressif de signalements et, lorsque la loi l'exige, sont portées à la connaissance des autorités compétentes.</p>
+
+  <h2 id="relacion">7. Relation avec les autres documents</h2>
+  <p>Ces règles se lisent conjointement avec la <a href="/fr/legal/confidentialite">politique de confidentialité</a> (ce que nous faisons des données du paquet et du signalement) et les <a href="/fr/legal/conditions-utilisation">conditions d'utilisation</a> (utilisation générale de l'application). L'acceptation de ces règles est obligatoire avant de publier tout paquet&nbsp;; les consulter et jouer aux paquets d'autres personnes ne l'exige pas.</p>
+
+  <footer>
+    Preliados · Règles de la communauté · Version 1.2 · Dernière mise à jour&nbsp;: 30 août 2026
+  </footer>
+</div>
+</body>
+</html>

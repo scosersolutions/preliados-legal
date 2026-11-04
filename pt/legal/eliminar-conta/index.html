@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preliados · Eliminar sua conta e seus dados</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f5;
+    --surface: #ffffff;
+    --text: #201a1f;
+    --text-muted: #665f68;
+    --accent: #b3325c;
+    --accent-2: #6c4fa0;
+    --border: #e8e0e4;
+    --warn-bg: #fff1e6;
+    --warn-border: #e8b087;
+    --warn-text: #7a4413;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17131a;
+      --surface: #221d26;
+      --text: #f2ecef;
+      --text-muted: #b4aab2;
+      --accent: #f06292;
+      --accent-2: #b18cf0;
+      --border: #35303b;
+      --warn-bg: #2e2210;
+      --warn-border: #7a5220;
+      --warn-text: #f0c78e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 40rem; margin: 0 auto; }
+  a.back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+  a.back:hover { color: var(--accent); }
+  h1 { font-size: 1.7rem; margin: 0 0 0.35rem; letter-spacing: -0.01em; }
+  .meta { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 2rem; }
+  h2 { font-size: 1.2rem; margin: 2.2rem 0 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.3rem 0 0.5rem; }
+  p { margin: 0.6rem 0; }
+  ul, ol { padding-left: 1.3rem; margin: 0.6rem 0; }
+  li { margin: 0.4rem 0; }
+  .callout {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-text);
+    border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+    font-size: 0.92rem;
+    margin: 1rem 0;
+  }
+  .placeholder { font-weight: 700; color: var(--accent); }
+  a { color: var(--accent); }
+  code { background: var(--surface); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.05rem 0.35rem; font-size: 0.85em; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); }
+</style>
+<style>
+  a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
+  a.marca-inicio:hover { opacity: .75; }
+  .marca-legal { margin: 0 0 1.25rem; }
+  .marca-legal a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+  }
+  .marca-legal a:hover { opacity: .75; }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0714">
+</head>
+<body>
+<div class="wrap">
+  <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
+  <a class="back" href="/legal/index">← Voltar ao índice</a>
+  <h1>🗑️ Eliminar sua conta e seus dados</h1>
+  <p class="meta">Versão 1.1 · Última atualização: 20 de outubro de 2026 · <a href="/legal/borrar-cuenta" hreflang="es" lang="es">Leer en español</a> · <a href="/fr/legal/supprimer-compte" hreflang="fr" lang="fr">Lire en français</a> · <a href="/de/legal/konto-loeschen" hreflang="de" lang="de">Auf Deutsch lesen</a></p>
+  <p class="callout">Esta é uma tradução de cortesia, fornecida por conveniência. Em caso de discrepância, prevalece a versão em espanhol.</p>
+
+  <p>Esta página explica como eliminar sua conta do <strong>Preliados</strong> (app <code>com.scoser.preliados</code>, publicado pela Scoser Solutions) e o que acontece com seus dados ao fazê-lo. Você mesmo pode fazer isso no app, sem nos escrever e sem dar explicações.</p>
+
+  <div class="callout">
+    <strong>Prefere fazer isso sem o app?</strong> Você pode eliminá-la em
+    <a href="/borrar-cuenta">preliados.com/borrar-cuenta</a>: pedimos o e-mail da conta e
+    enviamos para lá um link de confirmação. Serve para contas de e-mail e contas do Google.
+    <br><br>
+    <strong>Se você entrou com a Apple e escolheu &laquo;Ocultar meu e-mail&raquo;</strong>, esta via não serve:
+    seu endereço é um redirecionamento da Apple (<code>@privaterelay.appleid.com</code>) que só aceita e-mails
+    de remetentes inscritos na Apple, e nosso link não chega. Elimine a conta <strong>pelo app</strong>
+    (ponto 1), onde a confirmação é feita pela própria janela da Apple e não depende de nenhum e-mail.
+    Se você já não tem o app instalado, escreva-nos (ponto 2).
+  </div>
+
+  <h2 id="desde-la-app">1. Pelo app (o mais rápido)</h2>
+  <ol>
+    <li>Abra o Preliados e entre em <strong>Configurações</strong> (o ícone de engrenagem do Início).</li>
+    <li>O primeiro bloco é <strong>SUA CONTA</strong>.</li>
+    <li>Toque em <strong>Eliminar minha conta</strong>, no final do bloco.</li>
+    <li>Pedimos que você digite a palavra <code>BORRAR</code> («apagar», em espanhol) para evitar eliminações acidentais. Se você tem a verificação em duas etapas ativada, o app também pedirá o código do seu app de autenticação.</li>
+    <li>Por fim, você confirma que é você:
+      <ul>
+        <li><strong>Conta da Apple:</strong> toque em <strong>Confirmar com a Apple</strong> e identifique-se novamente na janela da Apple. Não é necessário nenhum e-mail, então funciona também se você ocultou seu endereço.</li>
+        <li><strong>Conta do Google ou de e-mail:</strong> enviamos um código para o seu endereço e você o digita no app.</li>
+      </ul>
+    </li>
+  </ol>
+  <p>A eliminação é <strong>imediata e definitiva</strong>. Não há área de recuperação nem período de carência, e não podemos desfazê-la.</p>
+
+  <div class="callout">
+    <strong>Atenção aos baralhos publicados.</strong> Ao eliminar sua conta, também são eliminados <strong>todos os baralhos que você publicou na comunidade</strong>: eles desaparecem do catálogo e quem os estiver usando os perde. Se quiser manter algum, retire-o da comunidade antes de eliminar a conta: ele continuará guardado no seu dispositivo.
+  </div>
+
+  <h2 id="por-correo">2. Por e-mail, se você não conseguir acessar o app</h2>
+  <p>Se você perdeu o acesso à sua conta, desinstalou o app ou prefere que nós façamos isso, escreva-nos para <a href="mailto:soporte@preliados.com">soporte@preliados.com</a> com o assunto <strong>«Borrar cuenta»</strong> e indique:</p>
+  <ul>
+    <li>o endereço de e-mail com o qual você criou a conta, ou o provedor que usou (Google ou Apple). Se você entrou com a Apple ocultando seu e-mail, serve o endereço <code>@privaterelay.appleid.com</code> que a Apple lhe atribuiu: você o encontra em Configurações → seu nome → Login e segurança → Entrar com a Apple → Preliados;</li>
+    <li>se você jogava sem conta, o nome exato de algum baralho que tenha publicado e sua data aproximada, para podermos localizar seu identificador.</li>
+  </ul>
+  <p>Responderemos <strong>no prazo de um mês</strong> a contar da solicitação, prorrogável por até mais dois meses em casos complexos, conforme o artigo 12.3 do RGPD. Confirmaremos por escrito quando a eliminação for concluída.</p>
+
+  <h2 id="que-se-borra">3. Quais dados são eliminados</h2>
+  <p>São eliminados dos nossos servidores, de forma permanente:</p>
+  <ul>
+    <li>A própria conta e todos os seus dados de acesso: e-mail, senha, identidades vinculadas do Google ou da Apple e o segundo fator de autenticação.</li>
+    <li>Todos os <strong>baralhos que você publicou</strong> na comunidade, com suas cartas.</li>
+    <li>As <strong>avaliações</strong> que você deu a baralhos de outras pessoas.</li>
+    <li>As <strong>denúncias de moderação</strong> que você enviou.</li>
+    <li>O registro de <strong>aceitação das políticas</strong>.</li>
+    <li>Os contadores de <strong>uso do limite de IA</strong>.</li>
+    <li>Os <strong>metadados de compra</strong> associados ao seu identificador.</li>
+    <li>Sua <strong>memória de cartas vistas</strong> (quais cartas saíram para você e em que dia), que serve para que não se repitam entre partidas. A cópia que o app guarda no telefone é apagada ao desinstalá-lo. Sem conta, você mesmo pode apagá-la no app (veja abaixo) e, se não o fizer, ela é apagada sozinha aos 90 dias.</li>
+    <li>Os <strong>comentários</strong> que você nos enviou pela caixa de comentários e suas <strong>avaliações de cartas</strong> (polegar para cima ou para baixo) vinculados à sua conta e, se você eliminá-la pelo app, também os associados ao identificador de instalação desse telefone.</li>
+  </ul>
+  <h3 id="comentarios-sin-cuenta">Sem conta? Apagar seus comentários, avaliações de cartas e memória de cartas vistas</h3>
+  <p>Para isso você não precisa de conta. No app, entre em <strong>Configurações → Apagar meus comentários, votos e cartas vistas</strong>: é apagado do nosso servidor tudo o que estiver associado ao identificador de instalação do seu telefone e à sua sessão, incluindo sua memória de cartas vistas; é esvaziado no telefone o que estivesse pendente de envio e a cópia local dessa memória, e é gerado um novo identificador. Requer acesso à internet. Se você reinstalou o app e já não tem o identificador com o qual os enviou, escreva-nos (ponto 2) indicando a data aproximada, o tipo de comentário e, se lembrar, parte do texto. Em qualquer caso, eles são apagados automaticamente aos 365 dias; os detalhes estão na <a href="/pt/legal/privacidade#comentarios">política de privacidade</a>.</p>
+  <p>Os dados que vivem apenas no seu telefone —nomes de jogadores, data de nascimento declarada, preferências e baralhos que você não tenha publicado— não estão nos nossos servidores e não os tocamos: desaparecem quando você desinstala o app ou apaga seus dados nas configurações do sistema.</p>
+
+  <h2 id="que-se-conserva">4. O que é conservado, e por quê</h2>
+  <p>Há duas exceções, ambas por obrigação legal ou interesse legítimo:</p>
+  <ul>
+    <li><strong>Comprovativos de compra.</strong> Se você comprou uma assinatura ou um produto dentro do app, a fatura e o comprovativo da transação são conservados durante o prazo exigido pela normativa fiscal e comercial espanhola (até seis anos). Esses dados são geridos pela Apple App Store ou pelo Google Play como responsáveis pela sua parte do processo; consulte as políticas deles quanto à eliminação desses registos.</li>
+    <li><strong>Relatórios de falhas.</strong> Os relatórios técnicos de erros não estão vinculados à sua conta e são eliminados automaticamente 30 dias após o recebimento.</li>
+  </ul>
+  <p>Nenhuma das duas exceções permite reconstruir sua conta nem sua atividade na comunidade.</p>
+
+  <h2 id="cancelar-suscripcion">5. Eliminar a conta não cancela sua assinatura</h2>
+  <div class="callout">
+    Se você tem uma assinatura <strong>Plus</strong> ativa, <strong>cancele-a antes</strong> de eliminar a conta. As assinaturas são geridas pela Apple e pelo Google, não por nós, e continuam sendo renovadas e cobradas mesmo que sua conta no Preliados já não exista.
+  </div>
+  <ul>
+    <li><strong>iPhone ou iPad:</strong> Configurações → seu nome → Assinaturas → Preliados → Cancelar assinatura.</li>
+    <li><strong>Android:</strong> Google Play → sua foto de perfil → Pagamentos e assinaturas → Assinaturas → Preliados → Cancelar assinatura.</li>
+  </ul>
+
+  <h2 id="derechos">6. Outros direitos sobre seus dados</h2>
+  <p>Além do apagamento, você pode exercer os direitos de acesso, retificação, oposição, limitação e portabilidade, e retirar seu consentimento a qualquer momento. Como fazê-lo está detalhado na <a href="/pt/legal/privacidade#derechos">política de privacidade</a>.</p>
+  <p>Se você considera que não atendemos corretamente sua solicitação, pode apresentar uma reclamação à <strong>Agencia Española de Protección de Datos (AEPD)</strong> (Agência Espanhola de Proteção de Dados), C/ Jorge Juan, 6, 28001 Madrid — <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>.</p>
+
+  <footer>
+    Preliados · Eliminação de conta e dados · Versão 1.1 · Última atualização: 20 de outubro de 2026<br>
+    Responsável: Fernando Scott Humanes Carchenilla (Scoser Solutions) · <a href="mailto:soporte@preliados.com">soporte@preliados.com</a>
+  </footer>
+</div>
+</body>
+</html>

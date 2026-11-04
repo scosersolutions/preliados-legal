@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preliados · Normas da comunidade</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f5;
+    --surface: #ffffff;
+    --text: #201a1f;
+    --text-muted: #665f68;
+    --accent: #b3325c;
+    --accent-2: #6c4fa0;
+    --border: #e8e0e4;
+    --bad-bg: #fdeceef;
+    --bad-border: #e6a9b6;
+    --bad-text: #7a1f37;
+    --ok-bg: #eaf5ee;
+    --ok-border: #a9d8ba;
+    --ok-text: #1f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17131a;
+      --surface: #221d26;
+      --text: #f2ecef;
+      --text-muted: #b4aab2;
+      --accent: #f06292;
+      --accent-2: #b18cf0;
+      --border: #35303b;
+      --bad-bg: #351b22;
+      --bad-border: #7a3444;
+      --bad-text: #f5b6c4;
+      --ok-bg: #1a2e21;
+      --ok-border: #366b48;
+      --ok-text: #a9e0bb;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 40rem; margin: 0 auto; }
+  a.back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  a.back:hover { color: var(--accent); }
+  h1 { font-size: 1.7rem; margin: 0 0 0.35rem; letter-spacing: -0.01em; }
+  .meta { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 2rem; }
+  .callout { border:1px solid var(--border); border-radius:.75rem; padding:.85rem 1rem; font-size:.92rem; margin:1rem 0; }
+  h2 {
+    font-size: 1.2rem;
+    margin: 2.2rem 0 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.3rem 0 0.5rem; }
+  p { margin: 0.6rem 0; }
+  ul, ol { padding-left: 1.3rem; margin: 0.6rem 0; }
+  li { margin: 0.4rem 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  @media (min-width: 34rem) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  .box {
+    border-radius: 0.85rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+  }
+  .box.bad { background: var(--bad-bg); border-color: var(--bad-border); color: var(--bad-text); }
+  .box.ok { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .box h3 { margin-top: 0; }
+  .box ul { margin: 0.4rem 0 0; }
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+  }
+  .steps li {
+    position: relative;
+    padding-left: 2.4rem;
+    margin: 0.9rem 0;
+  }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -0.05rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.02em; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  a { color: var(--accent); }
+  code { background: var(--surface); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.05rem 0.35rem; font-size: 0.85em; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); }
+</style>
+<style>
+  a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
+  a.marca-inicio:hover { opacity: .75; }
+  .marca-legal { margin: 0 0 1.25rem; }
+  .marca-legal a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+  }
+  .marca-legal a:hover { opacity: .75; }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0714">
+</head>
+<body>
+<div class="wrap">
+  <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
+  <a class="back" href="/legal/index">← Voltar ao índice</a>
+  <h1>🛡️ Normas da comunidade do Preliados</h1>
+  <p class="meta">Versão 1.2 · Última atualização: 30 de agosto de 2026 · <a href="/legal/normas-comunidad" hreflang="es" lang="es">Leer en español</a> · <a href="/en/legal/community-guidelines" hreflang="en" lang="en">Read in English</a> · <a href="/fr/legal/regles-communaute" hreflang="fr" lang="fr">Lire en français</a> · <a href="/de/legal/community-richtlinien" hreflang="de" lang="de">Auf Deutsch lesen</a></p>
+  <p class="callout">Esta é uma tradução de cortesia, fornecida por conveniência. Em caso de discrepância, prevalece a versão em espanhol.</p>
+
+  <p>A comunidade do Preliados é o espaço onde você pode publicar seus próprios baralhos de cartas e jogar com os que outras pessoas criaram. Para que continue sendo um lugar seguro e divertido, todas as pessoas que publicam aceitam estas normas.</p>
+
+  <p>O Preliados é um jogo de festa para adultos que quer ter conteúdo ousado, direto e sem filtros de fundo, e é exatamente isso que se espera quando alguém cria um baralho assim. Estas normas não proíbem esse tom: proíbem o conteúdo que causa dano de verdade.</p>
+
+  <h2 id="prohibido">1. Que conteúdo é proibido</h2>
+  <p>Não se pode publicar conteúdo que seja ou contenha:</p>
+  <div class="grid">
+    <div class="box bad">
+      <h3>🚫 Sempre proibido</h3>
+      <ul>
+        <li>Racismo ou xenofobia</li>
+        <li>Discurso de ódio ou desprezo contra um grupo protegido (etnia, nacionalidade, religião, orientação sexual, identidade de género, deficiência)</li>
+        <li>Discriminação de qualquer tipo</li>
+        <li>Assédio ou ataques dirigidos a uma pessoa real</li>
+        <li>Sexualização de menores, sob qualquer forma</li>
+        <li>Ameaças de violência real</li>
+        <li>Conteúdo ofensivo gratuito sem nenhum propósito de jogo</li>
+        <li>Spam ou conteúdo publicitário dissimulado</li>
+        <li>Desinformação apresentada como se fosse verdadeira</li>
+        <li>Cartas que incitem ao consumo de álcool ou outras substâncias, ou que penalizem quem não consome. Publicar isso é motivo de retirada do baralho.</li>
+      </ul>
+    </div>
+    <div class="box ok">
+      <h3>✅ Permitido neste contexto</h3>
+      <ul>
+        <li>Conteúdo sexual, explícito ou ousado entre adultos</li>
+        <li>Humor negro ou grosseiro</li>
+        <li>Desafios desconfortáveis ou vergonhosos, dentro do razoável</li>
+        <li>Conteúdo direto sobre flertes ou anedotas pessoais</li>
+      </ul>
+    </div>
+  </div>
+  <p>A fronteira é simples: o ousado está bem; o que humilha, discrimina ou coloca em risco alguém real, não. Quando você gera cartas com nossa ferramenta de IA, aplicamos um filtro automático com esse mesmo critério antes que você as veja e novamente antes que possam ser publicadas.</p>
+
+  <h3>1.1 Classificação de intensidade</h3>
+  <p><strong>O Preliados é um app para maiores de 18 anos.</strong> Ao abri-lo pela primeira vez, é preciso declarar a data de nascimento e, se a idade resultante for inferior a 18, o acesso não é permitido. O que existe é um <strong>modo familiar</strong>: uma opção voluntária para grupos de adultos que oculta o conteúdo ousado e o de contacto físico, e que não autoriza o uso por menores de 18 anos. Ao criar um baralho, classificamos sua intensidade para que esse filtro funcione corretamente. Tentar burlar deliberadamente essa classificação (por exemplo, rotulando como suave um baralho que não o é) é tratado como uma infração destas normas.</p>
+
+  <h2 id="moderacion">2. Como moderamos</h2>
+  <p>A moderação combina um filtro automático no momento de criar conteúdo com IA e um sistema de denúncias da comunidade:</p>
+  <ol class="steps">
+    <li><strong>Publicação:</strong> antes de poder publicar seu primeiro baralho, você precisa ter aceitado a versão vigente destas normas, da política de privacidade e das condições de uso.</li>
+    <li><strong>Denúncias:</strong> qualquer pessoa pode denunciar um baralho que descumpra estas normas, indicando um motivo.</li>
+    <li><strong>Revisão automática por volume:</strong> quando um baralho acumula denúncias de <strong>vários dispositivos diferentes</strong> (não conta que a mesma pessoa o denuncie mais de uma vez), passa ao estado <em>em revisão</em>. Continua visível durante a revisão: um punhado de denúncias não é, por si só, um veredicto, e ocultar cedo demais abriria a porta a usá-lo como arma entre grupos.</li>
+    <li><strong>Ocultação automática:</strong> se as denúncias de dispositivos diferentes continuarem subindo até um limite mais alto, o baralho é ocultado automaticamente para o restante da comunidade. Seu autor continua a vê-lo, para saber que foi retirado.</li>
+    <li><strong>Revisão humana:</strong> a moderação revisa a fila de baralhos denunciados e decide se o conteúdo é reativado, permanece oculto ou é retirado definitivamente.</li>
+  </ol>
+  <p>Para evitar abusos do próprio sistema de denúncias: você não pode denunciar seu próprio baralho, cada dispositivo só pode denunciar o mesmo baralho uma vez, há um tempo mínimo de espera entre duas denúncias seguidas e um limite diário de denúncias por dispositivo.</p>
+
+  <h3>2.1 Motivos de denúncia disponíveis</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Motivo</th><th>Quando usá-lo</th></tr></thead>
+    <tbody>
+      <tr><td>Ofensivo</td><td>Conteúdo gratuitamente ofensivo que não se encaixe em um motivo mais concreto</td></tr>
+      <tr><td>Discurso de ódio</td><td>Desprezo ou ódio contra um grupo</td></tr>
+      <tr><td>Racismo</td><td>Conteúdo racista</td></tr>
+      <tr><td>Xenofobia</td><td>Rejeição ou ataque por origem ou nacionalidade</td></tr>
+      <tr><td>Discriminação</td><td>Tratamento discriminatório por qualquer motivo protegido</td></tr>
+      <tr><td>Assédio</td><td>Ataque dirigido a uma pessoa real</td></tr>
+      <tr><td>Conteúdo sexual (fora de lugar)</td><td>Sexualização de menores ou conteúdo sexual inapropriado para o contexto do jogo</td></tr>
+      <tr><td>Spam</td><td>Publicidade dissimulada ou conteúdo repetitivo sem valor de jogo</td></tr>
+      <tr><td>Desinformação</td><td>Afirmações falsas apresentadas como se fossem verdadeiras</td></tr>
+      <tr><td>Outro</td><td>Qualquer outro motivo, com um campo de texto livre para explicá-lo</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="reportar">3. Como denunciar um baralho</h2>
+  <p>Na ficha do baralho, selecione a opção de denunciar, escolha o motivo que melhor descreva o problema e, se o motivo for "outro", acrescente uma breve explicação (até 500 caracteres). Não é necessário explicar mais nada: a revisão humana se encarrega do resto.</p>
+
+  <h2 id="recurrir">4. O que acontece com um baralho retirado e como recorrer</h2>
+  <ul>
+    <li>Se o seu baralho passar a <em>em revisão</em>, continua visível enquanto o caso é estudado; você ainda não precisa fazer nada.</li>
+    <li>Se o seu baralho for ocultado ou retirado, você continua a vê-lo (e suas cartas), mas ele deixa de ser visível para o restante da comunidade e não pode ser jogado a partir de lá.</li>
+    <li>Um baralho retirado <strong>não volta a ser ativado sozinho</strong>: é sempre uma decisão humana da moderação, nunca automática.</li>
+    <li>Se você acha que a retirada foi um erro, escreva-nos para <a href="mailto:soporte@preliados.com">soporte@preliados.com</a> indicando o nome do baralho e por que você acha que o conteúdo não descumpre estas normas. Revisaremos o caso manualmente e responderemos com a decisão.</li>
+  </ul>
+
+  <h2 id="bloqueo">5. Bloquear outros autores</h2>
+  <p>Você pode bloquear um autor cujos baralhos não queira voltar a ver. O bloqueio é guardado no seu dispositivo e afeta apenas o que você vê; não é uma medida de moderação pública nem retira o conteúdo para o restante da comunidade.</p>
+
+  <h2 id="consecuencias">6. Consequências de descumprir estas normas</h2>
+  <p>Dependendo da gravidade e de haver reincidência, podemos: retirar o baralho em questão, ocultar todo o conteúdo publicado por esse identificador ou restringir sua capacidade de publicar na comunidade. As infrações muito graves (por exemplo, conteúdo que sexualize menores) são retiradas imediatamente, sem passar pelo processo gradual de denúncias e, quando a lei o exige, são levadas ao conhecimento das autoridades competentes.</p>
+
+  <h2 id="relacion">7. Relação com os demais documentos</h2>
+  <p>Estas normas são lidas junto com a <a href="/pt/legal/privacidade">política de privacidade</a> (o que fazemos com os dados do baralho e da denúncia) e as <a href="/pt/legal/termos-de-uso">condições de uso</a> (uso geral do app). Aceitar estas normas é obrigatório antes de publicar qualquer baralho; consultá-las e jogar baralhos de outras pessoas não o exige.</p>
+
+  <footer>
+    Preliados · Normas da comunidade · Versão 1.2 · Última atualização: 30 de agosto de 2026
+  </footer>
+</div>
+</body>
+</html>

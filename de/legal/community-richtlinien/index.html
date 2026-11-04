@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preliados · Community-Richtlinien</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f5;
+    --surface: #ffffff;
+    --text: #201a1f;
+    --text-muted: #665f68;
+    --accent: #b3325c;
+    --accent-2: #6c4fa0;
+    --border: #e8e0e4;
+    --bad-bg: #fdeceef;
+    --bad-border: #e6a9b6;
+    --bad-text: #7a1f37;
+    --ok-bg: #eaf5ee;
+    --ok-border: #a9d8ba;
+    --ok-text: #1f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17131a;
+      --surface: #221d26;
+      --text: #f2ecef;
+      --text-muted: #b4aab2;
+      --accent: #f06292;
+      --accent-2: #b18cf0;
+      --border: #35303b;
+      --bad-bg: #351b22;
+      --bad-border: #7a3444;
+      --bad-text: #f5b6c4;
+      --ok-bg: #1a2e21;
+      --ok-border: #366b48;
+      --ok-text: #a9e0bb;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 40rem; margin: 0 auto; }
+  a.back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  a.back:hover { color: var(--accent); }
+  h1 { font-size: 1.7rem; margin: 0 0 0.35rem; letter-spacing: -0.01em; }
+  .meta { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 2rem; }
+  .callout { border:1px solid var(--border); border-radius:.75rem; padding:.85rem 1rem; font-size:.92rem; margin:1rem 0; }
+  h2 {
+    font-size: 1.2rem;
+    margin: 2.2rem 0 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.3rem 0 0.5rem; }
+  p { margin: 0.6rem 0; }
+  ul, ol { padding-left: 1.3rem; margin: 0.6rem 0; }
+  li { margin: 0.4rem 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  @media (min-width: 34rem) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  .box {
+    border-radius: 0.85rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+  }
+  .box.bad { background: var(--bad-bg); border-color: var(--bad-border); color: var(--bad-text); }
+  .box.ok { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .box h3 { margin-top: 0; }
+  .box ul { margin: 0.4rem 0 0; }
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+  }
+  .steps li {
+    position: relative;
+    padding-left: 2.4rem;
+    margin: 0.9rem 0;
+  }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -0.05rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.02em; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  a { color: var(--accent); }
+  code { background: var(--surface); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.05rem 0.35rem; font-size: 0.85em; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); }
+</style>
+<style>
+  a.marca-inicio { text-decoration: none; color: inherit; display: inline-block; }
+  a.marca-inicio:hover { opacity: .75; }
+  .marca-legal { margin: 0 0 1.25rem; }
+  .marca-legal a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+  }
+  .marca-legal a:hover { opacity: .75; }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0714">
+</head>
+<body>
+<div class="wrap">
+  <p class="marca-legal"><a href="/">&larr; Preliados</a></p>
+  <a class="back" href="/legal/index">← Zurück zum Index</a>
+  <h1>🛡️ Community-Richtlinien von Preliados</h1>
+  <p class="meta">Version 1.2 · Letzte Aktualisierung: 30. August 2026 · <a href="/legal/normas-comunidad" hreflang="es" lang="es">Leer en español</a> · <a href="/en/legal/community-guidelines" hreflang="en" lang="en">Read in English</a> · <a href="/fr/legal/regles-communaute" hreflang="fr" lang="fr">Lire en français</a> · <a href="/pt/legal/normas-comunidade" hreflang="pt" lang="pt">Ler em português</a></p>
+  <p class="callout">Dies ist eine zu Informationszwecken bereitgestellte deutsche Übersetzung. Bei Abweichungen gilt die spanische Fassung.</p>
+
+  <p>Die Preliados-Community ist der Ort, an dem Sie Ihre eigenen Kartendecks veröffentlichen und die Decks spielen können, die andere Menschen erstellt haben. Damit sie ein sicherer und unterhaltsamer Ort bleibt, akzeptieren alle, die veröffentlichen, diese Richtlinien.</p>
+
+  <p>Preliados ist ein Partyspiel für Erwachsene, das anzügliche, direkte Inhalte ohne grundsätzliche Filter haben will, und genau das wird erwartet, wenn jemand ein solches Deck erstellt. Diese Richtlinien verbieten diesen Ton nicht: Sie verbieten Inhalte, die wirklich Schaden anrichten.</p>
+
+  <h2 id="prohibido">1. Welche Inhalte verboten sind</h2>
+  <p>Es dürfen keine Inhalte veröffentlicht werden, die Folgendes sind oder enthalten:</p>
+  <div class="grid">
+    <div class="box bad">
+      <h3>🚫 Immer verboten</h3>
+      <ul>
+        <li>Rassismus oder Fremdenfeindlichkeit</li>
+        <li>Hassrede oder Verachtung gegenüber einer geschützten Gruppe (Ethnie, Nationalität, Religion, sexuelle Orientierung, Geschlechtsidentität, Behinderung)</li>
+        <li>Diskriminierung jeder Art</li>
+        <li>Belästigung oder Angriffe, die sich gegen eine reale Person richten</li>
+        <li>Sexualisierung von Minderjährigen in jeder Form</li>
+        <li>Drohungen mit realer Gewalt</li>
+        <li>Grundlos beleidigende Inhalte ohne jeden Spielzweck</li>
+        <li>Spam oder verdeckte Werbeinhalte</li>
+        <li>Desinformation, die als Tatsache dargestellt wird</li>
+        <li>Karten, die zum Konsum von Alkohol oder anderen Substanzen drängen oder diejenigen bestrafen, die nicht konsumieren. Das zu veröffentlichen ist ein Grund für die Entfernung des Decks.</li>
+      </ul>
+    </div>
+    <div class="box ok">
+      <h3>✅ In diesem Kontext erlaubt</h3>
+      <ul>
+        <li>Sexuelle, explizite oder anzügliche Inhalte unter Erwachsenen</li>
+        <li>Schwarzer oder derber Humor</li>
+        <li>Unangenehme oder peinliche Herausforderungen, im vernünftigen Rahmen</li>
+        <li>Direkte Inhalte über Flirten oder persönliche Anekdoten</li>
+      </ul>
+    </div>
+  </div>
+  <p>Die Grenze ist einfach: Anzügliches ist in Ordnung; was eine reale Person demütigt, diskriminiert oder gefährdet, nicht. Wenn Sie Karten mit unserem KI-Werkzeug generieren, wenden wir einen automatischen Filter nach demselben Maßstab an, bevor Sie sie sehen, und noch einmal, bevor sie veröffentlicht werden können.</p>
+
+  <h3>1.1 Einstufung der Intensität</h3>
+  <p><strong>Preliados ist eine App für Personen ab 18 Jahren.</strong> Beim ersten Öffnen muss das Geburtsdatum angegeben werden, und wenn das sich ergebende Alter unter 18 liegt, wird der Zugang nicht gestattet. Es gibt jedoch einen <strong>Familienmodus</strong>: eine freiwillige Option für Gruppen von Erwachsenen, die anzügliche Inhalte und solche mit körperlichem Kontakt ausblendet und keine Nutzung durch Personen unter 18 Jahren ermöglicht. Beim Erstellen eines Decks stufen wir dessen Intensität ein, damit dieser Filter korrekt funktioniert. Der absichtliche Versuch, diese Einstufung zu umgehen (zum Beispiel ein Deck als mild zu kennzeichnen, das es nicht ist), wird als Verstoß gegen diese Richtlinien behandelt.</p>
+
+  <h2 id="moderacion">2. Wie wir moderieren</h2>
+  <p>Die Moderation kombiniert einen automatischen Filter beim Erstellen von Inhalten mit KI und ein Meldesystem der Community:</p>
+  <ol class="steps">
+    <li><strong>Veröffentlichung:</strong> Bevor Sie Ihr erstes Deck veröffentlichen können, müssen Sie die geltende Fassung dieser Richtlinien, der Datenschutzerklärung und der Nutzungsbedingungen akzeptiert haben.</li>
+    <li><strong>Meldungen:</strong> Jede Person kann ein Deck melden, das gegen diese Richtlinien verstößt, unter Angabe eines Grundes.</li>
+    <li><strong>Automatische Prüfung nach Menge:</strong> Wenn ein Deck Meldungen von <strong>mehreren verschiedenen Geräten</strong> ansammelt (es zählt nicht, wenn dieselbe Person es mehr als einmal meldet), wechselt es in den Status <em>in Prüfung</em>. Es bleibt während der Prüfung sichtbar: Eine Handvoll Meldungen ist für sich genommen noch kein Urteil, und ein zu frühes Ausblenden würde die Tür öffnen, es als Waffe zwischen Gruppen einzusetzen.</li>
+    <li><strong>Automatisches Ausblenden:</strong> Wenn die Meldungen von verschiedenen Geräten weiter bis zu einem höheren Schwellenwert ansteigen, wird das Deck für den Rest der Community automatisch ausgeblendet. Die Person, die es erstellt hat, sieht es weiterhin, damit sie weiß, dass es zurückgezogen wurde.</li>
+    <li><strong>Menschliche Prüfung:</strong> Das Moderationsteam prüft die Warteschlange der gemeldeten Decks und entscheidet, ob der Inhalt wieder freigeschaltet wird, ausgeblendet bleibt oder endgültig entfernt wird.</li>
+  </ol>
+  <p>Um Missbrauch des Meldesystems selbst zu verhindern: Sie können Ihr eigenes Deck nicht melden, jedes Gerät kann dasselbe Deck nur einmal melden, zwischen zwei aufeinanderfolgenden Meldungen gibt es eine Mindestwartezeit, und es gibt eine tägliche Höchstgrenze für Meldungen pro Gerät.</p>
+
+  <h3>2.1 Verfügbare Meldegründe</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Grund</th><th>Wann er zu verwenden ist</th></tr></thead>
+    <tbody>
+      <tr><td>Beleidigend</td><td>Grundlos verletzender Inhalt, der unter keinen konkreteren Grund passt</td></tr>
+      <tr><td>Hassrede</td><td>Verachtung oder Hass gegenüber einer Gruppe</td></tr>
+      <tr><td>Rassismus</td><td>Rassistischer Inhalt</td></tr>
+      <tr><td>Fremdenfeindlichkeit</td><td>Ablehnung oder Angriff aufgrund von Herkunft oder Nationalität</td></tr>
+      <tr><td>Diskriminierung</td><td>Diskriminierende Behandlung aus einem beliebigen geschützten Grund</td></tr>
+      <tr><td>Belästigung</td><td>Angriff, der sich gegen eine reale Person richtet</td></tr>
+      <tr><td>Sexueller Inhalt (unangebracht)</td><td>Sexualisierung von Minderjährigen oder sexueller Inhalt, der für den Kontext des Spiels nicht angemessen ist</td></tr>
+      <tr><td>Spam</td><td>Verdeckte Werbung oder sich wiederholender Inhalt ohne Spielwert</td></tr>
+      <tr><td>Desinformation</td><td>Falsche Behauptungen, die als Tatsachen dargestellt werden</td></tr>
+      <tr><td>Sonstiges</td><td>Jeder andere Grund, mit einem freien Textfeld zur Erläuterung</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="reportar">3. Wie Sie ein Deck melden</h2>
+  <p>Wählen Sie auf der Deck-Seite die Option zum Melden, wählen Sie den Grund, der das Problem am besten beschreibt, und fügen Sie, wenn der Grund „Sonstiges“ ist, eine kurze Erläuterung hinzu (bis zu 500 Zeichen). Sie müssen nichts weiter erklären: Die menschliche Prüfung kümmert sich um den Rest.</p>
+
+  <h2 id="recurrir">4. Was mit einem entfernten Deck geschieht und wie Sie Einspruch einlegen</h2>
+  <ul>
+    <li>Wenn Ihr Deck in den Status <em>in Prüfung</em> wechselt, bleibt es sichtbar, solange der Fall geprüft wird; Sie müssen noch nichts tun.</li>
+    <li>Wenn Ihr Deck ausgeblendet oder entfernt wird, sehen Sie es (und seine Karten) weiterhin, aber es ist für den Rest der Community nicht mehr sichtbar und kann von dort aus nicht mehr gespielt werden.</li>
+    <li>Ein entferntes Deck <strong>wird nicht von selbst wieder freigeschaltet</strong>: Das ist immer eine menschliche Entscheidung des Moderationsteams, niemals eine automatische.</li>
+    <li>Wenn Sie glauben, dass die Entfernung ein Irrtum war, schreiben Sie uns an <a href="mailto:soporte@preliados.com">soporte@preliados.com</a> unter Angabe des Decknamens und warum Sie meinen, dass der Inhalt nicht gegen diese Richtlinien verstößt. Wir prüfen den Fall manuell und teilen Ihnen die Entscheidung mit.</li>
+  </ul>
+
+  <h2 id="bloqueo">5. Andere Verfassende blockieren</h2>
+  <p>Sie können eine Person blockieren, deren Decks Sie nicht mehr sehen möchten. Die Blockierung wird auf Ihrem Gerät gespeichert und betrifft nur das, was Sie sehen; sie ist keine öffentliche Moderationsmaßnahme und entfernt den Inhalt nicht für den Rest der Community.</p>
+
+  <h2 id="consecuencias">6. Folgen von Verstößen gegen diese Richtlinien</h2>
+  <p>Je nach Schwere und danach, ob es sich um einen Wiederholungsfall handelt, können wir: das betreffende Deck entfernen, alle von dieser Kennung veröffentlichten Inhalte ausblenden oder ihre Möglichkeit einschränken, in der Community zu veröffentlichen. Sehr schwere Verstöße (zum Beispiel Inhalte, die Minderjährige sexualisieren) werden sofort entfernt, ohne das stufenweise Meldeverfahren zu durchlaufen, und werden, wenn das Gesetz es verlangt, den zuständigen Behörden zur Kenntnis gebracht.</p>
+
+  <h2 id="relacion">7. Verhältnis zu den übrigen Dokumenten</h2>
+  <p>Diese Richtlinien sind zusammen mit der <a href="/de/legal/datenschutz">Datenschutzerklärung</a> (was wir mit den Daten des Decks und der Meldung tun) und den <a href="/de/legal/nutzungsbedingungen">Nutzungsbedingungen</a> (allgemeine Nutzung der App) zu lesen. Das Akzeptieren dieser Richtlinien ist vor der Veröffentlichung jedes Decks verpflichtend; sie einzusehen und die Decks anderer zu spielen setzt es nicht voraus.</p>
+
+  <footer>
+    Preliados · Community-Richtlinien · Version 1.2 · Letzte Aktualisierung: 30. August 2026
+  </footer>
+</div>
+</body>
+</html>
