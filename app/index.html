@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descarga Preliados</title>
+<meta name="description" content="Preliados: cartas, retos y ruleta para la previa. Descárgala en tu móvil.">
+<meta name="robots" content="noindex">
+<style>
+  :root { color-scheme: dark; --bg:#0B0714; --surface:#1A1128; --text:#F2ECEF; --muted:#B4AAB2; --primary:#8B5CF6; --accent:#F472B6; --line:#2E2340; }
+  * { box-sizing: border-box; }
+  [hidden] { display:none !important; }
+  body {
+    margin:0; padding:2rem 1.25rem 4rem; background:var(--bg); color:var(--text); line-height:1.6;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap { max-width:30rem; margin:0 auto; text-align:center; }
+  .bar { height:6px; border-radius:99px; background:linear-gradient(90deg,var(--primary),#EC4899); margin-bottom:2rem; }
+  .brand { font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+  h1 { margin:.4rem 0 .5rem; font-size:2rem; line-height:1.2; }
+  p { color:var(--muted); }
+  .btn {
+    display:block; margin:1rem 0; padding:1rem 1.25rem; border-radius:1rem; text-decoration:none;
+    background:var(--surface); border:1px solid var(--line); color:var(--text); font-weight:700; font-size:1.05rem;
+  }
+  .btn.principal { background:linear-gradient(90deg,var(--primary),#EC4899); border:none; }
+  .nota { font-size:.85rem; color:#6B6180; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar"></div>
+  <div class="brand">Preliados</div>
+  <h1>La previa no se muere</h1>
+  <p>Un móvil, el grupo alrededor y cartas que deciden qué toca.</p>
+
+  <a id="ios" class="btn principal" href="https://apps.apple.com/app/apple-store/id6801454491">Descargar en App Store</a>
+  <a id="android" class="btn" href="https://play.google.com/store/apps/details?id=com.scoser.preliados">Descargar en Google Play</a>
+  <p id="android-pronto" class="nota" hidden>Muy pronto en Android.</p>
+
+  <p class="nota">Get Preliados: the party card game for your pre-party.</p>
+</div>
+
+<script>
+  // Página puente para el QR y los enlaces que se comparten desde la app:
+  // manda a cada móvil a su tienda y deja atribuir la descarga por canal.
+  //
+  // `src` viene en la URL (?src=share, ?src=qr…). Se limpia a [a-z0-9_-] y
+  // 30 caracteres porque va a parar a los parámetros de las tiendas.
+  //
+  // PROVIDER_TOKEN: el `pt` de App Store Connect → App Analytics → Campañas
+  // («Generar un enlace de campaña»). Vacío = el enlace funciona pero la
+  // descarga no se atribuye al canal en iOS.
+  //
+  // ANDROID_PUBLIC: ponlo a true el día que la ficha de Google Play sea
+  // pública. Hasta entonces, mandar a Play daría un 404.
+  var PROVIDER_TOKEN = "";
+  var ANDROID_PUBLIC = false;
+
+  var raw = new URLSearchParams(location.search).get("src") || "web";
+  var src = raw.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 30) || "web";
+
+  var ios = "https://apps.apple.com/app/apple-store/id6801454491" +
+    (PROVIDER_TOKEN ? "?pt=" + PROVIDER_TOKEN + "&ct=" + encodeURIComponent(src) + "&mt=8" : "");
+  var android = "https://play.google.com/store/apps/details?id=com.scoser.preliados&referrer=" +
+    encodeURIComponent("utm_source=" + src + "&utm_medium=app");
+
+  document.getElementById("ios").href = ios;
+  document.getElementById("android").href = android;
+  if (!ANDROID_PUBLIC) {
+    document.getElementById("android").hidden = true;
+    document.getElementById("android-pronto").hidden = false;
+  }
+
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  if (isIOS) location.replace(ios);
+  else if (isAndroid && ANDROID_PUBLIC) location.replace(android);
+</script>
+</body>
+</html>
