@@ -2,44 +2,168 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Descarga Preliados</title>
 <meta name="description" content="Preliados: cartas, retos y ruleta para la previa. Descárgala en tu móvil.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0714">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/app/titan-one.ttf" as="font" type="font/ttf" crossorigin>
 <style>
-  :root { color-scheme: dark; --bg:#0B0714; --surface:#1A1128; --text:#F2ECEF; --muted:#B4AAB2; --primary:#8B5CF6; --accent:#F472B6; --line:#2E2340; }
-  * { box-sizing: border-box; }
+  /* Titan One (SIL Open Font License 1.1), la letra del logotipo de la app. */
+  @font-face { font-family:"Titan One"; src:url("/app/titan-one.ttf") format("truetype"); font-display:swap; }
+
+  :root {
+    color-scheme: dark;
+    --bg:#0B0714; --surface:#1A1128; --text:#F6F2FF; --muted:#B9AEC8; --faint:#7D7194;
+    --violet:#8B5CF6; --pink:#EC4899; --rose:#F472B6; --amber:#FBBF24;
+    --line:rgba(255,255,255,.09);
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  * { box-sizing:border-box; }
   [hidden] { display:none !important; }
+  html { -webkit-text-size-adjust:100%; }
   body {
-    margin:0; padding:2rem 1.25rem 4rem; background:var(--bg); color:var(--text); line-height:1.6;
+    margin:0; min-height:100vh; min-height:100svh; overflow-x:hidden;
+    background:var(--bg); color:var(--text); line-height:1.5;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    position:relative; isolation:isolate;
   }
-  .wrap { max-width:30rem; margin:0 auto; text-align:center; }
-  .bar { height:6px; border-radius:99px; background:linear-gradient(90deg,var(--primary),#EC4899); margin-bottom:2rem; }
-  .brand { font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:700; }
-  h1 { margin:.4rem 0 .5rem; font-size:2rem; line-height:1.2; }
-  p { color:var(--muted); }
-  .btn {
-    display:block; margin:1rem 0; padding:1rem 1.25rem; border-radius:1rem; text-decoration:none;
-    background:var(--surface); border:1px solid var(--line); color:var(--text); font-weight:700; font-size:1.05rem;
+  /* Mismo fondo que la portada de preliados.com: brillos violeta y rosa + trama de puntos. */
+  body::before {
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(36rem 28rem at 10% -8%, rgba(139,92,246,.60), transparent 62%),
+      radial-gradient(34rem 28rem at 100% 105%, rgba(236,72,153,.50), transparent 62%),
+      radial-gradient(22rem 18rem at 95% 18%, rgba(244,114,182,.22), transparent 70%),
+      radial-gradient(rgba(255,255,255,.08) 1px, transparent 1.2px) 0 0 / 22px 22px,
+      var(--bg);
   }
-  .btn.principal { background:linear-gradient(90deg,var(--primary),#EC4899); border:none; }
-  .nota { font-size:.85rem; color:#6B6180; }
+
+  main {
+    max-width:27rem; margin:0 auto; text-align:center;
+    padding:max(2rem, env(safe-area-inset-top)) 1rem 2.5rem;
+    display:flex; flex-direction:column; align-items:center;
+  }
+
+  /* —— Cabecera —— */
+  .icon {
+    width:84px; height:84px; border-radius:20px; display:block;
+    box-shadow:0 0 0 1px rgba(255,255,255,.14), 0 14px 40px rgba(124,58,237,.55), 0 0 60px rgba(236,72,153,.25);
+  }
+  h1 {
+    margin:.85rem 0 0; font-family:"Titan One",system-ui,sans-serif; font-weight:400;
+    font-size:clamp(2.6rem, 12vw, 3.4rem); line-height:1; letter-spacing:.01em;
+    background:linear-gradient(90deg,var(--violet),var(--pink) 62%,var(--rose));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 4px 18px rgba(236,72,153,.35));
+  }
+  .tagline { margin:.55rem 0 0; font-size:clamp(1.25rem, 5.4vw, 1.5rem); font-weight:800; letter-spacing:-.01em; }
+  .lead { margin:.35rem 0 0; color:var(--muted); font-size:1rem; max-width:21rem; }
+
+  /* —— Abanico de cartas (cartas reales de las barajas gratis) —— */
+  .fan { position:relative; width:100%; height:15rem; margin:1.4rem 0 .4rem; }
+  .card {
+    --w:min(9rem, 37vw);
+    position:absolute; left:50%; top:.9rem; width:var(--w); height:calc(var(--w) * 1.36);
+    margin-left:calc(var(--w) / -2);
+    padding:.8rem .8rem .7rem; border-radius:1.05rem; text-align:left;
+    display:flex; flex-direction:column; gap:.55rem;
+    background:linear-gradient(165deg,#271741 0%,#170E26 70%);
+    border:1px solid var(--line);
+    box-shadow:0 18px 40px rgba(0,0,0,.55);
+    animation:flota 6s ease-in-out infinite;
+  }
+  .card::before { /* franja de color de la categoría */
+    content:""; position:absolute; inset:0 0 auto; height:4px; border-radius:1.05rem 1.05rem 0 0; background:var(--c);
+  }
+  .card .tag {
+    align-self:flex-start; font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    padding:.22rem .5rem; border-radius:99px; color:var(--c); background:color-mix(in srgb, var(--c) 16%, transparent);
+  }
+  .card p { margin:0; font-size:clamp(.82rem, 3.5vw, .95rem); font-weight:700; line-height:1.3; }
+  .card .mark { margin-top:auto; align-self:flex-end; font-family:"Titan One",system-ui,sans-serif; font-size:.7rem; color:rgba(255,255,255,.22); }
+  .c1 { --c:var(--violet); rotate:-13deg; translate:-64% 1.3rem; animation-delay:-2s; }
+  .c3 { --c:var(--amber);  rotate:13deg;  translate:64% 1.3rem;  animation-delay:-4s; }
+  .c2 {
+    --c:var(--rose); z-index:2;
+    box-shadow:0 0 0 1.5px rgba(244,114,182,.55), 0 22px 50px rgba(0,0,0,.6), 0 0 50px rgba(236,72,153,.35);
+  }
+  @keyframes flota { 50% { transform:translateY(-7px); } }
+
+  /* —— Datos rápidos —— */
+  .chips { list-style:none; margin:.4rem 0 0; padding:0; display:flex; flex-wrap:wrap; justify-content:center; gap:.45rem; }
+  .chips li {
+    font-size:.85rem; font-weight:700; padding:.4rem .75rem; border-radius:99px;
+    background:rgba(255,255,255,.05); border:1px solid var(--line);
+  }
+
+  /* —— Insignias oficiales: sin modificar; separación ≥ ¼ de su altura (normas de Apple y Google) —— */
+  .stores { margin-top:1.6rem; display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:1rem 1.1rem; }
+  .store { display:flex; flex-direction:column; align-items:center; gap:.85rem; }
+  .badge { display:block; line-height:0; border-radius:10px; }
+  .badge img { height:52px; width:auto; display:block; }
+  a.badge[href]:focus-visible { outline:3px solid var(--rose); outline-offset:4px; }
+  .pronto {
+    font-size:.78rem; font-weight:800; letter-spacing:.04em; color:var(--amber);
+    padding:.2rem .6rem; border-radius:99px; border:1px solid color-mix(in srgb, var(--amber) 45%, transparent);
+  }
+
+  .nota { margin:1.8rem 0 0; font-size:.82rem; color:var(--faint); }
+  .nota a { color:var(--muted); }
+
+  /* Entrada escalonada (las insignias no se animan: lo piden las normas de Apple). */
+  .in { animation:entra .7s var(--ease) both; }
+  .d1 { animation-delay:.08s; } .d2 { animation-delay:.16s; } .d3 { animation-delay:.24s; }
+  @keyframes entra { from { opacity:0; transform:translateY(14px); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .in { animation:none; }
+  }
+  @media (min-width:40rem) {
+    main { padding-top:3.5rem; }
+    .fan { height:16.5rem; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="bar"></div>
-  <div class="brand">Preliados</div>
-  <h1>La previa no se muere</h1>
-  <p>Un móvil, el grupo alrededor y cartas que deciden qué toca.</p>
+<main>
+  <img class="icon in" src="/apple-touch-icon.png" alt="" width="84" height="84">
+  <h1 class="in d1">Preliados</h1>
+  <p class="tagline in d1">La previa no se muere</p>
+  <p class="lead in d2">Un móvil, el grupo alrededor y cartas que deciden qué toca.</p>
 
-  <a id="ios" class="btn principal" href="https://apps.apple.com/app/apple-store/id6801454491">Descargar en App Store</a>
-  <a id="android" class="btn" href="https://play.google.com/store/apps/details?id=com.scoser.preliados">Descargar en Google Play</a>
-  <p id="android-pronto" class="nota" hidden>Muy pronto en Android.</p>
+  <div class="fan in d2" aria-hidden="true">
+    <div class="card c1"><span class="tag">🫵 Más probable</span><p>¿Quién es más probable que llegue tarde a su propia boda?</p><span class="mark">Preliados</span></div>
+    <div class="card c3"><span class="tag">🙊 Yo nunca</span><p>Yo nunca he mandado un mensaje a la persona equivocada.</p><span class="mark">Preliados</span></div>
+    <div class="card c2"><span class="tag">🎭 Reto</span><p>Imita a alguien del grupo hasta que adivinen quién es.</p><span class="mark">Preliados</span></div>
+  </div>
 
-  <p class="nota">Get Preliados: the party card game for your pre-party.</p>
-</div>
+  <ul class="chips in d3">
+    <li>🃏 +3.500 cartas</li>
+    <li>🎁 9 barajas gratis</li>
+    <li>📱 Un solo móvil</li>
+  </ul>
+
+  <div class="stores">
+    <div class="store">
+      <a id="ios" class="badge" href="https://apps.apple.com/app/apple-store/id6801454491">
+        <img src="/app/badge-app-store-es.svg" alt="Consíguelo en el App Store" width="156" height="52">
+      </a>
+    </div>
+    <div class="store">
+      <!-- Sin href hasta que la ficha de Play sea pública (ANDROID_PUBLIC). -->
+      <a id="android" class="badge">
+        <img src="/app/badge-google-play-es.png" alt="Disponible en Google Play" width="134" height="52">
+      </a>
+      <span id="android-pronto" class="pronto">Muy pronto</span>
+    </div>
+  </div>
+
+  <p class="nota">Get Preliados: the party card game for your pre-party.<br><a href="/">preliados.com</a></p>
+</main>
 
 <script>
   // Página puente para el QR y los enlaces que se comparten desde la app:
@@ -66,10 +190,9 @@
     encodeURIComponent("utm_source=" + src + "&utm_medium=app");
 
   document.getElementById("ios").href = ios;
-  document.getElementById("android").href = android;
-  if (!ANDROID_PUBLIC) {
-    document.getElementById("android").hidden = true;
-    document.getElementById("android-pronto").hidden = false;
+  if (ANDROID_PUBLIC) {
+    document.getElementById("android").href = android;
+    document.getElementById("android-pronto").hidden = true;
   }
 
   var ua = navigator.userAgent || "";
